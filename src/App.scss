@@ -1,1 +1,14 @@
-// not empty
+@import './styles/reset';
+@import './styles/libs/fonts';
+@import './styles/utils/vars';
+@import './styles/utils/mixins';
+
+.App {
+  font-family: Mont;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: var(--primary);
+}
