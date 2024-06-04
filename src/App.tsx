@@ -1,17 +1,15 @@
+import { Outlet } from 'react-router-dom';
 import './App.scss';
-import { BurgerMenu } from './components/BurgerMenu';
+import { Header } from './layout/Header';
 
 function App() {
   return (
     <div className="App">
-      <h1
-        className="Person VeryHugeClassName"
-        id="Person"
-        style={{ margin: '0' }}
-      >
-        Product Catalog
-      </h1>
-      <BurgerMenu />
+      <Header />
+
+      <main className="container">
+        <Outlet />
+      </main>
     </div>
   );
 }
