@@ -14,7 +14,7 @@ body {
 }
 
 @mixin hover($_property, $_toValue) {
-  transition: #{$_property} $transition;
+  transition: #{$_property} var(--transition);
   &:hover {
     #{$_property}: $_toValue;
   }

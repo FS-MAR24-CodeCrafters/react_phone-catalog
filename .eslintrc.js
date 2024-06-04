@@ -117,6 +117,13 @@ module.exports = {
     '@typescript-eslint/ban-types': 'off',
     'no-use-before-define': ['error', { functions: false }],
     'default-case': 'off',
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: ['arrow-function', 'function-declaration'],
+        unnamedComponents: 'arrow-function',
+      },
+    ],
   },
   settings: {
     'import/resolver': {

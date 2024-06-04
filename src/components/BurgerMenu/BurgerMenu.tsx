@@ -3,7 +3,7 @@ import classes from './BurgerMenu.module.scss';
 import cart from '../../../public/img/icons/Shopping-bag(Cart).png';
 import favourites from '../../../public/img/icons/Favourites(HeartLike).png';
 
-export function BurgerMenu() {
+export const BurgerMenu = () => {
   const { pathname } = useLocation();
 
   return (
@@ -46,4 +46,4 @@ export function BurgerMenu() {
       </div>
     </aside>
   );
-}
+};
