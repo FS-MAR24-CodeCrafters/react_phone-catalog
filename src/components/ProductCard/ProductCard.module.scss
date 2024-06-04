@@ -1,0 +1,94 @@
+@use "../../styles/utils/mixins.scss" as *;
+
+.product {
+	&__card {
+		border: 1px solid #e2e6e9;
+		border-radius: 8px;
+		box-sizing: border-box;
+
+		width: 212px;
+		height: 439px;
+		padding: 31px;
+
+		@include on-tablet {
+			width: 237px;
+			height: 512px;
+		}
+
+		@include on-desktop {
+			width: 272px;
+			height: 506px;
+		}
+
+		@include hover(box-shadow, 0 2px 4px 0 rgba(131, 137, 139, 0.12));
+	}
+
+	&__img_container {
+		height: 129px;
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+
+		@include on-tablet {
+			height: 202px;
+		}
+
+		@include on-desktop {
+			height: 196px;
+		}
+	}
+
+	&__title {
+		padding-top: 16px;
+		font-size: 14px;
+		font-weight: 600;
+		line-height: 21px;
+	}
+
+	&__price {
+		display: flex;
+		gap: 8px;
+
+		&_curr {
+			font-size: 22px;
+			line-height: 30.8px;
+			font-weight: 800;
+		}
+
+		&_disc {
+			color: #89939a;
+			font-weight: 400;
+			text-decoration: line-through;
+		}
+	}
+
+	&__info {
+		display: flex;
+		justify-content: space-between;
+		line-height: 15.34px;
+		gap: 8px;
+
+		&_title {
+			color: #89939a;
+			font-weight: 600;
+		}
+
+		&_value {
+			font-weight: 600;
+		}
+	}
+}
+
+.breackLine {
+	height: 1px;
+	width: 100%;
+	background-color: #e2e6e9;
+}
+
+.paddingTop {
+	padding-top: 8px;
+}
+
+.paddingBotton {
+	padding-bottom: 8px;
+}

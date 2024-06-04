@@ -8,6 +8,7 @@ module.exports = {
       jsx: true,
     },
     ecmaVersion: 6,
+    project: './tsconfig.json',
     sourceType: 'module',
   },
   ignorePatterns: ['generated.ts', 'next.config.js'],
