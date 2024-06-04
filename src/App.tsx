@@ -1,5 +1,6 @@
 import './App.scss';
 import { BurgerMenu } from './components/BurgerMenu';
+import { ProductCard } from './components/ProductCard/ProductCard';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         Product Catalog
       </h1>
       <BurgerMenu />
+      <ProductCard />
     </div>
   );
 }
