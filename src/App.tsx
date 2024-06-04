@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import './App.scss';
 import { Header } from './layout/Header';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Header />
@@ -12,6 +12,6 @@ function App() {
       </main>
     </div>
   );
-}
+};
 
 export default App;

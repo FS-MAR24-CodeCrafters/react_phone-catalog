@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import logo from '../../../public/img/Logo.png';
 import classes from './Header.module.scss';
 
-export function Header() {
+export const Header = () => {
   const { pathname } = useLocation();
 
   return (
@@ -25,4 +25,4 @@ export function Header() {
       )}
     </header>
   );
-}
+};
