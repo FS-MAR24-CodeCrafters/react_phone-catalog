@@ -1,8 +1,10 @@
+import { Outlet } from 'react-router-dom';
 import './App.scss';
 import { BurgerMenu } from './components/BurgerMenu';
 import { ProductCard } from './components/ProductCard/ProductCard';
+import { Header } from './layout/Header';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <h1
@@ -14,8 +16,13 @@ function App() {
       </h1>
       <BurgerMenu />
       <ProductCard />
+      <Header />
+
+      <main className="container">
+        <Outlet />
+      </main>
     </div>
   );
-}
+};
 
 export default App;

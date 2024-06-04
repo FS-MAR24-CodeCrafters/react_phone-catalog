@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--elements);
+
+  padding-inline: 16px;
+}
+
+.link {
+  display: flex;
+}
+
+.logo {
+  width: 100px;
+  height: 50px;
+}
+
+.button_wrapper {
+  width: 32px;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  border-left: 1px solid var(--elements);
+}
+
+.menu_open {
+  background: url('/img/icons/Menu.png') center / cover no-repeat;
+  width: 16px;
+  height: 10px;
+  cursor: pointer;
+}
+
+.menu_close {
+  background: url('/img/icons/Close.png') center / cover no-repeat;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
