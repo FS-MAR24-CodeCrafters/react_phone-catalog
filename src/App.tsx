@@ -1,7 +1,19 @@
 import './App.scss';
+import { BurgerMenu } from './components/BurgerMenu';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+function App() {
+  return (
+    <div className="App">
+      <h1
+        className="Person VeryHugeClassName"
+        id="Person"
+        style={{ margin: '0' }}
+      >
+        Product Catalog
+      </h1>
+      <BurgerMenu />
+    </div>
+  );
+}
+
+export default App;
