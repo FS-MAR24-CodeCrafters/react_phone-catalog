@@ -1,0 +1,13 @@
+.button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--icons);
+
+  &__img {
+    width: 16px;
+    height: 16px;
+  }
+}
