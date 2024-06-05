@@ -7,17 +7,14 @@
     box-sizing: border-box;
 
     width: 288px;
-    // min-height: 439px;
     padding: 31px;
 
     @include on-tablet {
       width: 237px;
-      // height: 512px;
     }
 
     @include on-desktop {
       width: 272px;
-      // height: 506px;
     }
 
     @include hover(box-shadow, 0 2px 4px 0 rgba(131, 137, 139, 0.12));
@@ -117,5 +114,4 @@
 .actionBlock {
   display: flex;
   justify-content: space-between;
-  // gap: 8px;
 }
