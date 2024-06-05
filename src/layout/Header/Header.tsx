@@ -7,6 +7,12 @@ import heartLike from '../../../public/img/icons/Favourites(HeartLike).png';
 import shoppingBag from '../../../public/img/icons/Shopping-bag(Cart).png';
 import classes from './Header.module.scss';
 
+const getLinkClass = ({ isActive }: { isActive: boolean }) => {
+  return classNames(classes.linkContent, {
+    [classes.linkActive]: isActive,
+  });
+};
+
 export const Header = () => {
   const { pathname } = useLocation();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -71,11 +77,7 @@ export const Header = () => {
             <NavLink
               to={`${link.link}`}
               key={link.label}
-              className={({ isActive }) => (
-                classNames(classes.linkContent, {
-                  [classes.linkActive]: isActive,
-                }))}
-              // className={`${classes.linkContent}`}
+              className={getLinkClass}
             >
               {link.name.toUpperCase()}
             </NavLink>

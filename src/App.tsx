@@ -3,9 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { PhoneDispatchContext } from './store/phoneStore/phoneContext';
 import { Header } from './layout/Header';
 import { Footer } from './layout/Footer';
-import { Arrow } from './ui/Arrow/Arrow';
 import { ActionsName } from './types/phones/phoneActions';
-import { arrowDir } from './types/arrowEnum';
 
 import './App.scss';
 
@@ -24,7 +22,6 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <Arrow dir={arrowDir.down} />
       <main className="container">
         <Outlet />
       </main>

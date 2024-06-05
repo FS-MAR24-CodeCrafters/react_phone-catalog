@@ -1,37 +1,44 @@
 import { FC } from 'react';
 import { arrowDir } from '../../types/arrowEnum';
-import left from '../../../public/img/icons/arrowLeft.svg';
-import right from '../../../public/img/icons/arrowRight.svg';
-import up from '../../../public/img/icons/arrowUp.svg';
-import down from '../../../public/img/icons/arrowDown.svg';
+
 import classes from './Arrow.module.scss';
+import { ArrowDown } from './arrows/ArrowDown';
+import { ArrowUp } from './arrows/ArrowUp';
+import { ArrowLeft } from './arrows/ArrowLeft';
+import { ArrowRight } from './arrows/ArrowRight';
 
 type ArrowProps = {
-  dir: arrowDir;
+  dir: arrowDir; // for using this component you should use arrowDir enum to clarify direction;
+  disabled: boolean; // disabled button or not;
 };
 
-export const Arrow: FC<ArrowProps> = ({ dir }) => {
-  let imageLink;
+export const Arrow: FC<ArrowProps> = ({ dir, disabled }) => {
+  let arrowComponent;
+
+  const color = disabled ? '#e2e6e9' : '#313237';
 
   if (dir === arrowDir.down) {
-    imageLink = down;
+    arrowComponent = <ArrowDown width={5} height={9} fill={color} />;
   }
 
-  if (dir === arrowDir.top) {
-    imageLink = up;
+  if (dir === arrowDir.up) {
+    arrowComponent = <ArrowUp width={5} height={9} fill={color} />;
   }
 
   if (dir === arrowDir.right) {
-    imageLink = right;
+    arrowComponent = <ArrowRight width={9} height={5} fill={color} />;
   }
 
   if (dir === arrowDir.left) {
-    imageLink = left;
+    arrowComponent = <ArrowLeft width={9} height={5} fill={color} />;
   }
 
   return (
-    <button className={classes.button}>
-      <img src={imageLink} alt={dir} className={classes.button__img} />
+    <button
+      className={`${classes.button} ${disabled && classes.disabled}`}
+      {...(disabled && { disabled: true })}
+    >
+      {arrowComponent}
     </button>
   );
 };
