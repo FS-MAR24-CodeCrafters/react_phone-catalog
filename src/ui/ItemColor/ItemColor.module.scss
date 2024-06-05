@@ -1,0 +1,25 @@
+.box {
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--elements);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__selected {
+    border-color: var(--primary);
+  }
+
+  &:hover {
+    border-color: var(--icons);
+  }
+
+  &__color {
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--white);
+    border-radius: 50%;
+  }
+}

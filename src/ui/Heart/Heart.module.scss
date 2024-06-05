@@ -1,0 +1,16 @@
+.wrapper {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--icons);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    border: 1px solid var(--primary);
+  }
+}
+
+.selected {
+  border: 1px solid var(--elements);
+}
