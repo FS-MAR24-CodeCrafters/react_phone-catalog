@@ -1,0 +1,27 @@
+.button {
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  height: 40px;
+  line-height: 21px;
+  font-size: 14px;
+  cursor: pointer;
+
+  &_default {
+    background-color: var(--primary);
+    color: var(--white);
+    transition: box-shadow var(--transition) ease;
+
+    &:hover {
+      box-shadow:
+        -1px 0px 10px var(--icons),
+        1px 0px 10px var(--icons),
+        0 1px 10px var(--icons);
+    }
+
+    &:active {
+      background-color: var(--white);
+      color: var(--green);
+      border: 1px solid var(--elements);
+    }
+  }
+}

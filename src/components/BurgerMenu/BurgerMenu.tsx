@@ -1,7 +1,8 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import classes from './BurgerMenu.module.scss';
 import cart from '../../../public/img/icons/Shopping-bag(Cart).png';
 import favourites from '../../../public/img/icons/Favourites(HeartLike).png';
+
+import classes from './BurgerMenu.module.scss';
 
 export const BurgerMenu = () => {
   const { pathname } = useLocation();
