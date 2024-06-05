@@ -2,6 +2,8 @@ import cn from 'classnames';
 
 import classes from './ProductCard.module.scss';
 import iphone from '../../../public/img/phones/apple-iphone-xs/gold/00.webp';
+import { Button } from '../../ui/Buttons';
+import { Heart } from '../../ui/Heart';
 
 export function ProductCard() {
   return (
@@ -34,7 +36,10 @@ export function ProductCard() {
         <p className={classes.product__info_value}>4 GB</p>
       </div>
 
-      {/* buttons */}
+      <div className={classes.actionBlock}>
+        <Button label='Add to cart' />
+        <Heart checked={false} />
+      </div>
     </article>
   );
 }

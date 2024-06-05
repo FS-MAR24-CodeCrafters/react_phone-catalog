@@ -11,7 +11,7 @@ const initialState: StatePhones = {
 export const PhoneStateContext = createContext(initialState);
 
 export const PhoneDispatchContext = createContext(
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
+  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
   (_actions: phoneActions) => {},
 );
 

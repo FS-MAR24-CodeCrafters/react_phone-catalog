@@ -6,6 +6,7 @@ import { Arrow } from './ui/Arrow/Arrow';
 import { arrowDir } from './types/arrowEnum';
 import { PhoneDispatchContext } from './store/phoneStore/phoneContext';
 import { ActionsName } from './types/phones/phoneActions';
+import { ProductCard } from './components/ProductCard/ProductCard';
 
 const App = () => {
   const dispatch = useContext(PhoneDispatchContext);
@@ -22,6 +23,7 @@ const App = () => {
   return (
     <div className="App">
       <Header />
+      <ProductCard />
       <Arrow dir={arrowDir.down} />
       <main className="container">
         <Outlet />
