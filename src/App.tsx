@@ -1,12 +1,13 @@
-import { Outlet } from 'react-router-dom';
-import './App.scss';
 import { useContext, useEffect } from 'react';
-import { Header } from './layout/Header';
-import { Arrow } from './ui/Arrow/Arrow';
-import { arrowDir } from './types/arrowEnum';
+import { Outlet } from 'react-router-dom';
 import { PhoneDispatchContext } from './store/phoneStore/phoneContext';
+import { Header } from './layout/Header';
+import { Footer } from './layout/Footer';
+import { Arrow } from './ui/Arrow/Arrow';
 import { ActionsName } from './types/phones/phoneActions';
-import { ProductCard } from './components/ProductCard/ProductCard';
+import { arrowDir } from './types/arrowEnum';
+
+import './App.scss';
 
 const App = () => {
   const dispatch = useContext(PhoneDispatchContext);
@@ -23,11 +24,12 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <ProductCard />
       <Arrow dir={arrowDir.down} />
       <main className="container">
         <Outlet />
       </main>
+
+      <Footer />
     </div>
   );
 };
