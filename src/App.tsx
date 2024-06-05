@@ -2,8 +2,7 @@ import { Outlet } from 'react-router-dom';
 import './App.scss';
 import { useContext, useEffect } from 'react';
 import { Header } from './layout/Header';
-import { Arrow } from './ui/Arrow/Arrow';
-import { arrowDir } from './types/arrowEnum';
+import { Footer } from './layout/Footer';
 import { PhoneDispatchContext } from './store/phoneStore/phoneContext';
 import { ActionsName } from './types/phones/phoneActions';
 
@@ -22,10 +21,11 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <Arrow dir={arrowDir.down} />
       <main className="container">
         <Outlet />
       </main>
+
+      <Footer />
     </div>
   );
 };
