@@ -1,96 +1,121 @@
 @use "../../styles/utils/mixins.scss" as *;
 
 .product {
-	&__card {
-		border: 1px solid var(--elements);
-		border-radius: 8px;
-		box-sizing: border-box;
+  &__card {
+    border: 1px solid var(--elements);
+    border-radius: 8px;
+    box-sizing: border-box;
 
-		width: 212px;
-		height: 439px;
-		padding: 31px;
+    width: 288px;
+    // min-height: 439px;
+    padding: 31px;
 
-		@include on-tablet {
-			width: 237px;
-			height: 512px;
-		}
+    @include on-tablet {
+      width: 237px;
+      // height: 512px;
+    }
 
-		@include on-desktop {
-			width: 272px;
-			height: 506px;
-		}
+    @include on-desktop {
+      width: 272px;
+      // height: 506px;
+    }
 
-		@include hover(box-shadow, 0 2px 4px 0 rgba(131, 137, 139, 0.12));
-	}
+    @include hover(box-shadow, 0 2px 4px 0 rgba(131, 137, 139, 0.12));
 
-	&__img_container {
-		height: 129px;
-		overflow: hidden;
-		display: flex;
-		justify-content: center;
+    &_link {
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
 
-		@include on-tablet {
-			height: 202px;
-		}
+  &__img {
+    max-height: 100%;
+    object-fit: cover;
+    margin-inline: auto;
 
-		@include on-desktop {
-			height: 196px;
-		}
-	}
+    @include on-tablet {
+      height: 202px;
+    }
 
-	&__title {
-		padding-top: 16px;
-		font-size: 14px;
-		font-weight: 400;
-		line-height: 21px;
-    margin-top: 8px;
-	}
+    @include on-desktop {
+      height: 196px;
+    }
 
-	&__price {
-		display: flex;
-		gap: 8px;
-    margin-top: 8px;
+    &_container {
+      height: 130px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
 
-		&_curr {
-			font-size: 22px;
-			line-height: 30.8px;
-			font-weight: 800;
-		}
+      @include on-tablet {
+        height: 202px;
+      }
 
-		&_disc {
-			color: var(--secondary);
-			font-weight: 400;
-			text-decoration: line-through;
-		}
-	}
+      @include on-desktop {
+        height: 196px;
+      }
+    }
+  }
 
-	&__info {
-		display: flex;
-		justify-content: space-between;
-		line-height: 24.34px;
+  &__title {
+    padding-top: 16px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    flex: 1;
+  }
 
-		&_title {
-			color: var(--secondary);
-			font-weight: 600;
-		}
+  &__price {
+    display: flex;
+    gap: 8px;
 
-		&_value {
-			font-weight: 600;
-		}
-	}
+    &_curr {
+      font-size: 22px;
+      line-height: 30.8px;
+      font-weight: 800;
+    }
+
+    &_disc {
+      color: var(--secondary);
+      font-weight: 400;
+      text-decoration: line-through;
+    }
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    line-height: 15.34px;
+
+    &_title {
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    &_value {
+      font-weight: 600;
+    }
+  }
 }
 
 .breackLine {
-	height: 1px;
-	width: 100%;
-	background-color: #e2e6e9;
-  margin: 8px 0;
+  height: 1px;
+  width: 100%;
+  background-color: var(--elements);
 }
 
 .paddingTop {
-	padding-top: 8px;
+  padding-top: 8px;
 }
 
 .paddingBotton {
-	padding-bottom: 8px;
+  padding-bottom: 16px;
+}
+
+.actionBlock {
+  display: flex;
+  justify-content: space-between;
+  // gap: 8px;
 }
