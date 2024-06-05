@@ -3,7 +3,7 @@ import cn from 'classnames';
 import classes from './ProductCard.module.scss';
 import iphone from '../../../public/img/phones/apple-iphone-xs/gold/00.webp';
 
-export function ProductCard() {
+export const ProductCard = () => {
   return (
     <article className={classes.product__card}>
       <div className={classes.product__img_container}>
@@ -37,4 +37,4 @@ export function ProductCard() {
       {/* buttons */}
     </article>
   );
-}
+};
