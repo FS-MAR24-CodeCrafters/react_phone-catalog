@@ -1,4 +1,4 @@
-// @use '../../styles/utils/mixins.scss';
+@import '../../styles/utils/mixins.scss';
 // @use '../../styles/utils/vars.scss' as *;
 
 a {
@@ -14,11 +14,11 @@ a {
   height: 48px;
 
 
-  @media (min-width: 640px) {
+  @include on-tablet {
     gap: 16px;
   }
 
-  @media (min-width: 1200px) {
+  @include on-desktop {
     gap: 24px;
     height: 64px;
   }
