@@ -1,5 +1,5 @@
 import React from 'react';
-import './Button.scss';
+import classes from './Button.module.scss';
 
 type Props = {
   label: string;
@@ -16,8 +16,14 @@ export const Button: React.FC<Props> = ({
 }) => {
   const buttonClasses = `button ${selected ? 'selected' : ''} ${disabled ? 'disabled' : ''}`;
 
+  window.console.log(buttonClasses);
+
   return (
-    <button className={buttonClasses} onClick={onClick} disabled={disabled}>
+    <button
+      className={`${classes.button} ${classes.button_default}`}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {label}
     </button>
   );
