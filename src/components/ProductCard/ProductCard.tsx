@@ -10,7 +10,7 @@ import { Heart } from '../../ui/Heart';
 
 type Props = {
   product: Phone;
-  cardWidth: number | string;
+  // cardWidth: number | string;
 };
 
 export const ProductCard: React.FC<Props> = () => {
@@ -73,7 +73,9 @@ export const ProductCard: React.FC<Props> = () => {
       </Link>
 
       <div className={classes.actionBlock}>
-        <Button label="Add to cart" />
+        <div style={{ flex: 1 }}>
+          <Button label="Add to cart" />
+        </div>
         <Heart checked={false} />
       </div>
     </article>

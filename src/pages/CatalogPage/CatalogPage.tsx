@@ -1,13 +1,16 @@
-// import React, { useEffect } from 'react';
+import { useContext } from 'react';
 // import { useSearchParams } from 'react-router-dom';
 // import cn from 'classnames';
-import classes from './CatalogPage.module.scss';
 
-import home from '../../../public/img/icons/Home.png';
-import arrowRight from '../../../public/img/icons/Chevron(ArrowRight).png';
+import home from '../../img/icons/Home.png';
+import arrowRight from '../../img/icons/Chevron(ArrowRight).png';
+import classes from './CatalogPage.module.scss';
 import { ProductCard } from '../../components/ProductCard';
+import { PhoneStateContext } from '../../store/phoneStore/phoneContext';
 
 export const CatalogPage = () => {
+  const { phones } = useContext(PhoneStateContext);
+
   return (
     <div className={classes.catalog__container}>
       <div className={classes.catalog__header}>
@@ -23,26 +26,11 @@ export const CatalogPage = () => {
         </div>
       </div>
       <div className={classes.catalog__main}>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {phones.map((phone) => (
+          <div className={classes.catalog__item}>
+            <ProductCard product={phone} />
+          </div>
+        ))}
       </div>
       <div className={classes.catalog__footer}>
         <h2>123</h2>

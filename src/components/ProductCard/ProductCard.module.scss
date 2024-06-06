@@ -1,9 +1,9 @@
-@use '../../styles/utils/mixins.scss' as *;
+@use "../../styles/utils/mixins.scss" as *;
 
 .product {
   &__card {
     border: 1px solid var(--elements);
-    // border-radius: 8px;
+    border-radius: 8px;
     box-sizing: border-box;
 
     width: 288px;
@@ -113,5 +113,6 @@
 
 .actionBlock {
   display: flex;
+  gap: 8px;
   justify-content: space-between;
 }

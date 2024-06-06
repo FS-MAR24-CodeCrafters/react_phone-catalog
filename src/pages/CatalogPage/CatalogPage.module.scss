@@ -1,4 +1,4 @@
-@use '../../styles/utils/mixins.scss' as *;
+@use "../../styles/utils/mixins.scss" as *;
 
 .catalog {
   &__container {
@@ -50,19 +50,15 @@
   }
 
   &__main {
-    // @include grid-container;
-    display: grid;
+    @include grid-container;
     justify-content: center;
-    justify-items: center;
-    row-gap: 40px;
-    column-gap: 16px;
+  }
+
+  &__item {
+    grid-column: span 4;
 
     @include on-tablet {
-      grid-template-columns: 288px 288px;
-    }
-
-    @include on-desktop {
-      grid-template-columns: 272px 272px 272px 272px;
+    grid-column: span 6;
     }
   }
 }
