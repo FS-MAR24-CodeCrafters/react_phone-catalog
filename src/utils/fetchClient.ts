@@ -1,6 +1,6 @@
 const BASE_URL = 'public/api/';
 
-const request = <T>(url: string, method = 'GET'): Promise<T[]> => {
+const request = <T>(url: string, method = 'GET'): Promise<T> => {
   const options: RequestInit = {
     method,
   };
