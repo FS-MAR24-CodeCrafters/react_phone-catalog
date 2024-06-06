@@ -1,6 +1,6 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import cart from '../../../public/img/icons/Shopping-bag(Cart).png';
-import favourites from '../../../public/img/icons/Favourites(HeartLike).png';
+import cart from '../../img/icons/Shopping-bag(Cart).png';
+import favourites from '../../img/icons/Favourites(HeartLike).png';
 
 import classes from './BurgerMenu.module.scss';
 

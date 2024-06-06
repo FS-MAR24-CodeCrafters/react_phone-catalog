@@ -1,0 +1,97 @@
+@import '../../styles/utils/mixins.scss';
+
+.wrapper {
+  position: relative;
+  display: inline-block;
+  height: 60px;
+  margin-bottom: 4px;
+}
+
+.label {
+  color: var(--secondary);
+  margin-bottom: 4px;
+
+  @include small-text;
+}
+
+.dropdown {
+  border: 1px solid var(--icons);
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 12px;
+  font-size: 14px;
+  line-height: 21px;
+
+  &:focus {
+    border-color: var(--primary);
+  }
+
+  &:hover {
+    border-color: var(--secondary);
+  }
+}
+
+.dropdown_toggle {
+  padding: 10px 20px;
+  border: 1px solid #000;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+
+  &:active {
+    background-color: #e0e0e0;
+  }
+}
+
+.dropdown_menu {
+  background-color: var(--white);
+  border: 1px solid var(--elements);
+  box-shadow: 0 2px 4px var(--elements);
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--transition) ease,
+    transform var(--transition) ease;
+
+  li {
+    padding-inline: 12px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sortBy {
+  width: 136px;
+
+  @include on-tablet {
+    width: 187px;
+  }
+}
+
+.itemsOnPage {
+  width: 136px;
+}
+
+.filterParam {
+  width: 100%;
+  text-align: left;
+  color: var(--secondary);
+
+  &:hover {
+    color: var(--primary);
+  }
+}
