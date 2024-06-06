@@ -1,9 +1,9 @@
-type CapacityAvailable = '64GB' | '128GB' | '256GB';
+type CapacityAvailable = '32GB' | '64GB' | '128GB' | '256GB' | '512GB';
 type ColorsAvailabe = 'black' | 'green' | 'yellow' | 'white' | 'purple' | 'red';
 type DescriptionItem = {
   title: string;
   text: string[];
-}
+};
 
 export type Phone = {
   id: string;
