@@ -1,5 +1,5 @@
-import { Cart } from '../../components/CartPage/Cart';
+import { CartList } from '../../components/CartPage/CartList';
 
 export const CartPage = () => {
-  return <Cart />;
+  return <CartList />;
 };

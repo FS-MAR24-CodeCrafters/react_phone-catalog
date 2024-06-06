@@ -1,5 +1,5 @@
-@use "../../styles/utils/mixins.scss" as *;
-@use "../../styles/utils/vars.scss" as *;
+@import "../../../styles/utils/mixins.scss";
+@import "../../../styles/utils/vars.scss";
 
 .cartItem {
   width: 288px;

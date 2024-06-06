@@ -1,26 +1,41 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classes from './CartItem.module.scss';
 // import iphone from '../../../public/img/phones/apple-iphone-11-pro-max/gold/00.webp';
-import minus from '../../img/icons/Minus.png';
-import plus from '../../img/icons/Plus.png';
-import close from '../../img/icons/Close.png';
-import { Phone } from '../../types/phones/phone';
+import minus from '../../../img/icons/Minus.png';
+import plus from '../../../img/icons/Plus.png';
+import close from '../../../img/icons/Close.png';
+import { ActionsName, CartState } from '../../../types/cart/cartState';
+import { CartDispatchContext } from '../../../store/cartStore/cartContext';
 
 type Props = {
-  phone: Phone;
+  phone: CartState;
 }
 
 export const CartItem: React.FC<Props> = ({ phone }) => {
-  const { images } = phone;
+  const dispatch = useContext(CartDispatchContext);
 
-  const url = `public/${images[0]}`;
+  const { image, id } = phone.name;
+
+  const url = `public/${image}`;
+
+  const handleItemDelete = () => {
+    dispatch({ type: ActionsName.Remove, payload: id });
+  };
 
   return (
     <article className={classes.cartItem}>
       <div className={classes.itemContentWrap}>
-        <div className={classes.closeButton}>
+        <button
+          className={classes.closeButton}
+          onClick={handleItemDelete}
+          onKeyDown={(e) => {
+            if (e.key === 'enter') {
+              handleItemDelete();
+            }
+          }}
+        >
           <img src={close} alt="close button" className={classes.button} />
-        </div>
+        </button>
 
         <div className={classes.itemPhotoWrap}>
           <img
