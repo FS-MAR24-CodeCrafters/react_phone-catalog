@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import classes from './Footer.module.scss';
-import logo from '../../../public/img/LogoFooter.png';
+import logo from '../../img/LogoFooter.png';
 
 export function Footer() {
   return (

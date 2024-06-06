@@ -1,10 +1,11 @@
-import { Outlet } from 'react-router-dom';
-import './App.scss';
 import { useContext, useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
+import { PhoneDispatchContext } from './store/phoneStore/phoneContext';
 import { Header } from './layout/Header';
 import { Footer } from './layout/Footer';
-import { PhoneDispatchContext } from './store/phoneStore/phoneContext';
 import { ActionsName } from './types/phones/phoneActions';
+
+import './App.scss';
 
 const App = () => {
   const dispatch = useContext(PhoneDispatchContext);

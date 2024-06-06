@@ -2,10 +2,16 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 
-import logo from '../../../public/img/Logo.png';
-import heartLike from '../../../public/img/icons/Favourites(HeartLike).png';
-import shoppingBag from '../../../public/img/icons/Shopping-bag(Cart).png';
+import logo from '../../img/Logo.png';
+import heartLike from '../../img/icons/Favourites(HeartLike).png';
+import shoppingBag from '../../img/icons/Shopping-bag(Cart).png';
 import classes from './Header.module.scss';
+
+const getLinkClass = ({ isActive }: { isActive: boolean }) => {
+  return classNames(classes.linkContent, {
+    [classes.linkActive]: isActive,
+  });
+};
 
 export const Header = () => {
   const { pathname } = useLocation();
@@ -50,7 +56,7 @@ export const Header = () => {
           </div>
         )}
 
-        {pathname === '/' && (
+        {pathname !== '/menu' && (
           <div className={classes.button_wrapper}>
             <NavLink to="menu" className={classes.menu_open} />
           </div>
@@ -71,11 +77,7 @@ export const Header = () => {
             <NavLink
               to={`${link.link}`}
               key={link.label}
-              className={({ isActive }) => (
-                classNames(classes.linkContent, {
-                  [classes.linkActive]: isActive,
-                }))}
-              // className={`${classes.linkContent}`}
+              className={getLinkClass}
             >
               {link.name.toUpperCase()}
             </NavLink>
