@@ -56,7 +56,7 @@ export const Header = () => {
           </div>
         )}
 
-        {pathname === '/' && (
+        {pathname !== '/menu' && (
           <div className={classes.button_wrapper}>
             <NavLink to="menu" className={classes.menu_open} />
           </div>
