@@ -9,10 +9,10 @@ import { ArrowRight } from './arrows/ArrowRight';
 
 type ArrowProps = {
   dir: arrowDir; // for using this component you should use arrowDir enum to clarify direction;
-  disabled: boolean; // disabled button or not;
+  disabled?: boolean; // disabled button or not;
 };
 
-export const Arrow: FC<ArrowProps> = ({ dir, disabled }) => {
+export const Arrow: FC<ArrowProps> = ({ dir, disabled = false }) => {
   let arrowComponent;
 
   const color = disabled ? '#e2e6e9' : '#313237';

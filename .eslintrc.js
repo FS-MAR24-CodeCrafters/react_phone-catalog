@@ -50,7 +50,6 @@ module.exports = {
     'prefer-const': 'error',
     curly: ['error', 'all'],
     'no-redeclare': ['error', { builtinGlobals: true }],
-    'operator-linebreak': ['error', 'before'],
     'brace-style': ['error', '1tbs'],
     'no-param-reassign': ['error', { props: true }],
     'padding-line-between-statements': [

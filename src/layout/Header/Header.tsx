@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 
-import logo from '../../../public/img/Logo.png';
-import heartLike from '../../../public/img/icons/Favourites(HeartLike).png';
-import shoppingBag from '../../../public/img/icons/Shopping-bag(Cart).png';
+import logo from '../../img/Logo.png';
+import heartLike from '../../img/icons/Favourites(HeartLike).png';
+import shoppingBag from '../../img/icons/Shopping-bag(Cart).png';
 import classes from './Header.module.scss';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {

@@ -1,6 +1,6 @@
 import React from 'react';
-import heartLike from '../../../public/img/icons/Favourites(HeartLike).png';
-import heartLikeFilled from '../../../public/img/icons/Favourites-Filled(Heart-Like).png';
+import heartLike from '../../img/icons/Favourites(HeartLike).png';
+import heartLikeFilled from '../../img/icons/Favourites-Filled(Heart-Like).png';
 import classes from './Heart.module.scss';
 
 type HeartProps = {
