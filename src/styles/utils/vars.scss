@@ -1,3 +1,5 @@
+@import './mixins.scss';
+
 body {
   --primary: #313237;
   --secondary: #89939a;
@@ -9,4 +11,12 @@ body {
   --red: #eb5757;
   --transition: 0.3s;
   --cartHeight: 70px;
+  --headerHeight: 48px;
+  --footerHeight: 257px;
+
+  @include on-desktop {
+    --headerHeight: 48px;
+    --footerHeight: 96px;
+  }
 }
+

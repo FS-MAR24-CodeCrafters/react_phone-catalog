@@ -1,4 +1,4 @@
-@use '../../styles/utils/mixins.scss' as *;
+@use "../../styles/utils/mixins.scss" as *;
 
 .product {
   &__card {
@@ -10,7 +10,7 @@
     padding: 31px;
 
     @include on-tablet {
-      width: 237px;
+      width: 288px;
     }
 
     @include on-desktop {
@@ -113,5 +113,6 @@
 
 .actionBlock {
   display: flex;
+  gap: 8px;
   justify-content: space-between;
 }

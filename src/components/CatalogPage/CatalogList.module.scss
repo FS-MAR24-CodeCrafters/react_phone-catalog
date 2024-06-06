@@ -1,0 +1,65 @@
+@use "../../styles/utils/mixins.scss" as *;
+
+.catalog {
+  &__container {
+    padding: 0 16px;
+
+    @include on-tablet {
+      padding: 0 24px;
+    }
+
+    @include on-desktop {
+      padding: 0 32px;
+    }
+  }
+
+  &__header {
+    &_way {
+      max-height: 16px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 24px;
+
+      @include on-tablet {
+        margin-bottom: 40px;
+      }
+
+      &_name {
+        color: var(--secondary);
+      }
+    }
+
+    &_title {
+      @include h1-styles;
+      margin-bottom: 8px;
+    }
+
+    &_count {
+      color: var(--secondary);
+      margin-bottom: 32px;
+
+      @include on-tablet {
+        margin-bottom: 40px;
+      }
+    }
+
+    &_dropdown {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__main {
+    @include grid-container;
+    justify-content: center;
+    justify-items: center;
+  }
+
+  &__item {
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+  }
+}

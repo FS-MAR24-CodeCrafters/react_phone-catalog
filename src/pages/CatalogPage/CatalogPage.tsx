@@ -1,3 +1,7 @@
+import { CatalogList } from '../../components/CatalogPage';
+
 export const CatalogPage = () => {
-  return <h1>CatalogPage works</h1>;
+  return (
+    <CatalogList />
+  );
 };
