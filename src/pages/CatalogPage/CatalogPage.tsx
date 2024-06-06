@@ -1,5 +1,3 @@
-import BreadCrumbs from '../../components/BreadCrumbs/BreadCrumbs';
-
 export const CatalogPage = () => {
-  return <BreadCrumbs />;
+  return <h1>CatalogPage works</h1>;
 };
