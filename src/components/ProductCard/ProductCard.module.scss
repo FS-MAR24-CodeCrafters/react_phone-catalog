@@ -3,14 +3,14 @@
 .product {
   &__card {
     border: 1px solid var(--elements);
-    border-radius: 8px;
+    // border-radius: 8px;
     box-sizing: border-box;
 
     width: 288px;
     padding: 31px;
 
     @include on-tablet {
-      width: 237px;
+      width: 288px;
     }
 
     @include on-desktop {
