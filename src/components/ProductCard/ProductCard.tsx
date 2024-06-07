@@ -27,8 +27,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     screen,
     ram,
   } = product;
-  const key: KEY = 'products';
-  const { getItem, setItem, removeItem } = localStorageService(key);
+
+  const { getItem, setItem, removeItem } = localStorageService(KEY);
   const hasInLocalStorage = getItem().some((item) => item.itemId === itemId);
   const [addedToCart, setAddedToCart] = useState(false);
   const [isFavorite, setIsFavorite] = useState(hasInLocalStorage);

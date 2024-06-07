@@ -1,7 +1,7 @@
 import { KEY } from '../constants/key';
 import { Product } from '../types/product';
 
-export const localStorageService = (key: KEY) => {
+export const localStorageService = (key: typeof KEY) => {
   const getItem = (): Product[] => {
     const data = localStorage.getItem(key);
 

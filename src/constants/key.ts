@@ -1,1 +1,1 @@
-export type KEY = 'products';
+export const KEY = 'products';
