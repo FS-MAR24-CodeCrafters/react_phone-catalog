@@ -1,0 +1,41 @@
+@import "../../styles/utils/mixins.scss";
+
+.contentWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+
+  @include on-desktop {
+    flex-direction: row;
+    gap: 16px;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
+
+.cartTitle {
+  @include h1-styles;
+}
+
+.titleWrap {
+  width: 288px;
+  height: 41px;
+
+  @include on-tablet {
+    width: 592px;
+    height: 56px;
+  }
+
+  @include on-desktop {
+    width: 1136px;
+    height: 56px;
+  }
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
