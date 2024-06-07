@@ -21,11 +21,9 @@ const BreadCrumbs = () => {
       {fullPath.map((path, index, self) => {
         if (index === self.length - 1) {
           return (
-            <li className={classes.path_item} key={path}>
-              <p className={`${classes.path_value} ${classes.value_width}`}>
-                {path}
-              </p>
-            </li>
+            <p key={path} className={`${classes.path_value} ${classes.value_width}`}>
+              {path}
+            </p>
           );
         }
 

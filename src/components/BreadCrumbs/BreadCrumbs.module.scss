@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-right: 15px;
 }
 
 .path_item {
@@ -30,10 +31,9 @@
 }
 
 .value_width {
-  width: 180px;
   text-overflow: ellipsis;
-  overflow: hidden;
   white-space: nowrap;
+  overflow: hidden;
 
   @include on-tablet {
     overflow: visible;
