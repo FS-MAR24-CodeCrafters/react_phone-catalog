@@ -1,18 +1,25 @@
-import { useContext } from 'react';
+import { useEffect, useState } from 'react';
 
 import classes from './CatalogList.module.scss';
 import { ProductCard } from '../ProductCard';
-import { PhoneStateContext } from '../../store/phoneStore/phoneContext';
+import { getGoods } from '../../api/goods';
+import { Product } from '../../types/product';
 
 export const CatalogList = () => {
-  const { phones } = useContext(PhoneStateContext);
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    getGoods<Product[]>('products.json').then((res) => {
+      setProducts(res.filter((_item, index) => index <= 16));
+    });
+  }, []);
 
   return (
     <div className={classes.catalog__container}>
       <div className={classes.catalog__main}>
-        {phones.map((phone) => (
-          <div className={classes.catalog__item}>
-            <ProductCard product={phone} />
+        {products.map((product) => (
+          <div className={classes.catalog__item} key={product.id}>
+            <ProductCard product={product} />
           </div>
         ))}
       </div>
