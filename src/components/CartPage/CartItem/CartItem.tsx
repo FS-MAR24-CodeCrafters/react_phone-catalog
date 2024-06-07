@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import cn from 'classnames';
 import classes from './CartItem.module.scss';
 // import iphone from '../../../public/img/phones/apple-iphone-11-pro-max/gold/00.webp';
 import minus from '../../../img/icons/Minus.png';
@@ -9,12 +10,17 @@ import { CartDispatchContext } from '../../../store/cartStore/cartContext';
 
 type Props = {
   phone: CartState;
-}
+};
 
 export const CartItem: React.FC<Props> = ({ phone }) => {
   const dispatch = useContext(CartDispatchContext);
 
-  const { image, id } = phone.name;
+  const {
+    image,
+    id,
+    name,
+    price,
+  } = phone.name;
 
   const url = `public/${image}`;
 
@@ -22,51 +28,53 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
     dispatch({ type: ActionsName.Remove, payload: id });
   };
 
+  const handleItemDec = () => {
+    dispatch({ type: ActionsName.Dec, payload: id });
+  };
+
+  const handleItemInc = () => {
+    dispatch({ type: ActionsName.Inc, payload: id });
+  };
+
   return (
     <article className={classes.cartItem}>
       <div className={classes.itemContentWrap}>
-        <button
-          className={classes.closeButton}
-          onClick={handleItemDelete}
-          onKeyDown={(e) => {
-            if (e.key === 'enter') {
-              handleItemDelete();
-            }
-          }}
-        >
+        <button className={classes.closeButton} onClick={handleItemDelete}>
           <img src={close} alt="close button" className={classes.button} />
         </button>
 
         <div className={classes.itemPhotoWrap}>
-          <img
-            src={url}
-            alt="Apple iPhone 11 Pro Max 64GB Gold"
-            className={classes.itemPhoto}
-          />
+          <img src={url} alt={name} className={classes.itemPhoto} />
         </div>
 
-        <p className={classes.itemTitle}>
-          Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
-        </p>
+        <p className={classes.itemTitle}>{name}</p>
       </div>
 
       <div className={classes.itemCounterWrap}>
         <div className={classes.itemCounter}>
-          <div className={classes.minusButton}>
+          <button
+            className={cn(
+              classes.minusButton,
+              phone.quantity > 1
+                ? classes.minusButtonActive
+                : classes.minusButtonDisabled,
+            )}
+            onClick={handleItemDec}
+          >
             <img src={minus} alt="minus button" className={classes.button} />
-          </div>
+          </button>
 
           <div className={classes.quantityWrap}>
-            <p className={classes.quantity}>1</p>
+            <p className={classes.quantity}>{phone.quantity}</p>
           </div>
 
-          <div className={classes.plusButton}>
+          <button className={classes.plusButton} onClick={handleItemInc}>
             <img src={plus} alt="plus button" className={classes.button} />
-          </div>
+          </button>
         </div>
 
         <div className={classes.itemPriceWrap}>
-          <h3 className={classes.itemPrice}>$1099</h3>
+          <h3 className={classes.itemPrice}>{`$${price * phone.quantity}`}</h3>
         </div>
       </div>
     </article>
