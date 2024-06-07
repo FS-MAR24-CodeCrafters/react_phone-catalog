@@ -9,8 +9,8 @@ type HeartProps = {
 
 export const Heart: React.FC<HeartProps> = ({ checked }) => {
   return (
-    <button className={`${classes.wrapper} ${checked && classes.selected}`}>
+    <div className={`${classes.wrapper} ${checked && classes.selected}`}>
       <img src={checked ? heartLikeFilled : heartLike} alt="Heart Like Icon" />
-    </button>
+    </div>
   );
 };
