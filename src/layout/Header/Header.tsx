@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import {
+  Link, NavLink, useLocation, useNavigate,
+} from 'react-router-dom';
 import classNames from 'classnames';
 
 import logo from '../../img/Logo.png';
@@ -16,7 +18,7 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => {
 export const Header = () => {
   const { pathname } = useLocation();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  // const links = ['home', 'phones', 'tablets', 'accessories'];
+  const navigate = useNavigate();
 
   interface HeaderLink {
     label: string;
@@ -43,6 +45,10 @@ export const Header = () => {
     };
   });
 
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   if (windowWidth < 640) {
     return (
       <header className={`${classes.header}`}>
@@ -52,7 +58,8 @@ export const Header = () => {
 
         {pathname === '/menu' && (
           <div className={classes.button_wrapper}>
-            <NavLink to="/" className={classes.menu_close} />
+            {/* <NavLink to="/" className={classes.menu_close} /> */}
+            <button onClick={handleBack} className={classes.menu_close} aria-label="Back to previous position" />
           </div>
         )}
 
@@ -85,9 +92,9 @@ export const Header = () => {
         </nav>
 
         <div className={`${classes.iconContainer}`}>
-          <div className={`${classes.icon}`}>
+          <NavLink to="/favorites" className={`${classes.icon}`}>
             <img src={heartLike} alt="Heart like" />
-          </div>
+          </NavLink>
           <div className={`${classes.icon}`}>
             <img src={shoppingBag} alt="Company logo" />
           </div>
