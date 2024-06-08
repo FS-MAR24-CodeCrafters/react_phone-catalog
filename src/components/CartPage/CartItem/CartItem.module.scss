@@ -1,5 +1,5 @@
-@use "../../styles/utils/mixins.scss" as *;
-@use "../../styles/utils/vars.scss" as *;
+@import "../../../styles/utils/mixins.scss";
+@import "../../../styles/utils/vars.scss";
 
 .cartItem {
   width: 288px;
@@ -14,7 +14,6 @@
   background-color: var(--white);
 
   border: 1px solid var(--elements);
-  border-radius: 8px;
 
   @include on-tablet {
     width: 592px;
@@ -31,7 +30,7 @@
     width: 752px;
   }
 
-  @include hover(box-shadow, 0 2px 4px 0 var(--primary));
+  @include hover(box-shadow, 0 2px 4px 0 var(--elements));
 }
 
 .itemContentWrap {
@@ -51,7 +50,6 @@
 .closeButton {
   width: 16px;
   height: 16px;
-  cursor: pointer;
 }
 
 .button {
@@ -109,17 +107,27 @@
 .minusButton {
   width: 32px;
   height: 32px;
-  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.minusButtonActive {
+  border: 1px solid var(--icons);
+}
+
+.minusButtonDisabled {
   border: 1px solid var(--elements);
-  cursor: pointer;
+  cursor: default;
 }
 
 .plusButton {
   width: 32px;
   height: 32px;
-  padding: 8px;
-  border: 1px solid var(--elements);
-  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--icons);
 }
 
 .quantityWrap {
@@ -131,6 +139,8 @@
 }
 
 .itemPriceWrap {
+  width: 80px;
+  height: 31px;
   display: flex;
   justify-content: right;
 }
