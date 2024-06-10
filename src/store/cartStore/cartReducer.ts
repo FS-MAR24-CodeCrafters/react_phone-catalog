@@ -27,7 +27,7 @@ export const сartReducer = (
 
     case ActionsName.Dec:
       return state.map((product) => {
-        return product.name.id === action.payload
+        return product.name.id === action.payload && product.quantity > 1
           ? { ...product, quantity: product.quantity - 1 }
           : product;
       });

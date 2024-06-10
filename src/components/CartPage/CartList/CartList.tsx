@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react';
+import classes from './CartList.module.scss';
 import { CartItem } from '../CartItem';
 import { getGoods } from '../../../api/goods';
 import { Product } from '../../../types/product';
@@ -34,7 +35,7 @@ export const CartList = () => {
   }
 
   return (
-    <div>
+    <div className={classes.cartList}>
       {cart.map((product) => (
         <CartItem phone={product} key={product.name.id} />
       ))}
