@@ -1,4 +1,4 @@
-@import '../../styles/utils/mixins';
+@import "../../styles/utils/mixins";
 
 .product {
   &__card {
@@ -9,16 +9,10 @@
     flex-direction: column;
     justify-content: space-between;
 
-    width: 288px;
+    transition: all 0.5;
+
+    width: 100%;
     padding: 31px;
-
-    @include on-tablet {
-      width: 288px;
-    }
-
-    @include on-desktop {
-      width: 272px;
-    }
 
     @include hover(box-shadow, 0 2px 4px 0 rgba(131, 137, 139, 0.12));
 
@@ -32,8 +26,10 @@
 
   &__img {
     max-height: 100%;
+    max-width: 208px;
     object-fit: cover;
     margin-inline: auto;
+    transition: transform var(--transition);
 
     @include on-tablet {
       height: 202px;
@@ -45,7 +41,6 @@
 
     &_container {
       height: 130px;
-      overflow: hidden;
       display: flex;
       justify-content: center;
 
@@ -65,6 +60,7 @@
     font-weight: 400;
     line-height: 21px;
     flex: 1;
+    height: 58px;
   }
 
   &__price {
@@ -97,6 +93,12 @@
     &_value {
       font-weight: 600;
     }
+  }
+}
+
+.product__card:hover {
+  .product__img {
+    transform: scale(1.1);
   }
 }
 
