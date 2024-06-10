@@ -1,6 +1,13 @@
-import { CartActions, CartState, ActionsName } from '../../types/cart/cartState';
+import {
+  CartActions,
+  CartState,
+  ActionsName,
+} from '../../types/cart/cartState';
 
-export const сartReducer = (state: CartState[], action: CartActions): CartState[] => {
+export const сartReducer = (
+  state: CartState[],
+  action: CartActions,
+): CartState[] => {
   switch (action.type) {
     case ActionsName.Add:
       return [...state, action.payload];

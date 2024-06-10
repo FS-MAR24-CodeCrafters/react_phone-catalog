@@ -8,9 +8,7 @@ import shoppingBag from '../../img/icons/Shopping-bag(Cart).png';
 import classes from './Header.module.scss';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {
-  return classNames(classes.linkContent, {
-    [classes.linkActive]: isActive,
-  });
+  return classNames(classes.linkContent, { [classes.linkActive]: isActive });
 };
 
 export const Header = () => {
@@ -25,10 +23,26 @@ export const Header = () => {
   }
 
   const links: HeaderLink[] = [
-    { label: 'home', name: 'home', link: '/' },
-    { label: 'phones', name: 'phones', link: '/phones' },
-    { label: 'tablets', name: 'tablets', link: '/tablets' },
-    { label: 'accessories', name: 'accessories', link: '/accessories' },
+    {
+      label: 'home',
+      name: 'home',
+      link: '/',
+    },
+    {
+      label: 'phones',
+      name: 'phones',
+      link: '/phones',
+    },
+    {
+      label: 'tablets',
+      name: 'tablets',
+      link: '/tablets',
+    },
+    {
+      label: 'accessories',
+      name: 'accessories',
+      link: '/accessories',
+    },
   ];
 
   useEffect(() => {
