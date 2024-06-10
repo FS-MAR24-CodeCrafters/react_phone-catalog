@@ -1,7 +1,9 @@
 @import '../../styles/utils/mixins.scss';
 
 .button {
-  padding: 10px 20px;
+  font-family: Mont;
+  padding: 10px 0;
+  text-align: center;
   border: 1px solid transparent;
   height: 40px;
   line-height: 21px;
@@ -20,11 +22,11 @@
         1px 0px 10px var(--icons),
         0 1px 10px var(--icons);
     }
-
-    &:active {
-      background-color: var(--white);
-      color: var(--green);
-      border: 1px solid var(--elements);
-    }
   }
+}
+
+.active {
+  background-color: var(--white);
+  color: var(--green);
+  border: 1px solid var(--elements);
 }

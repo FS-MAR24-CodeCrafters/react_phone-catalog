@@ -34,11 +34,11 @@ export const Arrow: FC<ArrowProps> = ({ dir, disabled = false }) => {
   }
 
   return (
-    <button
+    <div
       className={`${classes.button} ${disabled && classes.disabled}`}
       {...(disabled && { disabled: true })}
     >
       {arrowComponent}
-    </button>
+    </div>
   );
 };
