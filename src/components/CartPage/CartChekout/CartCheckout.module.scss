@@ -2,6 +2,8 @@
 @import "../../../styles/utils/vars.scss";
 
 .cartCheckout {
+  position: sticky;
+  top: 176px;
   width: 288px;
   height: 190px;
   padding: 24px;
@@ -22,6 +24,8 @@
     height: 206px;
     gap: 24px;
   }
+
+  @include hover(box-shadow, 0 2px 4px 0 var(--elements));
 }
 
 .cartPrice {

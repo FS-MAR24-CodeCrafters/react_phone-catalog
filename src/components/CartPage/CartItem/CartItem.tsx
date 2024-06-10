@@ -20,6 +20,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
     id,
     name,
     price,
+    fullPrice,
   } = phone.name;
 
   const url = `public/${image}`;
@@ -74,7 +75,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
         </div>
 
         <div className={classes.itemPriceWrap}>
-          <h3 className={classes.itemPrice}>{`$${price * phone.quantity}`}</h3>
+          <h3 className={classes.itemPrice}>{`$${phone.quantity * (price < fullPrice ? price : fullPrice)}`}</h3>
         </div>
       </div>
     </article>
