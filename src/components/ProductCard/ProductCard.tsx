@@ -72,18 +72,15 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   return (
     <article className={classes.product__card}>
-      <Link to={`/${category}/${itemId}`} className={classes.product__card_link}>
+      <Link
+        to={`/${category}/${itemId}`}
+        className={classes.product__card_link}
+      >
         <div className={classes.product__img_container}>
-          <img
-            src={imgUrl}
-            alt={name}
-            className={classes.product__img}
-          />
+          <img src={imgUrl} alt={name} className={classes.product__img} />
         </div>
 
-        <p className={classes.product__title}>
-          {name}
-        </p>
+        <p className={classes.product__title}>{name}</p>
         <div className={classes.product__price}>
           <p className={classes.product__price_curr}>{`$${price}`}</p>
           <p
@@ -99,11 +96,15 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <div className={classes.breackLine} />
         <div className={cn(classes.product__info, classes.paddingTop)}>
           <p className={classes.product__info_title}>Screen</p>
-          <p className={classes.product__info_value}>{formatScreenString(screen)}</p>
+          <p className={classes.product__info_value}>
+            {formatScreenString(screen)}
+          </p>
         </div>
         <div className={classes.product__info}>
           <p className={classes.product__info_title}>Capacity</p>
-          <p className={classes.product__info_value}>{formatCapacity(capacity)}</p>
+          <p className={classes.product__info_value}>
+            {formatCapacity(capacity)}
+          </p>
         </div>
         <div className={cn(classes.product__info, classes.paddingBotton)}>
           <p className={classes.product__info_title}>RAM</p>
@@ -116,6 +117,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <Button
             label={addedToCart ? 'Added to cart' : 'Add to cart'}
             onClick={handleAddToCart}
+            addedToCart={addedToCart}
           />
         </div>
         <button
