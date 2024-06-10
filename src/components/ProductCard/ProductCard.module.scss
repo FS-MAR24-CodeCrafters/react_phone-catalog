@@ -62,8 +62,7 @@
     flex: 1;
     height: 58px;
 
-    // text-overflow: ellipsis;
-    // white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   &__price {
