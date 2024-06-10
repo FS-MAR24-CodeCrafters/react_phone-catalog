@@ -1,16 +1,19 @@
 body {
   --column-count: 4;
-  --column-width: 1fr;
+  --column-width: 60px;
   --column-gap: 16px;
   --row-gap: 40px;
+  --padding-inline: 16px;
 
   @media (min-width: 640px) {
     --column-count: 12;
-    --column-width: 1fr;
+    --column-width: 34px;
+    --padding-inline: 32px;
   }
   @media (min-width: 1200px) {
     --column-count: 24;
     --column-width: 32px;
+    --padding-inline: 152px;
   }
 }
 
@@ -102,13 +105,5 @@ body {
 }
 
 @mixin container {
-  padding-inline: 24px;
-
-  @include on-tablet {
-    padding-inline: 32px;
-  }
-
-  @include on-desktop {
-    padding-inline: 152px;
-  }
+  padding-inline: var(--padding-inline);
 }

@@ -1,0 +1,28 @@
+@import '../../styles/utils/mixins.scss';
+
+.hidden {
+  opacity: 0;
+}
+
+.container {
+  @include container;
+}
+
+.slider__container {
+  @include on-desktop {
+    @include grid-container;
+    justify-content: center;
+  }
+}
+
+.mb {
+  margin-bottom: 56px;
+
+  @include on-desktop {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
