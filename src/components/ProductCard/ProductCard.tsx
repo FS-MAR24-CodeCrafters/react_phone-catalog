@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
 import classes from './ProductCard.module.scss';
-import { Button } from '../../ui/Buttons';
+import { ButtonTemplate } from '../../ui/Buttons';
 import { Heart } from '../../ui/Heart';
 import { Product } from '../../types/product';
 import { CartDispatchContext } from '../../store/cartStore/cartContext';
@@ -114,7 +114,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className={classes.actionBlock}>
         <div style={{ flex: 1 }}>
-          <Button
+          <ButtonTemplate
             label={addedToCart ? 'Added to cart' : 'Add to cart'}
             onClick={handleAddToCart}
             addedToCart={addedToCart}

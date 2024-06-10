@@ -7,7 +7,11 @@ type Props = {
   addedToCart?: boolean;
 };
 
-export const Button: React.FC<Props> = ({ label, onClick, addedToCart }) => {
+export const ButtonTemplate: React.FC<Props> = ({
+  label,
+  onClick,
+  addedToCart,
+}) => {
   return (
     <button
       className={`
