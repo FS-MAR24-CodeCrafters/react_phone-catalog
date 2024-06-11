@@ -1,0 +1,62 @@
+@import '../../../styles/utils/mixins.scss';
+
+.slider {
+  display: flex;
+  flex-direction: column;
+
+  &__wrapper {
+    margin-bottom: 8px;
+    display: flex;
+  }
+  &__arrow_wrap {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+    }
+  }
+
+  &__list {
+    height: 320px;
+    overflow: hidden;
+  }
+
+  &__item {
+    width: 100%;
+  }
+
+  &__link {
+    width: 100vw;
+  }
+
+  &__img {
+    width: 100%;
+  }
+}
+
+.dots {
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__wrapper {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__dot {
+    height: 4px;
+    width: 14px;
+    background-color: var(--elements);
+  }
+
+  &__active {
+    background-color: var(--primary);
+  }
+}

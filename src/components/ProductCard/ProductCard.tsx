@@ -81,9 +81,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </div>
 
         <div>
-          <p className={classes.product__title}>
-            {name}
-          </p>
+          <p className={classes.product__title}>{name}</p>
         </div>
         <div className={classes.product__price}>
           <p className={classes.product__price_curr}>{`$${price}`}</p>
@@ -118,7 +116,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className={classes.actionBlock}>
         <div style={{ flex: 1 }}>
-          <Button
+          <ButtonTemplate
             label={addedToCart ? 'Added' : 'Add to cart'}
             onClick={handleAddToCart}
             addedToCart={addedToCart}
