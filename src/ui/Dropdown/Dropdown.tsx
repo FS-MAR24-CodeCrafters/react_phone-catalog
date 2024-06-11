@@ -1,19 +1,31 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import classes from './Dropdown.module.scss';
 import { ArrowDown } from '../Arrow/arrows/ArrowDown';
 
 type Props = {
-  type: 'itemsOnPage' | 'sortBy';
+  type: 'perPage' | 'sort';
 };
 
-const items = ['16', '32', '64', '128'];
+const itemsPerPage = ['16', '32', '64', '128'];
+const sort = ['Newest', 'Cheapest', 'Alphabetically'];
 
 export const Dropdown: React.FC<Props> = ({ type }) => {
-  const [selectedItem, setSelectedItem] = useState<string>(items[0]);
+  const elements = type === 'perPage' ? itemsPerPage : sort;
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const initialElement = searchParams.get(type) || elements[0];
+  const [selectedItem, setSelectedItem] = useState<string>(initialElement);
   const [isOpen, setIsOpen] = useState(false);
   const coverRef = useRef<HTMLButtonElement>(null);
 
   const handleItemClick = (item: string) => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set(type, item);
+    params.set('page', '1');
+    setSearchParams(params);
+
     setSelectedItem(item);
     setIsOpen(false);
   };
@@ -43,8 +55,8 @@ export const Dropdown: React.FC<Props> = ({ type }) => {
 
   useClickOutside(coverRef, closeTheModal);
 
-  const label = type === 'sortBy' ? 'Sort By' : 'Items on Page';
-  const widthClass = type === 'sortBy' ? classes.sortBy : classes.itemsOnPage;
+  const label = type === 'sort' ? 'Sort by' : 'Items on Page';
+  const widthClass = type === 'sort' ? classes.sortBy : classes.itemsOnPage;
 
   return (
     <>
@@ -68,7 +80,7 @@ export const Dropdown: React.FC<Props> = ({ type }) => {
       <ul
         className={`${classes.dropdown_menu} ${widthClass} ${isOpen && classes.visible}`}
       >
-        {items.map((item) => (
+        {elements.map((item) => (
           <li key={item}>
             <button
               onClick={() => handleItemClick(item)}
