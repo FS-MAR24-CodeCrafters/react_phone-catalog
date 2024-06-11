@@ -10,6 +10,7 @@ export enum ActionsName {
   'Remove' = 'removeFromCart',
   'Inc' = 'incCount',
   'Dec' = 'decCount',
+  'ClearAll' = 'clearAll',
 }
 
 export type CartActions =
@@ -17,3 +18,4 @@ export type CartActions =
   | { type: ActionsName.Remove, payload: number }
   | { type: ActionsName.Inc, payload: number }
   | { type: ActionsName.Dec, payload: number }
+  | { type: ActionsName.ClearAll }
