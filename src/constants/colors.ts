@@ -1,4 +1,8 @@
-export const color = {
+export type AllColors = {
+  [key: string]: string;
+};
+
+export const allColors: AllColors = {
   black: '#201D24',
   blue: '#043458',
   coral: '#ff3b30',

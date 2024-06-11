@@ -2,13 +2,13 @@ import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
+import { CartDispatchContext } from '../../store/cartStore/cartContext';
+import { localStorageService } from '../../service/localStorageService';
+import { ActionsName } from '../../types/cart/cartState';
+import { Product } from '../../types/product';
 import classes from './ProductCard.module.scss';
 import { ButtonTemplate } from '../../ui/Buttons';
 import { Heart } from '../../ui/Heart';
-import { Product } from '../../types/product';
-import { CartDispatchContext } from '../../store/cartStore/cartContext';
-import { ActionsName } from '../../types/cart/cartState';
-import { localStorageService } from '../../service/localStorageService';
 import { KEY } from '../../constants/key';
 
 type Props = {
@@ -56,18 +56,16 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const handleAddToFavorite = () => {
     if (isFavorite) {
       removeItem(itemId);
-
       setIsFavorite(false);
+    } else {
+      const data = getItem();
 
-      return;
+      data.push(product);
+      setItem(data);
+      setIsFavorite(true);
     }
 
-    const data = getItem();
-
-    data.push(product);
-    setItem(data);
-
-    setIsFavorite(true);
+    window.dispatchEvent(new Event('storage'));
   };
 
   return (
