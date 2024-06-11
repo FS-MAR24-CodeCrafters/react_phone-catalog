@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react';
 import {
   Link, NavLink, useLocation, useNavigate,
 } from 'react-router-dom';
-import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 
 import logo from '../../img/Logo.png';
@@ -49,18 +47,6 @@ export const Header = () => {
     },
   ];
 
-  useEffect(() => {
-    const handleWindowResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleWindowResize);
-
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  });
-
   const handleBack = () => {
     navigate(-1);
   };
@@ -75,7 +61,11 @@ export const Header = () => {
         {pathname === '/menu' && (
           <div className={classes.button_wrapper}>
             {/* <NavLink to="/" className={classes.menu_close} /> */}
-            <button onClick={handleBack} className={classes.menu_close} aria-label="Back to previous position" />
+            <button
+              onClick={handleBack}
+              className={classes.menu_close}
+              aria-label="Back to previous position"
+            />
           </div>
         )}
 
