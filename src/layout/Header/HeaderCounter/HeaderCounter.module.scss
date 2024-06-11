@@ -1,0 +1,21 @@
+@import "../../../styles/utils/mixins.scss";
+@import "../../../styles/utils/vars.scss";
+
+.quantityWrap {
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--red);
+  border-radius: 50%;
+  border: 1px solid var(--white);
+  position: absolute;
+  margin-bottom: 14px;
+  margin-left: 14px;
+}
+
+.quantity {
+  color: var(--white);
+  font-size: 8px;
+}
