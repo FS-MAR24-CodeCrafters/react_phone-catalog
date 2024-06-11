@@ -11,6 +11,7 @@ a {
   margin-bottom: 24px;
   border-bottom: 1px solid var(--elements);
   height: 48px;
+  width: 100%;
 
   @include on-tablet {
     gap: 16px;
