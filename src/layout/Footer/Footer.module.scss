@@ -45,12 +45,18 @@
   color: var(--secondary);
   size: 12px;
   font-weight: 700;
-
+  
   @include on-tablet {
     flex-direction: row;
     gap: 7vw;
   }  
 }
+
+.link {
+  display: flex;
+  line-height: 37px;
+}
+
 
 
 .button_back {

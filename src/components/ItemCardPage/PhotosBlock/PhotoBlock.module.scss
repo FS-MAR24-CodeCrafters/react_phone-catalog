@@ -1,11 +1,16 @@
 @import '../../../styles/utils/mixins.scss';
 
 .photoOfProduct {
-  width: 100%;
+  width: 228px;
   height: 228px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include on-desktop {
+    width: 464px;
+    height: 464px;
+  }
 }
 
 .photo {
@@ -24,6 +29,10 @@
     flex-direction: column;
     justify-content: start;
   }
+
+  @include on-desktop {
+    gap: 16px;
+  }
 }
 
 .smallPhotoContainer {
@@ -31,11 +40,20 @@
   width: 51.2px;
   border: 1px solid var(--elements);
 
+  @include on-tablet {
+    height: 35px;
+    width: 35px;
+  }
+
+  @include on-desktop {
+    height: 80px;
+    width: 80px;
+  }
+
 }
 
 .smallPhoto {
   height: 100%;
-  // width: auto;
 }
 
 .container {

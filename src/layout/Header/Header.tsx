@@ -106,7 +106,7 @@ export const Header = () => {
         </nav>
 
         <div className={`${classes.iconContainer}`}>
-          <NavLink to="/favorites" className={`${classes.icon}`}>
+          <NavLink to="/favourites" className={`${classes.icon}`}>
             <img src={heartLike} alt="Heart like" />
           </NavLink>
           <NavLink to="/cart" className={`${classes.icon}`}>

@@ -18,9 +18,9 @@ export function Footer() {
       </div>
 
       <div className={classes.footer__info}>
-        <a href="#">Github</a>
-        <a href="#">Contacts</a>
-        <a href="#">Rights</a>
+        <a href="#" className={classes.link}>Github</a>
+        <a href="#" className={classes.link}>Contacts</a>
+        <a href="#" className={classes.link}>Rights</a>
       </div>
 
       <div className={classes.footer__button}>
