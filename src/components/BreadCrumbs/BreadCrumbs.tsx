@@ -18,7 +18,7 @@ const BreadCrumbs: FC<BreadCrumbsProps> = ({ productName }) => {
   return (
     <ul className={classes.path}>
       <li className={classes.path_item}>
-        <Link to="/">
+        <Link to="/" className={classes.link}>
           <img
             className={classes.home_img}
             src={homeIcon}

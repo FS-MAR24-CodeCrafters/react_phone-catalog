@@ -1,0 +1,23 @@
+@import "../../styles/utils/mixins";
+
+.page__header {
+  @include grid-container;
+  row-gap: 0;
+}
+
+.page__bread {
+  grid-column: 1/-1;
+  margin-bottom: 24px;
+}
+
+.page__title {
+  @include h1-styles;
+  grid-column: 1/-1;
+  margin-bottom: 8px;
+}
+
+.page__models {
+  color: var(--secondary);
+  margin-bottom: 32px;
+  grid-column: 1/-1;
+}
