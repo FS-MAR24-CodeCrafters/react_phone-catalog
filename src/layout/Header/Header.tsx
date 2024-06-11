@@ -95,9 +95,9 @@ export const Header = () => {
           <NavLink to="/favorites" className={`${classes.icon}`}>
             <img src={heartLike} alt="Heart like" />
           </NavLink>
-          <div className={`${classes.icon}`}>
+          <NavLink to="/cart" className={`${classes.icon}`}>
             <img src={shoppingBag} alt="Company logo" />
-          </div>
+          </NavLink>
         </div>
       </div>
     </header>

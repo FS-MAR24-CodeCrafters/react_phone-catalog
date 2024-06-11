@@ -39,7 +39,7 @@
 .footer__info {
   display: flex;
   flex-direction: column;
-  gap: 7vw;
+  gap: 16px;
   align-items: left;
   text-transform: uppercase;
   color: var(--secondary);
@@ -48,6 +48,7 @@
 
   @include on-tablet {
     flex-direction: row;
+    gap: 7vw;
   }  
 }
 
