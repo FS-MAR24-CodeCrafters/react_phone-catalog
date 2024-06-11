@@ -13,9 +13,8 @@ const sort = ['Newest', 'Cheapest', 'Alphabetically'];
 export const Dropdown: React.FC<Props> = ({ type }) => {
   const elements = type === 'perPage' ? itemsPerPage : sort;
   const [searchParams, setSearchParams] = useSearchParams();
+  const selectedItem = searchParams.get(type) || elements[0];
 
-  const initialElement = searchParams.get(type) || elements[0];
-  const [selectedItem, setSelectedItem] = useState<string>(initialElement);
   const [isOpen, setIsOpen] = useState(false);
   const coverRef = useRef<HTMLButtonElement>(null);
 
@@ -26,7 +25,6 @@ export const Dropdown: React.FC<Props> = ({ type }) => {
     params.set('page', '1');
     setSearchParams(params);
 
-    setSelectedItem(item);
     setIsOpen(false);
   };
 

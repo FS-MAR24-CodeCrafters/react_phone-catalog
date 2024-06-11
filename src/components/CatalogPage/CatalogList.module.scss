@@ -21,7 +21,7 @@
   &__main {
     @include grid-container;
     justify-content: center;
-    justify-items: center;
+    // justify-items: center;
   }
 
   &__item {
