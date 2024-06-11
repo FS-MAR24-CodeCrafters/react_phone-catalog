@@ -6,6 +6,7 @@ import { Product } from '../../../types/product';
 
 import classes from './SecondarySlider.module.scss';
 import { SkeletonProductCard } from '../../SkeletonProductCard';
+import { useResize } from '../../../hooks/useResize';
 
 type SecondarySliderProps = {
   title: string;
@@ -24,6 +25,7 @@ export const SecondarySlider: React.FC<SecondarySliderProps> = ({
   const [transform, setTransform] = useState(0);
   const [slidesLeft, setSlidesLeft] = useState(0);
   const [transformWidth, setTransformWidth] = useState(0);
+  const [windowWidth] = useResize();
 
   useEffect(() => {
     const isCardRefExist = cardRef && cardRef.current;
@@ -57,7 +59,7 @@ export const SecondarySlider: React.FC<SecondarySliderProps> = ({
 
       setSlidesLeft(slidesLeftQty);
     }
-  }, [products]);
+  }, [products, windowWidth]);
 
   if (!products.length) {
     const arrayOfSkeletons = new Array(4).fill(<SkeletonProductCard />);

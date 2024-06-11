@@ -7,9 +7,12 @@ type Props = {
 };
 
 const items = ['16', '32', '64', '128'];
+const sort = ['Price', 'Newest'];
 
 export const Dropdown: React.FC<Props> = ({ type }) => {
-  const [selectedItem, setSelectedItem] = useState<string>(items[0]);
+  const elements = type === 'sortBy' ? sort : items;
+
+  const [selectedItem, setSelectedItem] = useState<string>(elements[0]);
   const [isOpen, setIsOpen] = useState(false);
   const coverRef = useRef<HTMLButtonElement>(null);
 
@@ -68,7 +71,7 @@ export const Dropdown: React.FC<Props> = ({ type }) => {
       <ul
         className={`${classes.dropdown_menu} ${widthClass} ${isOpen && classes.visible}`}
       >
-        {items.map((item) => (
+        {elements.map((item) => (
           <li key={item}>
             <button
               onClick={() => handleItemClick(item)}

@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 
@@ -6,6 +5,7 @@ import logo from '../../img/Logo.png';
 import heartLike from '../../img/icons/Favourites(HeartLike).png';
 import shoppingBag from '../../img/icons/Shopping-bag(Cart).png';
 import classes from './Header.module.scss';
+import { useResize } from '../../hooks/useResize';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {
   return classNames(classes.linkContent, { [classes.linkActive]: isActive });
@@ -13,7 +13,7 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => {
 
 export const Header = () => {
   const { pathname } = useLocation();
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth] = useResize();
   // const links = ['home', 'phones', 'tablets', 'accessories'];
 
   interface HeaderLink {
@@ -44,18 +44,6 @@ export const Header = () => {
       link: '/accessories',
     },
   ];
-
-  useEffect(() => {
-    const handleWindowResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleWindowResize);
-
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  });
 
   if (windowWidth < 640) {
     return (
