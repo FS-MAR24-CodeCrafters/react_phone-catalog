@@ -28,7 +28,9 @@ export const HomePage = () => {
   return (
     <>
       <h1 className={classes.hidden}>Product Catalog</h1>
-
+      <div className={classes.title__container}>
+        <h2 className={classes.title}>Welcome to Nice Gadget store!</h2>
+      </div>
       <div className={`${classes.slider__container} ${classes.mb}`}>
         <MainSlider />
       </div>
