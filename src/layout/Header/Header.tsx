@@ -109,7 +109,7 @@ export const Header = () => {
           </NavLink>
           <NavLink to="/cart" className={`${classes.icon}`}>
             <img src={shoppingBag} alt="Company logo" />
-            {cart.length && <HeaderCounter quantity={cart.length} />}
+            {cart.length ? <HeaderCounter quantity={cart.length} /> : <> </>}
           </NavLink>
         </div>
       </div>

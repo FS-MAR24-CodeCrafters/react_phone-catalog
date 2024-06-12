@@ -1,0 +1,55 @@
+@import "../../../styles/utils/vars.scss";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba($color: #000000, $alpha: 0.6);
+}
+
+.formWrap {
+  width: 300px;
+  padding: 16px;
+  background-color: var(--white);
+  border: 1px solid var(--elements);
+}
+
+.closeWrap {
+  width: 268px;
+  display: flex;
+  justify-content: right;
+}
+
+.form {
+  &Group {
+    margin-bottom: 15px;
+  }
+
+  &Input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid var(--elements);
+  }
+
+  &Label {
+    display: block;
+    margin-bottom: 5px;
+  }
+}
+
+.submitButton {
+  width: 268px;
+  height: 48px;
+  background-color: var(--primary);
+
+}
+
+.submit {
+  color: var(--white);
+}
