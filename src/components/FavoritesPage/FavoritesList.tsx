@@ -2,20 +2,20 @@ import classes from './FavoriteList.module.scss';
 
 import { PageHeader } from '../PageHeader';
 import { ProductCard } from '../ProductCard';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { useFavouriteLocalStorage } from '../../hooks/useFavouriteLocalStorage';
 
 export const FavoritesList = () => {
-  const [products] = useLocalStorage();
+  const { favourites } = useFavouriteLocalStorage();
 
   return (
     <div className={classes.favorites__container}>
       <div className={classes.favorites__header}>
-        <PageHeader title="Favourites" totalModels={products.length} />
+        <PageHeader title="Favourites" totalModels={favourites.length} />
       </div>
       <div className={classes.favorites__grid}>
-        {products.map((product) => (
-          <div className={classes.favorites__grid_item} key={product.id}>
-            <ProductCard product={product} key={product.id} />
+        {favourites.map((favourite) => (
+          <div className={classes.favorites__grid_item} key={favourite.id}>
+            <ProductCard product={favourite} key={favourite.id} />
           </div>
         ))}
       </div>

@@ -68,6 +68,7 @@
   &__list {
     display: flex;
     gap: var(--column-gap);
+    transition: transform var(--transition) ease-in-out;
   }
 
   &__item {

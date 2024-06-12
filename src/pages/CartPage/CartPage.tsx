@@ -1,15 +1,14 @@
-import { useContext, useState } from 'react';
 import { CartCheckout } from '../../components/CartPage/CartChekout';
 import { CartList } from '../../components/CartPage/CartList';
-import { CartStateContext } from '../../store/cartStore/cartContext';
 import classes from './CartPage.module.scss';
 import { CartEmpty } from '../../components/CartPage/CartEmpy';
 import { CartTitle } from '../../components/CartPage/CartTitle';
+import { useCartLocalStorage } from '../../hooks/useCartLocalStorage';
 import { Back } from '../../components/Back';
 import { CartForm } from '../../components/CartPage/CartForm';
 
 export const CartPage = () => {
-  const cart = useContext(CartStateContext);
+  const { products, updateProducts } = useCartLocalStorage();
 
   const [formOpen, setFormOpen] = useState(false);
 
@@ -20,10 +19,10 @@ export const CartPage = () => {
       </div>
       <div className={classes.wrap}>
         <CartTitle />
-        {cart.length ? (
+        {products.length ? (
           <div className={classes.contentWrap}>
-            <CartList />
-            <CartCheckout setFormOpen={setFormOpen} />
+            <CartList products={products} updateProducts={updateProducts} />
+            <CartCheckout setFormOpen={setFormOpen} products={products} updateProducts={updateProducts} />
             {formOpen && <CartForm setFormOpen={setFormOpen} />}
           </div>
         ) : (

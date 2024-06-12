@@ -1,28 +1,36 @@
 /* eslint-disable no-param-reassign */
-import { useContext } from 'react';
+import { FC } from 'react';
 import classes from './CartCheckout.module.scss';
-import { CartStateContext } from '../../../store/cartStore/cartContext';
+import { ActionsName, CartState } from '../../../types/cart/cartState';
+import { UpdateProducts } from '../../../hooks/useCartLocalStorage';
 
 type Props = {
-  setFormOpen: React.Dispatch<React.SetStateAction<boolean>>,
-}
+  products: CartState[];
+  updateProducts: UpdateProducts;
+};
 
-export const CartCheckout: React.FC<Props> = ({ setFormOpen }) => {
-  const cart = useContext(CartStateContext);
-  const { totalQty, totalSum } = cart.reduce((count, el) => {
-    count.totalSum += el.name.price * el.quantity;
-    count.totalQty += el.quantity;
+export const CartCheckout: FC<Props> = ({ products, updateProducts }) => {
+  const { totalQty, totalSum } = products.reduce(
+    (count, el) => {
+      count.totalSum += el.name.price * el.quantity;
+      count.totalQty += el.quantity;
 
-    return count;
-  }, { totalSum: 0, totalQty: 0 });
+      return count;
+    },
+    { totalSum: 0, totalQty: 0 },
+  );
 
-  const handleOpenForm = () => setFormOpen(true);
+  const handleClearAll = () => (
+    dispatch({ type: ActionsName.ClearAll })
+  );
 
   return (
     <div className={classes.cartCheckout}>
       <div className={classes.cartPrice}>
         <h2 className={classes.price}>{`$${totalSum}`}</h2>
-        <p className={classes.totalItems}>{`Total for ${totalQty} ${totalQty === 1 ? 'item' : 'items'}`}</p>
+        <p className={classes.totalItems}>
+          {`Total for ${totalQty} ${totalQty === 1 ? 'item' : 'items'}`}
+        </p>
       </div>
       <div className={classes.breakLine} />
       <button className={classes.checkoutButton} onClick={handleOpenForm}>
