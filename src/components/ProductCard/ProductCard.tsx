@@ -7,7 +7,7 @@ import { localStorageService } from '../../service/localStorageService';
 import { ActionsName } from '../../types/cart/cartState';
 import { Product } from '../../types/product';
 import classes from './ProductCard.module.scss';
-import { ButtonTemplate } from '../../ui/Buttons';
+import { Button } from '../../ui/Buttons';
 import { Heart } from '../../ui/Heart';
 import { KEY } from '../../constants/key';
 
@@ -114,7 +114,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className={classes.actionBlock}>
         <div style={{ flex: 1 }}>
-          <ButtonTemplate
+          <Button
             label={addedToCart ? 'Added' : 'Add to cart'}
             onClick={handleAddToCart}
             addedToCart={addedToCart}

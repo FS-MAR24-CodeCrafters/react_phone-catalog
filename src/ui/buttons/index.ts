@@ -1,1 +1,1 @@
-export * from './ButtonTemplate';
+export * from './Button';
