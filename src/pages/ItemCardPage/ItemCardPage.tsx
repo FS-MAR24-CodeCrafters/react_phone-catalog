@@ -57,7 +57,7 @@ export const ItemCardPage = () => {
             activeProduct={activeProduct}
             products={products}
             onSetActiveProduct={handleSetActiveProduct}
-            productName={category}
+            productName={productName}
           />
         </div>
         <div className={classes.aboutSection}>

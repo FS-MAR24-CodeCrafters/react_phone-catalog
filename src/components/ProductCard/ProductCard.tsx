@@ -1,15 +1,14 @@
-import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
-import { CartDispatchContext } from '../../store/cartStore/cartContext';
-import { localStorageService } from '../../service/localStorageService';
 import { ActionsName } from '../../types/cart/cartState';
 import { Product } from '../../types/product';
 import classes from './ProductCard.module.scss';
 import { Button } from '../../ui/Buttons';
 import { Heart } from '../../ui/Heart';
-import { KEY } from '../../constants/key';
+import { useFavouriteLocalStorage } from '../../hooks/useFavouriteLocalStorage';
+import { FavouritesActionsName } from '../../types/favourite/favouriteState';
+import { useCartLocalStorage } from '../../hooks/useCartLocalStorage';
 
 type Props = {
   product: Product;
@@ -28,10 +27,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     ram,
   } = product;
 
-  const { getItem, setItem, removeItem } = localStorageService(KEY);
-  const hasInLocalStorage = getItem().some((item) => item.itemId === itemId);
-  const [addedToCart, setAddedToCart] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(hasInLocalStorage);
+  const { favourites, updateFavourites } = useFavouriteLocalStorage();
+  const { products, updateProducts } = useCartLocalStorage();
+
+  const hasInFavourites = favourites.some((item) => item.itemId === itemId);
+  const hasInCart = products.some((item) => item.name.itemId === itemId);
 
   const imgUrl = `../../../public/${image}`;
 
@@ -43,26 +43,30 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     return screenSize.replace(/(\d+)'/, '$1"');
   };
 
-  const dispatch = useContext(CartDispatchContext);
-
   const handleAddToCart = () => {
-    dispatch({
-      type: ActionsName.Add,
-      payload: { name: product, quantity: 1 },
-    });
-    setAddedToCart(!addedToCart);
+    if (hasInCart) {
+      updateProducts({
+        type: ActionsName.Remove,
+        payload: product.id,
+      });
+    } else {
+      updateProducts({
+        type: ActionsName.Add,
+        payload: { name: product, quantity: 1 },
+      });
+    }
+
+    window.dispatchEvent(new Event('storage'));
   };
 
   const handleAddToFavorite = () => {
-    if (isFavorite) {
-      removeItem(itemId);
-      setIsFavorite(false);
+    if (hasInFavourites) {
+      updateFavourites({
+        type: FavouritesActionsName.Remove,
+        payload: product,
+      });
     } else {
-      const data = getItem();
-
-      data.push(product);
-      setItem(data);
-      setIsFavorite(true);
+      updateFavourites({ type: FavouritesActionsName.Add, payload: product });
     }
 
     window.dispatchEvent(new Event('storage'));
@@ -115,9 +119,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <div className={classes.actionBlock}>
         <div style={{ flex: 1 }}>
           <Button
-            label={addedToCart ? 'Added' : 'Add to cart'}
+            label={hasInCart ? 'Added' : 'Add to cart'}
             onClick={handleAddToCart}
-            addedToCart={addedToCart}
+            addedToCart={hasInCart}
           />
         </div>
         <button
@@ -128,7 +132,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             }
           }}
         >
-          <Heart checked={isFavorite} />
+          <Heart checked={hasInFavourites} />
           {/* Heart */}
         </button>
       </div>
