@@ -6,6 +6,6 @@ type Props = {
 
 export const HeaderCounter: React.FC<Props> = ({ quantity }) => (
   <div className={classes.quantityWrap}>
-    <p className={classes.quantity}>{quantity}</p>
+    <p className={classes.quantity}>{quantity > 9 ? `9+` : quantity}</p>
   </div>
 );

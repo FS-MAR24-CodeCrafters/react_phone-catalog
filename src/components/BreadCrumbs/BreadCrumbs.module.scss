@@ -5,6 +5,7 @@
   align-items: center;
   gap: 8px;
   margin-right: 15px;
+  max-height: 16px;
 }
 
 .path_item {
@@ -21,9 +22,9 @@
 
 .path_value {
   font-size: 12px;
-  padding-top: 3px;
   font-weight: 400;
   cursor: pointer;
+  color: var(--secondary);
 }
 
 .item_bold {
@@ -38,4 +39,8 @@
   @include on-tablet {
     overflow: visible;
   }
+}
+
+.link {
+  display: flex;
 }

@@ -24,7 +24,7 @@ export const CartCheckout = () => {
         <h2 className={classes.price}>{`$${totalSum}`}</h2>
         <p className={classes.totalItems}>{`Total for ${totalQty} ${totalQty === 1 ? 'item' : 'items'}`}</p>
       </div>
-      <div className={classes.breackLine} />
+      <div className={classes.breakLine} />
       <button className={classes.checkoutButton} onClick={handleClearAll}>
         <p className={classes.checkout}>Checkout</p>
       </button>

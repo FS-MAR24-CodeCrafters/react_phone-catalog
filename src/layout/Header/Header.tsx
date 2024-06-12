@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 
@@ -6,12 +6,16 @@ import logo from '../../img/Logo.png';
 import heartLike from '../../img/icons/Favourites(HeartLike).png';
 import shoppingBag from '../../img/icons/Shopping-bag(Cart).png';
 import classes from './Header.module.scss';
+import { HeaderCounter } from './HeaderCounter';
+import { CartStateContext } from '../../store/cartStore/cartContext';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {
   return classNames(classes.linkContent, { [classes.linkActive]: isActive });
 };
 
 export const Header = () => {
+  const cart = useContext(CartStateContext);
+
   const { pathname } = useLocation();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   // const links = ['home', 'phones', 'tablets', 'accessories'];
@@ -101,9 +105,11 @@ export const Header = () => {
         <div className={`${classes.iconContainer}`}>
           <div className={`${classes.icon}`}>
             <img src={heartLike} alt="Heart like" />
+            <HeaderCounter quantity={10} />
           </div>
           <div className={`${classes.icon}`}>
             <img src={shoppingBag} alt="Company logo" />
+            {cart.length ? <HeaderCounter quantity={cart.length} /> : <> </>}
           </div>
         </div>
       </div>
