@@ -1,20 +1,24 @@
-import React from 'react';
 import classes from './FavoriteList.module.scss';
+
+import { PageHeader } from '../PageHeader';
 import { ProductCard } from '../ProductCard';
-import { Product } from '../../types/product';
+import { useFavouriteLocalStorage } from '../../hooks/useFavouriteLocalStorage';
 
-type FavoriteListProps = {
-  products: Product[];
-}
+export const FavoritesList = () => {
+  const { favourites } = useFavouriteLocalStorage();
 
-export const FavoritesList: React.FC<FavoriteListProps> = ({ products }) => {
   return (
-    <div className={classes.favorites__grid}>
-      {products.map((product) => (
-        <div className={classes.favorites__grid_item} key={product.id}>
-          <ProductCard product={product} key={product.id} />
-        </div>
-      ))}
+    <div className={classes.favorites__container}>
+      <div className={classes.favorites__header}>
+        <PageHeader title="Favourites" totalModels={favourites.length} />
+      </div>
+      <div className={classes.favorites__grid}>
+        {favourites.map((favourite) => (
+          <div className={classes.favorites__grid_item} key={favourite.id}>
+            <ProductCard product={favourite} key={favourite.id} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

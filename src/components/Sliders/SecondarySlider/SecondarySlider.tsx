@@ -107,8 +107,6 @@ export const SecondarySlider: React.FC<SecondarySliderProps> = ({
   const leftArrowDisable = transform === 0;
 
   const handleTouchStart = (e: React.TouchEvent<HTMLUListElement>) => {
-    e.preventDefault();
-
     const touchDown = e.touches[0].clientX;
 
     setTouchPosition(touchDown);

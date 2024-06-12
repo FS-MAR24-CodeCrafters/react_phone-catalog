@@ -1,23 +1,13 @@
-import { KEY } from '../constants/key';
-import { Product } from '../types/product';
-
-export const localStorageService = (key: typeof KEY) => {
-  const getItem = (): Product[] => {
+export const localStorageService = <T>(key: string) => {
+  const getItem = (): T[] => {
     const data = localStorage.getItem(key);
 
     return data ? JSON.parse(data) : [];
   };
 
-  const setItem = (data: Product[]) => {
+  const setItem = (data: T[]) => {
     localStorage.setItem(key, JSON.stringify(data));
   };
 
-  const removeItem = (id: string) => {
-    const data = getItem();
-    const newData = data.filter((item) => item.itemId !== id);
-
-    setItem(newData);
-  };
-
-  return { getItem, removeItem, setItem };
+  return { getItem, setItem };
 };
