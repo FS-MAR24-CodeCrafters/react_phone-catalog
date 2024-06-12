@@ -14,7 +14,7 @@ export const FavoritesList = () => {
       </div>
       <div className={classes.favorites__grid}>
         {products.map((product) => (
-          <div className={classes.favorites__grid_item}>
+          <div className={classes.favorites__grid_item} key={product.id}>
             <ProductCard product={product} key={product.id} />
           </div>
         ))}
