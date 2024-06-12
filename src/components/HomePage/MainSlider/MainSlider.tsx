@@ -36,8 +36,6 @@ export const MainSlider = () => {
   };
 
   const handleTouchStart = (e: React.TouchEvent<HTMLLIElement>) => {
-    e.preventDefault();
-
     const touchDown = e.touches[0].clientX;
 
     setTouchPosition(touchDown);

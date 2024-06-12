@@ -3,11 +3,6 @@
 .slider {
   display: flex;
   flex-direction: column;
-  // height: 352px;
-
-  // @include on-tablet {
-  //   height: 190px;
-  // }
 
   @include on-desktop {
     grid-column: 1 / -1;
@@ -73,6 +68,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
+    transition: opacity var(--transition) ease-in-out;
   }
 
   &__link {

@@ -38,6 +38,7 @@ export const CategoryItem: FC<CategoryItemProps> = ({
         <Link to={link} className={classes.category__description_title}>
           {description}
         </Link>
+
         {goodsQty ? (
           <p className={classes.category__qty}>{`${goodsQty} models`}</p>
         ) : (
