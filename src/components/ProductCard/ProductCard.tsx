@@ -93,7 +93,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           </p>
         </div>
 
-        <div className={classes.breackLine} />
+        <div className={classes.breakLine} />
         <div className={cn(classes.product__info, classes.paddingTop)}>
           <p className={classes.product__info_title}>Screen</p>
           <p className={classes.product__info_value}>

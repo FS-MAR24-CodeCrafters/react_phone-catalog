@@ -5,6 +5,7 @@ import classes from './CatalogList.module.scss';
 import { ProductCard } from '../ProductCard';
 import { Product } from '../../types/product';
 import { Pagination } from '../Pagination';
+import { SkeletonProductCard } from '../SkeletonProductCard';
 
 type CatalogListProps = {
   filteredProducts: Product[];
@@ -12,6 +13,21 @@ type CatalogListProps = {
 
 export const CatalogList: FC<CatalogListProps> = ({ filteredProducts }) => {
   const [searchParams] = useSearchParams();
+
+  if (!filteredProducts.length) {
+    const arrayOfSkeletons = new Array(16).fill(<SkeletonProductCard />);
+
+    return (
+      <div className={classes.catalog__main}>
+        {arrayOfSkeletons.map((product) => (
+          <div className={classes.catalog__item} key={product.id}>
+            {product}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   const currentPage = +(searchParams.get('page') || '1');
 
   const itemsPerPage = +(searchParams.get('perPage') || 16);
