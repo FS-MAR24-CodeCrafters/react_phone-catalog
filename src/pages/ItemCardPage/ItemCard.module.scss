@@ -1,0 +1,78 @@
+@import '../../styles/utils/mixins.scss';
+
+.header1 {
+  text-align: center;
+  font-weight: 800;
+  font-size: 22px;
+  padding: 0 16px;
+  max-width: 288px;
+  margin: 0 auto 32px;
+
+  @include on-tablet {
+    max-width: 592px;
+    font-size: 32px;
+    margin: 0 auto 40px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    text-align: start;
+  }
+}
+
+.characteristicsSection {
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  max-width: 288px;
+  margin: 0 auto;
+  gap: 40px;
+  justify-items: center;
+
+  @include on-tablet {
+    flex-direction: row;
+    padding: 0 24px;
+    max-width: 592px;
+    gap: 17px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px;
+    max-width: 1136px;
+    gap: 64px;
+    // margin: 0;
+  }
+}
+
+.aboutSection {
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  max-width: 288px;
+  margin: 0 auto;
+  gap: 40px;
+
+  @include on-tablet {
+    max-width: 592px;
+    gap: 32px;
+  }
+
+  @include on-desktop {
+    flex-direction: row;
+  }
+}
+
+.techSpecsSection {
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  max-width: 288px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+.textSection {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
