@@ -6,10 +6,6 @@ import { CartStateContext } from '../../../store/cartStore/cartContext';
 export const CartList = () => {
   const cart = useContext(CartStateContext);
 
-  if (!cart.length) {
-    return <p>The Cart is empty</p>;
-  }
-
   return (
     <div className={classes.cartList}>
       {cart.map((product) => (

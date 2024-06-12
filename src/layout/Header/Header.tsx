@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import {
   Link, NavLink, useLocation, useNavigate,
 } from 'react-router-dom';
@@ -8,12 +9,16 @@ import heartLike from '../../img/icons/Favourites(HeartLike).png';
 import shoppingBag from '../../img/icons/Shopping-bag(Cart).png';
 import classes from './Header.module.scss';
 import { useResize } from '../../hooks/useResize';
+import { HeaderCounter } from './HeaderCounter';
+import { CartStateContext } from '../../store/cartStore/cartContext';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {
   return classNames(classes.linkContent, { [classes.linkActive]: isActive });
 };
 
 export const Header = () => {
+  const cart = useContext(CartStateContext);
+
   const { pathname } = useLocation();
   const [windowWidth] = useResize();
   const navigate = useNavigate();
@@ -100,9 +105,11 @@ export const Header = () => {
         <div className={`${classes.iconContainer}`}>
           <NavLink to="/favourites" className={`${classes.icon}`}>
             <img src={heartLike} alt="Heart like" />
+            <HeaderCounter quantity={10} />
           </NavLink>
           <NavLink to="/cart" className={`${classes.icon}`}>
             <img src={shoppingBag} alt="Company logo" />
+            {cart.length && <HeaderCounter quantity={cart.length} />}
           </NavLink>
         </div>
       </div>
