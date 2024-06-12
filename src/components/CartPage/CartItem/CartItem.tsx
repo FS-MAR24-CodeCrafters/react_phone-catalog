@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import cn from 'classnames';
 import classes from './CartItem.module.scss';
-// import iphone from '../../../public/img/phones/apple-iphone-11-pro-max/gold/00.webp';
 import minus from '../../../img/icons/Minus.png';
 import plus from '../../../img/icons/Plus.png';
 import close from '../../../img/icons/Close.png';
