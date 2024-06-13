@@ -25,7 +25,6 @@
   font-size: 14px;
   line-height: 21px;
   width: 100%;
-  // position: absolute;
 
   &:focus {
     border-color: var(--primary);
@@ -68,6 +67,7 @@
   flex-direction: column;
   width: 100%;
   position: absolute;
+  z-index: 5;
   left: 0;
   top: 64px;
 

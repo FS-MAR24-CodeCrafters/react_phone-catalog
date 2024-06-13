@@ -30,6 +30,7 @@
     object-fit: cover;
     margin-inline: auto;
     transition: transform var(--transition);
+    z-index: 0;
 
     @include on-tablet {
       height: 202px;
