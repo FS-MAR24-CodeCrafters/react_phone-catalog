@@ -1,5 +1,59 @@
 @import '../../../styles/utils/mixins.scss';
 
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+  border-radius: 10px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--elements);
+  }
+
+  100% {
+    background-color: var(--white);
+  }
+}
+
+.text {
+  width: 200px;
+  height: 21px;
+}
+
+.textPrice {
+  width: 130px;
+  height: 31px;
+}
+
+.textOptions {
+  width: 100px;
+  height: 19px;
+}
+
+.circleColor {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.capasityButton {
+  width: 56px;
+  height: 32px;
+}
+
+.addToCartButton {
+  width: 240px;
+  height: 40px;
+}
+
+.heartButton {
+  width: 40px;
+  height: 40px;
+}
+
 .colorsSection {
   display: flex;
   gap: 8px;
@@ -8,7 +62,6 @@
   flex-direction: column;
   margin-bottom: 24px;
   padding-bottom: 24px;
-  border-bottom: 1px solid #E2E6E9;
 }
 
 .colorsContainer {
@@ -20,7 +73,6 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 1px solid #000; 
 }
 
 .capasitySection {
@@ -30,7 +82,6 @@
   
   margin-bottom: 24px;
   padding-bottom: 24px;
-  border-bottom: 1px solid #E2E6E9;
 }
 
 .capasityContainer {
@@ -38,33 +89,13 @@
   align-items: center;
   justify-content: center;
   
-  size: 14px;
-  font-weight: 500;
-
   width: 56px;
   height: 32px;
-  border: 1px solid #B4BDC3;
-
-  // :hover {
-  //   border: 10px solid red;
-  // } 
 }
 
 .product__price {
   display: flex;
   gap: 8px;
-
-  &_curr {
-    font-size: 22px;
-    line-height: 30.8px;
-    font-weight: 800;
-  }
-
-  &_disc {
-    color: var(--secondary);
-    font-weight: 400;
-    text-decoration: line-through;
-  }
 }
 
 .actionBlock {
@@ -92,16 +123,6 @@
 .characteristicsContainer {
   display: flex;
   justify-content: space-between;
-  font-weight: 600;
-  font-size: 12px;
-  color: var(--secondary);
-}
-
-.primaryText {
-  color: var(--primary);
-}
-
-.selectedCap {
-  background-color: var(--primary);
-  color: #fff;
+  margin-bottom: 2px;
+  
 }

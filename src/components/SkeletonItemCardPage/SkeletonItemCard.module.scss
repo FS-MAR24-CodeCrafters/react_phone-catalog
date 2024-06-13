@@ -1,18 +1,39 @@
 @import '../../styles/utils/mixins.scss';
 
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+  border-radius: 10px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--elements);
+  }
+
+  100% {
+    background-color: var(--white);
+  }
+}
+
+.skeleton__photo {
+  width: 350px;
+  height: 100%;
+}
+
 .breadCrumbsContainer {
   margin-bottom: -32px;
 }
 
 .header1 {
-  font-weight: 800;
-  font-size: 22px;
+  width: 288px;
+  height: 42px;
   margin-bottom: -24px;
 
   @include on-tablet {
     max-width: 592px;
-    font-size: 32px;
-    margin-bottom: -16px;
+    height: 31px;
+    width: 500px;
+    margin-bottom: -20px;
   }
 
   @include on-desktop {
