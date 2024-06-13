@@ -6,6 +6,7 @@ import { Product } from '../../../types/product';
 
 import classes from './SecondarySlider.module.scss';
 import { SkeletonProductCard } from '../../SkeletonProductCard';
+import { useResize } from '../../../hooks/useResize';
 
 type SecondarySliderProps = {
   title: string;
@@ -24,6 +25,8 @@ export const SecondarySlider: React.FC<SecondarySliderProps> = ({
   const [transform, setTransform] = useState(0);
   const [slidesLeft, setSlidesLeft] = useState(0);
   const [transformWidth, setTransformWidth] = useState(0);
+  const [windowWidth] = useResize();
+  const [touchPosition, setTouchPosition] = useState<number | null>(null);
 
   useEffect(() => {
     const isCardRefExist = cardRef && cardRef.current;
@@ -57,7 +60,7 @@ export const SecondarySlider: React.FC<SecondarySliderProps> = ({
 
       setSlidesLeft(slidesLeftQty);
     }
-  }, [products]);
+  }, [products, windowWidth]);
 
   if (!products.length) {
     const arrayOfSkeletons = new Array(4).fill(<SkeletonProductCard />);
@@ -103,6 +106,41 @@ export const SecondarySlider: React.FC<SecondarySliderProps> = ({
 
   const leftArrowDisable = transform === 0;
 
+  const handleTouchStart = (e: React.TouchEvent<HTMLUListElement>) => {
+    const touchDown = e.touches[0].clientX;
+
+    setTouchPosition(touchDown);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLUListElement>) => {
+    const touchDown = touchPosition;
+
+    if (touchDown === null) {
+      return;
+    }
+
+    const currentTouch = e.touches[0].clientX;
+    const difference = touchDown - currentTouch;
+
+    if (difference > 5) {
+      if (slidesLeft === 0) {
+        return;
+      }
+
+      handleNextSlide();
+    }
+
+    if (difference < -5) {
+      if (leftArrowDisable) {
+        return;
+      }
+
+      handlePrevSlide();
+    }
+
+    setTouchPosition(null);
+  };
+
   return (
     <section className={classes.slider} ref={containerRef}>
       <div className={classes.slider__header}>
@@ -139,6 +177,8 @@ export const SecondarySlider: React.FC<SecondarySliderProps> = ({
           className={classes.slider__list}
           ref={listRef}
           style={{ transform: `translateX(${transform}px)` }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
         >
           {products.map((product) => (
             <li className={classes.slider__item} ref={cardRef} key={product.id}>

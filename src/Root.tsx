@@ -6,6 +6,7 @@ import { CatalogPage } from './pages/CatalogPage';
 import { ItemCardPage } from './pages/ItemCardPage';
 import { FavouritesPage } from './pages/FavouritesPage';
 import { CartPage } from './pages/CartPage';
+import { NotFound } from './pages/NotFound/NotFound';
 
 export const Root = () => {
   return (
@@ -29,6 +30,7 @@ export const Root = () => {
           <Route path="cart" element={<CartPage />} />
 
           <Route path="menu" element={<BurgerMenu />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </HashRouter>

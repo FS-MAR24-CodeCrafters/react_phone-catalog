@@ -1,9 +1,9 @@
 import { Product } from '../product';
 
-export type CartState = {
-  name: Product,
-  quantity: number,
-};
+export interface CartState {
+  name: Product;
+  quantity: number;
+}
 
 export enum ActionsName {
   'Add' = 'addToCart',
@@ -14,8 +14,8 @@ export enum ActionsName {
 }
 
 export type CartActions =
-  | { type: ActionsName.Add, payload: CartState }
-  | { type: ActionsName.Remove, payload: number }
-  | { type: ActionsName.Inc, payload: number }
-  | { type: ActionsName.Dec, payload: number }
-  | { type: ActionsName.ClearAll }
+  | { type: ActionsName.Add; payload: CartState }
+  | { type: ActionsName.Remove; payload: number }
+  | { type: ActionsName.Inc; payload: number }
+  | { type: ActionsName.Dec; payload: number }
+  | { type: ActionsName.ClearAll };

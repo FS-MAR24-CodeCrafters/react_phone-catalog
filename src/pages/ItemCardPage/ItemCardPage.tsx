@@ -88,7 +88,7 @@ export const ItemCardPage = () => {
             gadgets={gadgets}
             goodForCart={goodForCart}
             onSetActiveProduct={handleSetActiveProduct}
-            productName={category}
+            productName={productName}
           />
         </div>
         <div className={classes.aboutSection}>

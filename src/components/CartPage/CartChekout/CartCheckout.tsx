@@ -1,30 +1,36 @@
 /* eslint-disable no-param-reassign */
-import { useContext } from 'react';
+import { FC } from 'react';
 import classes from './CartCheckout.module.scss';
-import { CartDispatchContext, CartStateContext } from '../../../store/cartStore/cartContext';
-import { ActionsName } from '../../../types/cart/cartState';
+import { ActionsName, CartState } from '../../../types/cart/cartState';
+import { UpdateProducts } from '../../../hooks/useCartLocalStorage';
 
-export const CartCheckout = () => {
-  const dispatch = useContext(CartDispatchContext);
-  const cart = useContext(CartStateContext);
-  const { totalQty, totalSum } = cart.reduce((count, el) => {
-    count.totalSum += el.name.price * el.quantity;
-    count.totalQty += el.quantity;
+type Props = {
+  products: CartState[];
+  updateProducts: UpdateProducts;
+};
 
-    return count;
-  }, { totalSum: 0, totalQty: 0 });
+export const CartCheckout: FC<Props> = ({ products, updateProducts }) => {
+  const { totalQty, totalSum } = products.reduce(
+    (count, el) => {
+      count.totalSum += el.name.price * el.quantity;
+      count.totalQty += el.quantity;
 
-  const handleClearAll = () => (
-    dispatch({ type: ActionsName.ClearAll })
+      return count;
+    },
+    { totalSum: 0, totalQty: 0 },
   );
+
+  const handleClearAll = () => updateProducts({ type: ActionsName.ClearAll });
 
   return (
     <div className={classes.cartCheckout}>
       <div className={classes.cartPrice}>
         <h2 className={classes.price}>{`$${totalSum}`}</h2>
-        <p className={classes.totalItems}>{`Total for ${totalQty} ${totalQty === 1 ? 'item' : 'items'}`}</p>
+        <p className={classes.totalItems}>
+          {`Total for ${totalQty} ${totalQty === 1 ? 'item' : 'items'}`}
+        </p>
       </div>
-      <div className={classes.breackLine} />
+      <div className={classes.breakLine} />
       <button className={classes.checkoutButton} onClick={handleClearAll}>
         <p className={classes.checkout}>Checkout</p>
       </button>

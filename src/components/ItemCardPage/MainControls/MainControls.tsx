@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import cn from 'classnames';
 import { Gadget } from '../../../types/gadget';
@@ -6,11 +6,11 @@ import classes from './MainControls.module.scss';
 import { Button } from '../../../ui/Buttons';
 import { Heart } from '../../../ui/Heart';
 import { allColors } from '../../../constants/colors';
-import { CartDispatchContext } from '../../../store/cartStore/cartContext';
 import { ActionsName } from '../../../types/cart/cartState';
 import { Product } from '../../../types/product';
-import { KEY } from '../../../constants/key';
-import { localStorageService } from '../../../service/localStorageService';
+import { FavouritesActionsName } from '../../../types/favourite/favouriteState';
+import { useCartLocalStorage } from '../../../hooks/useCartLocalStorage';
+import { useFavouriteLocalStorage } from '../../../hooks/useFavouriteLocalStorage';
 import { ItemColor } from '../../../ui/ItemColor';
 
 type Props = {
@@ -28,13 +28,16 @@ export const MainControls: React.FC<Props> = ({
   productName,
   goodForCart,
 }) => {
-  const { getItem, setItem, removeItem } = localStorageService(KEY);
-  const [addedToCart, setAddedToCart] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [selectedCap, setSelectedCap] = useState<string | null>(activeProduct.capacity);
+  const { favourites, updateFavourites } = useFavouriteLocalStorage();
+  const { products: cart, updateProducts } = useCartLocalStorage();
+
+  const [goodForCart, setGoodForCart] = useState<Product | null>(null);
   const navigate = useNavigate();
 
-  const dispatch = useContext(CartDispatchContext);
+  const hasInFavourites = favourites.some(
+    (item) => item.itemId === activeProduct.id,
+  );
+  const hasInCart = cart.some((item) => item.name.itemId === activeProduct.id);
 
   const capasityAvaible = activeProduct.capacityAvailable || [];
   const price = activeProduct.priceDiscount;
@@ -82,32 +85,38 @@ export const MainControls: React.FC<Props> = ({
 
   const handleAddToCart = () => {
     if (goodForCart) {
-      dispatch({
-        type: ActionsName.Add,
-        payload: { name: goodForCart, quantity: 1 },
-      });
+      if (hasInCart) {
+        updateProducts({
+          type: ActionsName.Remove,
+          payload: goodForCart.id,
+        });
+      } else {
+        updateProducts({
+          type: ActionsName.Add,
+          payload: { name: goodForCart, quantity: 1 },
+        });
+      }
     }
 
-    setAddedToCart(!addedToCart);
+    window.dispatchEvent(new Event('storage'));
   };
 
   const handleAddToFavorite = () => {
     if (goodForCart) {
-      if (isFavorite) {
-        removeItem(goodForCart.itemId);
-
-        setIsFavorite(false);
-
-        return;
+      if (hasInFavourites) {
+        updateFavourites({
+          type: FavouritesActionsName.Remove,
+          payload: goodForCart,
+        });
+      } else {
+        updateFavourites({
+          type: FavouritesActionsName.Add,
+          payload: goodForCart,
+        });
       }
-
-      const data = getItem();
-
-      data.push(goodForCart);
-      setItem(data);
     }
 
-    setIsFavorite(!isFavorite);
+    window.dispatchEvent(new Event('storage'));
   };
 
   return (
@@ -164,9 +173,9 @@ export const MainControls: React.FC<Props> = ({
         <div className={classes.buttonContainer}>
           <div style={{ flex: 1 }}>
             <Button
-              label={addedToCart ? 'Added to cart' : 'Add to cart'}
+              label={hasInCart ? 'Added to cart' : 'Add to cart'}
               onClick={handleAddToCart}
-              addedToCart={addedToCart}
+              addedToCart={hasInCart}
             />
           </div>
           <button
@@ -178,7 +187,8 @@ export const MainControls: React.FC<Props> = ({
             }}
             aria-label='Add to favourites'
           >
-            <Heart checked={isFavorite} />
+            <Heart checked={hasInFavourites} />
+            {/* Heart */}
           </button>
         </div>
       </div>
