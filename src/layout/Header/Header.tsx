@@ -11,6 +11,7 @@ import { useResize } from '../../hooks/useResize';
 import { HeaderCounter } from './HeaderCounter';
 import { useCartLocalStorage } from '../../hooks/useCartLocalStorage';
 import { useFavouriteLocalStorage } from '../../hooks/useFavouriteLocalStorage';
+import ThemeSwitcher from '../../components/ThemeSwitcher/ThemeSwitcher';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {
   return classNames(classes.linkContent, { [classes.linkActive]: isActive });
@@ -86,6 +87,7 @@ export const Header = () => {
 
   return (
     <header className={`${classes.header}`}>
+      <ThemeSwitcher />
       <Link to="/" className={classes.link}>
         <img src={logo} alt="Company logo" className={classes.logo} />
       </Link>
@@ -104,6 +106,7 @@ export const Header = () => {
         </nav>
 
         <div className={`${classes.iconContainer}`}>
+
           <NavLink to="/favourites" className={`${classes.icon}`}>
             <img src={heartLike} alt="Heart like" />
             {favourites.length ? (

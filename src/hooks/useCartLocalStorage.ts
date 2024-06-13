@@ -6,7 +6,7 @@ import { ActionsName, CartActions, CartState } from '../types/cart/cartState';
 export type UpdateProducts = (action: CartActions) => void;
 
 export const useCartLocalStorage = () => {
-  const { getItem, setItem } = localStorageService<CartState>(KEY.cart);
+  const { getItem, setItem } = localStorageService<CartState[]>(KEY.cart);
   const [products, setProducts] = useState<CartState[]>([]);
 
   const loadProducts = () => {

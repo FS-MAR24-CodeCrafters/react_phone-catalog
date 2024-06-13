@@ -26,7 +26,9 @@ export const MainControls: React.FC<Props> = ({
   onSetActiveProduct,
   goodForCart,
 }) => {
-  const [selectedCap, setSelectedCap] = useState<string | null>(activeProduct.capacity);
+  const [selectedCap, setSelectedCap] = useState<string | null>(
+    activeProduct.capacity,
+  );
   const { favourites, updateFavourites } = useFavouriteLocalStorage();
   const { products: cart, updateProducts } = useCartLocalStorage();
 
@@ -183,7 +185,7 @@ export const MainControls: React.FC<Props> = ({
                 handleAddToFavorite();
               }
             }}
-            aria-label='Add to favourites'
+            aria-label="Add to favourites"
           >
             <Heart checked={hasInFavourites} />
             {/* Heart */}

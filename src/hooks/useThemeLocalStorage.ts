@@ -1,19 +1,14 @@
 import { useEffect, useState } from 'react';
 import { KEY } from '../constants/key';
 import { localStorageService } from '../service/localStorageService';
-import {
-  FavouritesActionsName,
-  FavoutiteActions,
-  FavoutiteState,
-} from '../types/favourite/favouriteState';
 
-type UpdateFauvorites = (action: FavoutiteActions) => void;
+type ThemeState = boolean | null;
 
 export const useFavouriteLocalStorage = () => {
-  const { getItem, setItem } = localStorageService<FavoutiteState[]>(
-    KEY.products,
+  const { getItem, setItem } = localStorageService<ThemeState>(
+    KEY.theme,
   );
-  const [favourites, setFavourites] = useState<FavoutiteState[]>([]);
+  const [dark, setDark] = useState<ThemeState>(null);
 
   const loadProducts = () => {
     setFavourites(getItem());
