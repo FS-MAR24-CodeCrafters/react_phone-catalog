@@ -17,7 +17,6 @@ type Props = {
   activeProduct: Gadget;
   gadgets: Gadget[];
   onSetActiveProduct: (product: Gadget) => void;
-  productName: string;
   goodForCart: Product | null;
 };
 
@@ -25,13 +24,12 @@ export const MainControls: React.FC<Props> = ({
   activeProduct,
   gadgets,
   onSetActiveProduct,
-  productName,
   goodForCart,
 }) => {
+  const [selectedCap, setSelectedCap] = useState<string | null>(activeProduct.capacity);
   const { favourites, updateFavourites } = useFavouriteLocalStorage();
   const { products: cart, updateProducts } = useCartLocalStorage();
 
-  const [goodForCart, setGoodForCart] = useState<Product | null>(null);
   const navigate = useNavigate();
 
   const hasInFavourites = favourites.some(
@@ -53,7 +51,7 @@ export const MainControls: React.FC<Props> = ({
     const neededProduct = filteredProducts.find((prod) => prod.id.includes(color));
 
     if (neededProduct) {
-      navigate(`/${productName}/${neededProduct.id}`);
+      navigate(`../${neededProduct.id}`);
       onSetActiveProduct(neededProduct);
     }
   };
@@ -64,7 +62,7 @@ export const MainControls: React.FC<Props> = ({
     });
 
     if (neededProduct) {
-      navigate(`/${productName}/${neededProduct.id}`);
+      navigate(`../${neededProduct.id}`);
       onSetActiveProduct(neededProduct);
       setSelectedCap(cap);
     }

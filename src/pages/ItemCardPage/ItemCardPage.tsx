@@ -42,17 +42,6 @@ export const ItemCardPage = () => {
           setActiveProduct(null);
         }
       });
-
-    /* getGoods<Gadget[]>(`${category}.json`).then((resp) => {
-      setGadgets(resp);
-      const initialProduct = resp.find((elem) => elem.id === productName);
-
-      if (initialProduct) {
-        setActiveProduct(initialProduct);
-      } else {
-        setActiveProduct(null);
-      }
-    }); */
   }, [category, productName, pathname]);
 
   const handleSetActiveProduct = (newProduct: Gadget) => {
@@ -88,7 +77,6 @@ export const ItemCardPage = () => {
             gadgets={gadgets}
             goodForCart={goodForCart}
             onSetActiveProduct={handleSetActiveProduct}
-            productName={productName}
           />
         </div>
         <div className={classes.aboutSection}>
