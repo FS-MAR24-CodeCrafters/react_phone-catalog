@@ -1,5 +1,30 @@
 @import '../../../styles/utils/mixins.scss'; 
 
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+  border-radius: 10px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--elements);
+  }
+
+  100% {
+    background-color: var(--white);
+  }
+}
+
+.textTopic {
+  width: 130px;
+  height: 21px;
+}
+
+.text {
+  width: 90px;
+  height: 19px;
+}
+
 .characteristicsContainer {
   display: flex;
   justify-content: space-between;
@@ -15,24 +40,7 @@
   }
 }
 
-.techSpecs {
-  font-weight: 700;
-  font-size: 20px;
-}
-
 .line {
   height: 42px;
   border-bottom: 1px solid var(--elements);
-}
-
-.techSpecsName {
-  font-weight: 500;
-  font-size: 14px;
-  color: var(--secondary);
-}
-
-.techSpecsValue {
-  font-weight: 500;
-  font-size: 14px;
-  color: var(--primary);
 }

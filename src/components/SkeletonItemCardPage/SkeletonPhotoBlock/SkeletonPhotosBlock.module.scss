@@ -1,0 +1,78 @@
+@import '../../../styles/utils/mixins.scss';
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+  border-radius: 10px;
+}
+
+.skeleton__photo {
+  width: 350px;
+  height: 100%;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--elements);
+  }
+
+  100% {
+    background-color: var(--white);
+  }
+}
+
+.photoOfProduct {
+  width: 228px;
+  height: 228px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include on-desktop {
+    width: 464px;
+    height: 464px;
+  }
+}
+
+.smallPhotosContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  @include on-tablet {
+    flex-direction: column;
+    justify-content: start;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+  }
+}
+
+.smallPhotoContainer {
+  height: 49px;
+  width: 51.2px;
+  border: 1px solid var(--elements);
+
+  @include on-tablet {
+    height: 35px;
+    width: 35px;
+  }
+
+  @include on-desktop {
+    height: 80px;
+    width: 80px;
+  }
+
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row-reverse;
+  }
+}
