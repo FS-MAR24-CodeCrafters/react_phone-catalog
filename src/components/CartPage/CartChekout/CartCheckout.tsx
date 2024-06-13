@@ -3,6 +3,7 @@ import { FC } from 'react';
 import classes from './CartCheckout.module.scss';
 import { ActionsName, CartState } from '../../../types/cart/cartState';
 import { UpdateProducts } from '../../../hooks/useCartLocalStorage';
+import { Button } from '../../../ui/Buttons';
 
 type Props = {
   products: CartState[];
@@ -20,7 +21,10 @@ export const CartCheckout: FC<Props> = ({ products, updateProducts }) => {
     { totalSum: 0, totalQty: 0 },
   );
 
-  const handleClearAll = () => updateProducts({ type: ActionsName.ClearAll });
+  const handleClearAll = () => {
+    updateProducts({ type: ActionsName.ClearAll });
+    window.dispatchEvent(new Event('storage'));
+  };
 
   return (
     <div className={classes.cartCheckout}>
@@ -31,9 +35,8 @@ export const CartCheckout: FC<Props> = ({ products, updateProducts }) => {
         </p>
       </div>
       <div className={classes.breakLine} />
-      <button className={classes.checkoutButton} onClick={handleClearAll}>
-        <p className={classes.checkout}>Checkout</p>
-      </button>
+
+      <Button label="Checkout" onClick={handleClearAll} />
     </div>
   );
 };

@@ -12,11 +12,20 @@ body {
   --sm-button-bg: #ffffff;
   --main-background: #ffffff;
   --product-card-bg: #ffffff;
+  --heart-boarder: #b4bdc3;
+  --active-btn-bg: #e2e6e9;
+  --active-btn-text: #27ae60;
   --button-bg: #313237;
+  --heart-hover: #313237;
+  --box-shadow: #e2e6e9;
   --transition: 0.3s;
   --cartHeight: 70px;
   --headerHeight: 48px;
   --footerHeight: 257px;
+  --drop-down-text: #313237;
+  --drop-down-list: #fafbfc;
+  --item-color-border: #e2e6e9;
+  --controls-title: #89939a;
 
   @include on-desktop {
     --headerHeight: 48px;
@@ -31,6 +40,15 @@ body.dark {
   --sm-button-bg: #323542;
   --product-card-bg: #161827;
   --main-background: #0f1121;
+  --active-btn-bg: #323542;
+  --active-btn-text: #f1f2f9;
   --icons: #4a4d58;
+  --box-shadow: #89939a;
   --elements: #3b3e4a;
+  --heart-boarder: #323542;
+  --heart-hover: #4a4d58;
+  --drop-down-text: #f1f2f9;
+  --drop-down-list: #323542;
+  --item-color-border: #3b3e4a;
+  --controls-title: #75767f;
 }

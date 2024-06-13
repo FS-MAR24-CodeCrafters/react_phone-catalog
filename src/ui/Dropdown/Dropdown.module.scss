@@ -1,4 +1,4 @@
-@import "../../styles/utils/mixins.scss";
+@import '../../styles/utils/mixins.scss';
 
 .wrapper {
   position: relative;
@@ -21,11 +21,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-inline: 12px;
   font-size: 14px;
   line-height: 21px;
   width: 100%;
-  // position: absolute;
 
   &:focus {
     border-color: var(--primary);
@@ -36,25 +34,15 @@
   }
 }
 
-.dropdown_toggle {
-  padding: 10px 20px;
-  border: 1px solid #000;
-  background-color: #fff;
-  color: #000;
+.dropdown_toggles {
+  padding: 10px 12px;
+  color: var(--drop-down-text);
   cursor: pointer;
   transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #f0f0f0;
-  }
-
-  &:active {
-    background-color: #e0e0e0;
-  }
 }
 
 .dropdown_menu {
-  background-color: var(--white);
+  background-color: var(--main-background);
   border: 1px solid var(--elements);
   box-shadow: 0 2px 4px var(--elements);
   list-style: none;
@@ -84,19 +72,17 @@
   visibility: visible;
 }
 
-// .sortBy {
-//   width: 100%;
+.dropdown_item {
+  height: 100%;
+  width: 100%;
 
-//   @include on-tablet {
-//     width: 187px;
-//   }
-// }
-
-// .itemsOnPage {
-//   width: 100%;
-// }
+  &:hover {
+    background-color: var(--drop-down-list);
+  }
+}
 
 .filterParam {
+  height: 100%;
   width: 100%;
   text-align: left;
   color: var(--secondary);

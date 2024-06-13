@@ -6,6 +6,7 @@ import { ArrowDown } from './arrows/ArrowDown';
 import { ArrowUp } from './arrows/ArrowUp';
 import { ArrowLeft } from './arrows/ArrowLeft';
 import { ArrowRight } from './arrows/ArrowRight';
+import { useThemeLocalStorage } from '../../hooks/useThemeLocalStorage';
 
 type ArrowProps = {
   dir: arrowDir;
@@ -13,9 +14,14 @@ type ArrowProps = {
 };
 
 export const Arrow: FC<ArrowProps> = ({ dir, disabled = false }) => {
+  const { themeIsDark } = useThemeLocalStorage();
   let arrowComponent;
 
-  const color = disabled ? '#e2e6e9' : '#313237';
+  let color = disabled ? '#e2e6e9' : '#313237';
+
+  if (themeIsDark) {
+    color = disabled ? '#4A4D58' : '#F1F2F9';
+  }
 
   if (dir === arrowDir.down) {
     arrowComponent = <ArrowDown width={5} height={9} fill={color} />;

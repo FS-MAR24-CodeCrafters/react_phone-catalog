@@ -1,11 +1,15 @@
 import React from 'react';
 import cn from 'classnames';
 import classes from './CartItem.module.scss';
-import minus from '../../../img/icons/Minus.png';
-import plus from '../../../img/icons/Plus.png';
-import close from '../../../img/icons/Close.png';
+import minusIcon from '../../../img/icons/Minus.svg';
+import plusIcon from '../../../img/icons/Plus.svg';
+import closeIcon from '../../../img/icons/Close.svg';
+import minusIconDark from '../../../img/icons/dark/Minus.svg';
+import plusIconDark from '../../../img/icons/dark/Plus.svg';
+import closeIconDark from '../../../img/icons/dark/Close.svg';
 import { ActionsName, CartState } from '../../../types/cart/cartState';
 import { UpdateProducts } from '../../../hooks/useCartLocalStorage';
+import { useThemeLocalStorage } from '../../../hooks/useThemeLocalStorage';
 
 type Props = {
   phone: CartState;
@@ -14,14 +18,15 @@ type Props = {
 
 export const CartItem: React.FC<Props> = ({ phone, updateProducts }) => {
   const {
-    image,
-    id,
-    name,
-    price,
-    fullPrice,
+    image, id, name, price, fullPrice,
   } = phone.name;
 
   const url = `public/${image}`;
+  const { themeIsDark } = useThemeLocalStorage();
+
+  const plus = themeIsDark ? plusIconDark : plusIcon;
+  const minus = themeIsDark ? minusIconDark : minusIcon;
+  const close = themeIsDark ? closeIconDark : closeIcon;
 
   const handleItemDelete = () => {
     updateProducts({ type: ActionsName.Remove, payload: id });
