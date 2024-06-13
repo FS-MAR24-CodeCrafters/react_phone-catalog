@@ -9,6 +9,10 @@ body {
   --white: #ffffff;
   --green: #27ae60;
   --red: #eb5757;
+  --sm-button-bg: #ffffff;
+  --main-background: #ffffff;
+  --product-card-bg: #ffffff;
+  --button-bg: #313237;
   --transition: 0.3s;
   --cartHeight: 70px;
   --headerHeight: 48px;
@@ -20,3 +24,13 @@ body {
   }
 }
 
+body.dark {
+  --primary: #f1f2f9;
+  --secondary: #75767f;
+  --button-bg: #905bff;
+  --sm-button-bg: #323542;
+  --product-card-bg: #161827;
+  --main-background: #0f1121;
+  --icons: #4a4d58;
+  --elements: #3b3e4a;
+}

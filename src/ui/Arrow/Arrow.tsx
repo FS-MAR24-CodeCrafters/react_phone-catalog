@@ -8,8 +8,8 @@ import { ArrowLeft } from './arrows/ArrowLeft';
 import { ArrowRight } from './arrows/ArrowRight';
 
 type ArrowProps = {
-  dir: arrowDir; // for using this component you should use arrowDir enum to clarify direction;
-  disabled?: boolean; // disabled button or not;
+  dir: arrowDir;
+  disabled?: boolean;
 };
 
 export const Arrow: FC<ArrowProps> = ({ dir, disabled = false }) => {

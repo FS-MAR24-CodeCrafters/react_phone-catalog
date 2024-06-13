@@ -1,55 +1,49 @@
 @import '../../styles/utils/mixins.scss';
 
+.breadCrumbsContainer {
+  margin-bottom: -32px;
+}
+
 .header1 {
-  text-align: center;
   font-weight: 800;
   font-size: 22px;
-  padding: 0 16px;
-  max-width: 288px;
-  margin: 0 auto 32px;
+  margin-bottom: -24px;
 
   @include on-tablet {
     max-width: 592px;
     font-size: 32px;
-    margin: 0 auto 40px;
+    margin-bottom: -16px;
   }
 
   @include on-desktop {
     max-width: 1136px;
-    text-align: start;
   }
 }
 
 .characteristicsSection {
   display: flex;
   flex-direction: column;
-  padding: 0 16px;
-  max-width: 288px;
-  margin: 0 auto;
   gap: 40px;
   justify-items: center;
 
   @include on-tablet {
     flex-direction: row;
-    padding: 0 24px;
-    max-width: 592px;
-    gap: 17px;
+    justify-content: space-between;
   }
 
   @include on-desktop {
-    padding: 0 32px;
-    max-width: 1136px;
+    width: 1207px;
     gap: 64px;
-    // margin: 0;
+    justify-items: start;
+    justify-content: start;
+    gap: 64px;
   }
 }
 
 .aboutSection {
   display: flex;
   flex-direction: column;
-  padding: 0 16px;
   max-width: 288px;
-  margin: 0 auto;
   gap: 40px;
 
   @include on-tablet {
@@ -59,20 +53,40 @@
 
   @include on-desktop {
     flex-direction: row;
+    min-width: 1207px;
+    gap: 64px;
   }
 }
 
 .techSpecsSection {
   display: flex;
   flex-direction: column;
-  padding: 0 16px;
   max-width: 288px;
-  margin: 0 auto;
   gap: 40px;
 }
 
 .textSection {
   display: flex;
   flex-direction: column;
-  gap: 56px;
+  gap: 80px;
+  margin: 0 auto 80px;
+  justify-items: center;
+  justify-content: center;
+
+  max-width: 288px;
+
+  @include on-tablet {
+    max-width: 592px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+  }
+}
+
+.slider__container {
+  @include on-desktop {
+    @include grid-container;
+    justify-content: center;
+  }
 }

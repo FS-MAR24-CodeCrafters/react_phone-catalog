@@ -1,3 +1,5 @@
+@import '../../../styles/utils/mixins.scss';
+
 .colorsSection {
   display: flex;
   gap: 8px;
@@ -26,7 +28,6 @@
   gap: 8px;
   margin-top: 20px;
   
-  // flex-direction: column;
   margin-bottom: 24px;
   padding-bottom: 24px;
   border-bottom: 1px solid #E2E6E9;
@@ -43,6 +44,10 @@
   width: 56px;
   height: 32px;
   border: 1px solid #B4BDC3;
+
+  // :hover {
+  //   border: 10px solid red;
+  // } 
 }
 
 .product__price {
@@ -66,15 +71,22 @@
   display: flex;
   gap: 8px;
   margin-bottom: 32px;
-  // justify-content: space-between;
 }
 
 .buttonContainer {
   display: flex;
-  width: 231px;
+  width: 288px;
   height: 48px;
   align-items: center;
   gap: 8px;
+
+  @include on-tablet {
+    width: 237px;
+  }
+
+  @include on-desktop {
+    width: 320px;
+  }
 }
 
 .characteristicsContainer {
@@ -87,4 +99,9 @@
 
 .primaryText {
   color: var(--primary);
+}
+
+.selectedCap {
+  background-color: var(--primary);
+  color: #fff;
 }

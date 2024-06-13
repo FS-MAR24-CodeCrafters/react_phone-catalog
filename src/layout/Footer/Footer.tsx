@@ -18,9 +18,18 @@ export function Footer() {
       </div>
 
       <div className={classes.footer__info}>
-        <a href="#" className={classes.link}>Github</a>
-        <a href="#" className={classes.link}>Contacts</a>
-        <a href="#" className={classes.link}>Rights</a>
+        <a
+          href="https://github.com/FS-MAR24-CodeCrafters/react_phone-catalog"
+          className={classes.link}
+        >
+          Github
+        </a>
+        <a href="#" className={classes.link}>
+          Contacts
+        </a>
+        <a href="#" className={classes.link}>
+          Rights
+        </a>
       </div>
 
       <div className={classes.footer__button}>
@@ -28,7 +37,6 @@ export function Footer() {
         <button onClick={scrollToTop} aria-label="Back to top">
           <Arrow dir={arrowDir.up} />
         </button>
-        {/* <button className={classes.button_back} aria-label="Back to top" /> */}
       </div>
     </footer>
   );
