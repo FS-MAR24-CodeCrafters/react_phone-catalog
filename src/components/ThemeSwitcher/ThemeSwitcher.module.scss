@@ -1,0 +1,23 @@
+.theme_switcher {
+  position: absolute;
+  left: 20px;
+  top: 80px;
+  width: 45px;
+  background-color: var(--primary);
+  border-radius: 20px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.theme_switcher::after {
+  content: '';
+  display: block;
+  width: 50%;
+  padding-bottom: 50%;
+  border-radius: 50%;
+  background-color: var(--main-background);
+}
+
+.active::after {
+  transform: translateX(100%);
+}

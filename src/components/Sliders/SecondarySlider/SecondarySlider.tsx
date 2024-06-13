@@ -7,10 +7,13 @@ import { Product } from '../../../types/product';
 import classes from './SecondarySlider.module.scss';
 import { SkeletonProductCard } from '../../SkeletonProductCard';
 import { useResize } from '../../../hooks/useResize';
+import { ErrorScreen } from '../../ErrorScreen';
 
 type SecondarySliderProps = {
   title: string;
   products: Product[];
+  error: boolean;
+  setError: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const SLIDES_ON_PAGE = 4;
@@ -18,6 +21,8 @@ const SLIDES_ON_PAGE = 4;
 export const SecondarySlider: React.FC<SecondarySliderProps> = ({
   title,
   products = [],
+  error,
+  setError,
 }) => {
   const cardRef = useRef<HTMLLIElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
@@ -61,6 +66,14 @@ export const SecondarySlider: React.FC<SecondarySliderProps> = ({
       setSlidesLeft(slidesLeftQty);
     }
   }, [products, windowWidth]);
+
+  if (error) {
+    return (
+      <div style={{ gridColumn: '1 / -1' }}>
+        <ErrorScreen setError={setError} />
+      </div>
+    );
+  }
 
   if (!products.length) {
     const arrayOfSkeletons = new Array(4).fill(<SkeletonProductCard />);

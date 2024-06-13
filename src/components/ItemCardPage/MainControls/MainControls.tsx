@@ -60,7 +60,7 @@ export const MainControls: React.FC<Props> = ({
     const neededProduct = filteredProducts.find((prod) => prod.id.includes(color));
 
     if (neededProduct) {
-      navigate(`/${productName}/${neededProduct.id}`);
+      navigate(`../${neededProduct.id}`, { replace: true });
       onSetActiveProduct(neededProduct);
     }
   };
@@ -71,7 +71,7 @@ export const MainControls: React.FC<Props> = ({
     });
 
     if (neededProduct) {
-      navigate(`/${productName}/${neededProduct.id}`);
+      navigate(`../${neededProduct.id}`, { replace: true });
       onSetActiveProduct(neededProduct);
     }
   };
