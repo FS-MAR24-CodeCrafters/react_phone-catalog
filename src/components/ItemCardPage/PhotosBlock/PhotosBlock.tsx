@@ -47,33 +47,4 @@ export const PhotosBlock: React.FC<Props> = ({ product, ident }) => {
       </div>
     </div>
   );
-
-  // return (
-  //   <div className={classes.container}>
-  //     <div className={classes.smallPhotosContainer}>
-  //       {images.map((image: string) => {
-  //         return (
-  //           <div
-  //             key={image}
-  //             className={classes.smallPhotoContainer}
-  //             onClick={() => handleImageClick(image)}
-  //             onKeyDown={(e) => {
-  //               if (e.key === 'Enter' || e.key === ' ') {
-  //                 handleImageClick(image);
-  //               }
-  //             }}
-  //             role="button"
-  //             tabIndex={0}
-  //           >
-  //             <img src={image} alt={image} className={classes.smallPhoto} />
-  //           </div>
-  //         );
-  //       })}
-  //     </div>
-
-  //     <div className={classes.photoOfProduct}>
-  //       <img src={selectedPhoto} alt={ident} className={classes.photo} />
-  //     </div>
-  //   </div>
-  // );
 };

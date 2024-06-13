@@ -19,9 +19,15 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ title, totalModels }) =>
         {title}
       </h1>
 
-      <p className={classes.page__models}>
-        {`${totalModels} models`}
-      </p>
+      {totalModels ? (
+        <p className={classes.page__models}>
+          {`${totalModels} models`}
+        </p>
+      ) : (
+        <div
+          className={`${classes.skeleton} ${classes.skeleton__description}`}
+        />
+      )}
     </div>
   );
 };

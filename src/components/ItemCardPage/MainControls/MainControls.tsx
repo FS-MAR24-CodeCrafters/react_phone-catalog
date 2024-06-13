@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import cn from 'classnames';
 import { Gadget } from '../../../types/gadget';
@@ -8,28 +8,30 @@ import { Heart } from '../../../ui/Heart';
 import { allColors } from '../../../constants/colors';
 import { ActionsName } from '../../../types/cart/cartState';
 import { Product } from '../../../types/product';
-import { getGoods } from '../../../api/goods';
 import { FavouritesActionsName } from '../../../types/favourite/favouriteState';
 import { useCartLocalStorage } from '../../../hooks/useCartLocalStorage';
 import { useFavouriteLocalStorage } from '../../../hooks/useFavouriteLocalStorage';
+import { ItemColor } from '../../../ui/ItemColor';
 
 type Props = {
   activeProduct: Gadget;
-  products: Gadget[];
+  gadgets: Gadget[];
   onSetActiveProduct: (product: Gadget) => void;
-  productName: string;
+  goodForCart: Product | null;
 };
 
 export const MainControls: React.FC<Props> = ({
   activeProduct,
-  products,
+  gadgets,
   onSetActiveProduct,
-  productName,
+  goodForCart,
 }) => {
+  const [selectedCap, setSelectedCap] = useState<string | null>(
+    activeProduct.capacity,
+  );
   const { favourites, updateFavourites } = useFavouriteLocalStorage();
   const { products: cart, updateProducts } = useCartLocalStorage();
 
-  const [goodForCart, setGoodForCart] = useState<Product | null>(null);
   const navigate = useNavigate();
 
   const hasInFavourites = favourites.some(
@@ -41,16 +43,7 @@ export const MainControls: React.FC<Props> = ({
   const price = activeProduct.priceDiscount;
   const fullPrice = activeProduct.priceRegular;
 
-  useEffect(() => {
-    getGoods<Product[]>('products.json').then((res) => {
-      const good = res.find((item) => item.itemId === productName) || null;
-
-      setGoodForCart(good);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const filteredProducts = products.filter((prod) => {
+  const filteredProducts = gadgets.filter((prod) => {
     return prod.namespaceId === activeProduct.namespaceId;
   });
 
@@ -60,7 +53,7 @@ export const MainControls: React.FC<Props> = ({
     const neededProduct = filteredProducts.find((prod) => prod.id.includes(color));
 
     if (neededProduct) {
-      navigate(`../${neededProduct.id}`, { replace: true });
+      navigate(`../${neededProduct.id}`);
       onSetActiveProduct(neededProduct);
     }
   };
@@ -71,13 +64,14 @@ export const MainControls: React.FC<Props> = ({
     });
 
     if (neededProduct) {
-      navigate(`../${neededProduct.id}`, { replace: true });
+      navigate(`../${neededProduct.id}`);
       onSetActiveProduct(neededProduct);
+      setSelectedCap(cap);
     }
   };
 
   const handleKeyDown = (
-    event: React.KeyboardEvent<HTMLDivElement>,
+    event: React.KeyboardEvent<HTMLButtonElement>,
     colorOrCap: string,
   ) => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -131,16 +125,17 @@ export const MainControls: React.FC<Props> = ({
         <h2>Available colors</h2>
         <div className={classes.colorsContainer}>
           {colors.map((color) => (
-            <div
-              key={color}
-              className={classes.colorCircle}
-              style={{ backgroundColor: `${allColors[color]}` }}
+            <button
               onClick={() => handleSetColor(color)}
               onKeyDown={(event) => handleKeyDown(event, color)}
-              role="button"
-              tabIndex={0}
               aria-label={`Select color ${color}`}
-            />
+            >
+              <ItemColor
+                key={color}
+                itemColor={allColors[color]}
+                selected={activeProduct.color === color}
+              />
+            </button>
           ))}
         </div>
       </div>
@@ -148,17 +143,17 @@ export const MainControls: React.FC<Props> = ({
       <h2>Select capacity</h2>
       <div className={classes.capasitySection}>
         {capasityAvaible.map((cap) => (
-          <div
+          <button
             key={cap}
-            className={classes.capasityContainer}
+            className={cn(classes.capasityContainer, {
+              [classes.selectedCap]: selectedCap === cap,
+            })}
             onClick={() => handleSetCapasity(cap)}
             onKeyDown={(event) => handleKeyDown(event, cap)}
-            role="button"
-            tabIndex={0}
             aria-label={`Select capacity ${cap}`}
           >
             {cap}
-          </div>
+          </button>
         ))}
       </div>
 
@@ -190,6 +185,7 @@ export const MainControls: React.FC<Props> = ({
                 handleAddToFavorite();
               }
             }}
+            aria-label="Add to favourites"
           >
             <Heart checked={hasInFavourites} />
             {/* Heart */}
