@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import classes from './ErrorMessage.module.scss';
-import closeLight from '../../img/icons/Close.svg';
+import closeLight from '../../img/icons/close.svg';
 import closeDark from '../../img/icons/dark/Close.svg';
 import { useThemeLocalStorage } from '../../hooks/useThemeLocalStorage';
 

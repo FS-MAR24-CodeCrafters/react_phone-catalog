@@ -3,7 +3,7 @@ import cn from 'classnames';
 import classes from './CartItem.module.scss';
 import minusIcon from '../../../img/icons/Minus.svg';
 import plusIcon from '../../../img/icons/Plus.svg';
-import closeIcon from '../../../img/icons/Close.svg';
+import closeIcon from '../../../img/icons/close.svg';
 import minusIconDark from '../../../img/icons/dark/Minus.svg';
 import plusIconDark from '../../../img/icons/dark/Plus.svg';
 import closeIconDark from '../../../img/icons/dark/Close.svg';

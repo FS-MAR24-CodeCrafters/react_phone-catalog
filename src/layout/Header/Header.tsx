@@ -15,7 +15,7 @@ import heartLike from '../../img/icons/Heart.svg';
 import shoppingBag from '../../img/icons/Cart.svg';
 import heartLikeDark from '../../img/icons/dark/heart.svg';
 import shoppingBagDark from '../../img/icons/dark/Cart.svg';
-import closeLight from '../../img/icons/Close.svg';
+import closeLight from '../../img/icons/close.svg';
 import closeDark from '../../img/icons/dark/Close.svg';
 import classes from './Header.module.scss';
 import { useThemeLocalStorage } from '../../hooks/useThemeLocalStorage';
