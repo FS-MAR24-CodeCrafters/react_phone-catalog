@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React from 'react';
 import cn from 'classnames';
 import classes from './CartItem.module.scss';
@@ -18,7 +19,7 @@ type Props = {
 
 export const CartItem: React.FC<Props> = ({ phone, updateProducts }) => {
   const {
-    image, id, name, price, fullPrice,
+    image, id, name, price, fullPrice, category, itemId,
   } = phone.name;
 
   const url = `public/${image}`;
@@ -47,12 +48,14 @@ export const CartItem: React.FC<Props> = ({ phone, updateProducts }) => {
         <button className={classes.closeButton} onClick={handleItemDelete}>
           <img src={close} alt="close button" className={classes.button} />
         </button>
-
-        <div className={classes.itemPhotoWrap}>
-          <img src={url} alt={name} className={classes.itemPhoto} />
-        </div>
-
-        <p className={classes.itemTitle}>{name}</p>
+        <Link to={`/${category}/${itemId}`}>
+          <div className={classes.itemPhotoWrap}>
+            <img src={url} alt={name} className={classes.itemPhoto} />
+          </div>
+        </Link>
+        <Link to={`/${category}/${itemId}`}>
+          <p className={classes.itemTitle}>{name}</p>
+        </Link>
       </div>
 
       <div className={classes.itemCounterWrap}>
