@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import cn from 'classnames';
 import { Gadget } from '../../../types/gadget';
@@ -32,6 +32,11 @@ export const MainControls: React.FC<Props> = ({
   const { favourites, updateFavourites } = useFavouriteLocalStorage();
   const { products: cart, updateProducts } = useCartLocalStorage();
 
+  useEffect(() => {
+    setSelectedCap(activeProduct.capacity);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeProduct]);
+
   const navigate = useNavigate();
 
   const hasInFavourites = favourites.some(
@@ -50,7 +55,11 @@ export const MainControls: React.FC<Props> = ({
   const colors = activeProduct.colorsAvailable;
 
   const handleSetColor = (color: string) => {
-    const neededProduct = filteredProducts.find((prod) => prod.id.includes(color));
+    const neededProduct = filteredProducts.find(
+      (prod) => prod.id.includes(color)
+        && selectedCap
+        && prod.id.includes(selectedCap.toLocaleLowerCase()),
+    );
 
     if (neededProduct) {
       navigate(`../${neededProduct.id}`);
@@ -126,6 +135,7 @@ export const MainControls: React.FC<Props> = ({
         <div className={classes.colorsContainer}>
           {colors.map((color) => (
             <button
+              key={color}
               onClick={() => handleSetColor(color)}
               onKeyDown={(event) => handleKeyDown(event, color)}
               aria-label={`Select color ${color}`}
