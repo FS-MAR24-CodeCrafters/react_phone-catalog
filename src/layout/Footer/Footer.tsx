@@ -19,7 +19,7 @@ export function Footer() {
 
       <div className={classes.footer__info}>
         <a href="#" className={classes.link}>Github</a>
-        <a href="#" className={classes.link}>Contacts</a>
+        <Link to='/contacts' className={classes.link}>Contacts</Link>
         <a href="#" className={classes.link}>Rights</a>
       </div>
 

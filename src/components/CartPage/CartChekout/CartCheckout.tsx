@@ -1,15 +1,15 @@
 /* eslint-disable no-param-reassign */
 import { FC } from 'react';
 import classes from './CartCheckout.module.scss';
-import { ActionsName, CartState } from '../../../types/cart/cartState';
-import { UpdateProducts } from '../../../hooks/useCartLocalStorage';
+import { CartState } from '../../../types/cart/cartState';
 
 type Props = {
   products: CartState[];
-  updateProducts: UpdateProducts;
+  setFormOpen: React.Dispatch<React.SetStateAction<boolean>>,
 };
 
-export const CartCheckout: FC<Props> = ({ products, updateProducts }) => {
+export const CartCheckout: FC<Props> = ({ products, setFormOpen }) => {
+  const handleOpenForm = () => setFormOpen(true);
   const { totalQty, totalSum } = products.reduce(
     (count, el) => {
       count.totalSum += el.name.price * el.quantity;
@@ -18,10 +18,6 @@ export const CartCheckout: FC<Props> = ({ products, updateProducts }) => {
       return count;
     },
     { totalSum: 0, totalQty: 0 },
-  );
-
-  const handleClearAll = () => (
-    dispatch({ type: ActionsName.ClearAll })
   );
 
   return (

@@ -1,0 +1,111 @@
+@import "../../styles/utils/mixins.scss";
+@import "../../styles/utils/vars.scss";
+
+.contactsWrap {
+  width: 350px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  background-color: var(--white);
+  // border: 1px solid var(--elements);
+
+  @include on-tablet {
+    width: 600px;
+  }
+
+}
+
+.teammate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 128px;
+  }
+}
+
+.wrap {
+  display: flex;
+  gap: 24px;
+}
+
+.linkWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breakLine {
+  height: 1px;
+  width: 100%;
+  background-color: var(--elements);
+}
+
+.socialTitle {
+  color: var(--secondary);
+}
+
+.contactsTitle {
+  @include h1-styles;
+}
+
+.titleWrap {
+  width: 288px;
+  height: 41px;
+
+  @include on-tablet {
+    width: 592px;
+    height: 56px;
+  }
+
+  @include on-desktop {
+    width: 1136px;
+    height: 56px;
+  }
+}
+
+.contactsAndTitleWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.backWrap {
+  width: 288px;
+
+  @include on-tablet {
+    width: 592px;
+  }
+
+  @include on-desktop {
+    width: 1136px;
+  }
+}
+
+.contactsPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 24px;
+
+  @include on-tablet {
+    row-gap: 24px;
+    padding-top: 24px;
+  }
+}
+
+.name {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+
+  @include on-tablet {
+    justify-content: left;
+  }
+}

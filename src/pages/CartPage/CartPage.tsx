@@ -1,11 +1,12 @@
+import { useState } from 'react';
 import { CartCheckout } from '../../components/CartPage/CartChekout';
 import { CartList } from '../../components/CartPage/CartList';
-import classes from './CartPage.module.scss';
 import { CartEmpty } from '../../components/CartPage/CartEmpy';
 import { CartTitle } from '../../components/CartPage/CartTitle';
 import { useCartLocalStorage } from '../../hooks/useCartLocalStorage';
 import { Back } from '../../components/Back';
 import { CartForm } from '../../components/CartPage/CartForm';
+import classes from './CartPage.module.scss';
 
 export const CartPage = () => {
   const { products, updateProducts } = useCartLocalStorage();
@@ -22,7 +23,10 @@ export const CartPage = () => {
         {products.length ? (
           <div className={classes.contentWrap}>
             <CartList products={products} updateProducts={updateProducts} />
-            <CartCheckout setFormOpen={setFormOpen} products={products} updateProducts={updateProducts} />
+            <CartCheckout
+              setFormOpen={setFormOpen}
+              products={products}
+            />
             {formOpen && <CartForm setFormOpen={setFormOpen} />}
           </div>
         ) : (
