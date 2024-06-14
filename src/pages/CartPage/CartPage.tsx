@@ -23,7 +23,7 @@ export const CartPage = () => {
 
   const { goodsInCart, updateProducts } = useCartLocalStorage();
 
-  if (!loading && !products.length) {
+  if (!loading && !goodsInCart.length) {
     return (
       <CartEmpty />
     );

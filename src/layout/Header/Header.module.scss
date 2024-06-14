@@ -133,9 +133,6 @@ a {
 }
 
 .theme_switcher {
-  display: none;
-
-  @include on-tablet {
-    display: block;
-  }
+  display: flex;
+  padding-right: 16px;
 }

@@ -27,6 +27,7 @@ body {
   --drop-down-list: #fafbfc;
   --item-color-border: #e2e6e9;
   --controls-title: #89939a;
+  --input-bg: #ffffff;
 
   @include on-desktop {
     --headerHeight: 48px;
@@ -53,4 +54,5 @@ body.dark {
   --drop-down-list: #323542;
   --item-color-border: #3b3e4a;
   --controls-title: #75767f;
+  --input-bg: #323542;
 }

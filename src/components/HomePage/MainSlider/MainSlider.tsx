@@ -11,7 +11,7 @@ export const MainSlider = () => {
   const [counter, setCounter] = useState(0);
   const [touchPosition, setTouchPosition] = useState<number | null>(null);
   const [screenWidth] = useResize();
-  const { themeIsDark } = useThemeLocalStorage();
+  const { isThemeDark } = useThemeLocalStorage();
 
   const handleChangeSlide = (index: number) => {
     setCounter(index);
@@ -84,7 +84,7 @@ export const MainSlider = () => {
           <ArrowLeft
             width={9}
             height={5}
-            fill={`${themeIsDark ? '#F1F2F9' : '#313237'}`}
+            fill={`${isThemeDark ? '#F1F2F9' : '#313237'}`}
           />
         </button>
         <div className={classes.slider__main}>
@@ -119,7 +119,7 @@ export const MainSlider = () => {
           <ArrowRight
             width={9}
             height={5}
-            fill={`${themeIsDark ? '#F1F2F9' : '#313237'}`}
+            fill={`${isThemeDark ? '#F1F2F9' : '#313237'}`}
           />
         </button>
       </div>

@@ -7,19 +7,14 @@ import { useCartLocalStorage } from '../../hooks/useCartLocalStorage';
 import { useFavouriteLocalStorage } from '../../hooks/useFavouriteLocalStorage';
 import ThemeSwitcher from '../../ui/ThemeSwitcher/ThemeSwitcher';
 
-import menuLight from '../../img/icons/Menu.svg';
-import menuDark from '../../img/icons/dark/Menu.svg';
-import logoWhite from '../../img/logo.svg';
-import logoDark from '../../img/logo_dark.svg';
-import heartLike from '../../img/icons/Heart.svg';
-import shoppingBag from '../../img/icons/Cart.svg';
-import heartLikeDark from '../../img/icons/dark/heart.svg';
-import shoppingBagDark from '../../img/icons/dark/Cart.svg';
-import closeLight from '../../img/icons/close.svg';
-import closeDark from '../../img/icons/dark/Close.svg';
-import classes from './Header.module.scss';
-import { useThemeLocalStorage } from '../../hooks/useThemeLocalStorage';
 import { links } from '../../constants/navLinks';
+import { CartIcon } from '../../ui/icons/CartIcon';
+import { LogoIcon } from '../../ui/icons/LogoIcon';
+import { HeartIcon } from '../../ui/icons/HeartIcon';
+import { MenuIcon } from '../../ui/icons/MenuIcon';
+import { CloseIcon } from '../../ui/icons/CloseIcon';
+
+import classes from './Header.module.scss';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {
   return classNames(classes.linkContent, { [classes.linkActive]: isActive });
@@ -28,33 +23,31 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => {
 export const Header = () => {
   const { goodsInCart } = useCartLocalStorage();
   const { favourites } = useFavouriteLocalStorage();
-  const { themeIsDark } = useThemeLocalStorage();
 
   const { pathname } = useLocation();
   const [windowWidth] = useResize();
-
-  const heart = themeIsDark ? heartLikeDark : heartLike;
-  const cart = themeIsDark ? shoppingBagDark : shoppingBag;
-  const logo = themeIsDark ? logoDark : logoWhite;
-  const menu = themeIsDark ? menuDark : menuLight;
-  const close = themeIsDark ? closeDark : closeLight;
 
   if (windowWidth < 640) {
     return (
       <header className={`${classes.header}`}>
         <Link to="/" className={classes.link}>
-          <img src={logo} alt="Company logo" className={classes.logo} />
+          <LogoIcon className={classes.logo} />
         </Link>
 
         {pathname === '/menu' && (
-          <Link to=".." className={classes.button_wrapper}>
-            <img src={close} className={`${classes.menu_open}`} alt="back" />
-          </Link>
+          <div className={`${classes.iconContainer}`}>
+            <div className={classes.theme_switcher}>
+              <ThemeSwitcher />
+            </div>
+            <Link to=".." className={classes.button_wrapper}>
+              <CloseIcon className={`${classes.menu_open}`} />
+            </Link>
+          </div>
         )}
 
         {pathname !== '/menu' && (
           <Link to="menu" className={`${classes.button_wrapper}`}>
-            <img src={menu} className={`${classes.menu_open}`} alt="menu" />
+            <MenuIcon className={`${classes.menu_open}`} />
           </Link>
         )}
       </header>
@@ -63,11 +56,8 @@ export const Header = () => {
 
   return (
     <header className={`${classes.header}`}>
-      <div className={classes.theme_switcher}>
-        <ThemeSwitcher />
-      </div>
       <Link to="/" className={classes.link}>
-        <img src={logo} alt="Company logo" className={classes.logo} />
+        <LogoIcon className={classes.logo} />
       </Link>
 
       <div className={`${classes.headerContent}`}>
@@ -84,8 +74,11 @@ export const Header = () => {
         </nav>
 
         <div className={`${classes.iconContainer}`}>
+          <div className={classes.theme_switcher}>
+            <ThemeSwitcher />
+          </div>
           <NavLink to="/favourites" className={`${classes.icon}`}>
-            <img src={heart} alt="Heart like" />
+            <HeartIcon />
             {favourites.length ? (
               <HeaderCounter quantity={favourites.length} />
             ) : (
@@ -93,7 +86,7 @@ export const Header = () => {
             )}
           </NavLink>
           <NavLink to="/cart" className={`${classes.icon}`}>
-            <img src={cart} alt="Company logo" />
+            <CartIcon />
             {goodsInCart.length ? (
               <HeaderCounter quantity={goodsInCart.length} />
             ) : (
