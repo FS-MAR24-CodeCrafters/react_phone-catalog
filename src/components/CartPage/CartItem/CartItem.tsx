@@ -7,19 +7,19 @@ import closeIcon from '../../../img/icons/close.svg';
 import minusIconDark from '../../../img/icons/dark/Minus.svg';
 import plusIconDark from '../../../img/icons/dark/Plus.svg';
 import closeIconDark from '../../../img/icons/dark/Close.svg';
-import { ActionsName, CartState } from '../../../types/cart/cartState';
+import { ActionsName, FilledCartState } from '../../../types/cart/cartState';
 import { UpdateProducts } from '../../../hooks/useCartLocalStorage';
 import { useThemeLocalStorage } from '../../../hooks/useThemeLocalStorage';
 
 type Props = {
-  phone: CartState;
+  phone: FilledCartState;
   updateProducts: UpdateProducts;
 };
 
 export const CartItem: React.FC<Props> = ({ phone, updateProducts }) => {
   const {
-    image, id, name, price, fullPrice,
-  } = phone.name;
+    image, name, price, fullPrice, itemId,
+  } = phone.item;
 
   const url = `public/${image}`;
   const { themeIsDark } = useThemeLocalStorage();
@@ -29,16 +29,16 @@ export const CartItem: React.FC<Props> = ({ phone, updateProducts }) => {
   const close = themeIsDark ? closeIconDark : closeIcon;
 
   const handleItemDelete = () => {
-    updateProducts({ type: ActionsName.Remove, payload: id });
+    updateProducts({ type: ActionsName.Remove, payload: itemId });
     window.dispatchEvent(new Event('storage'));
   };
 
   const handleItemDec = () => {
-    updateProducts({ type: ActionsName.Dec, payload: id });
+    updateProducts({ type: ActionsName.Dec, payload: itemId });
   };
 
   const handleItemInc = () => {
-    updateProducts({ type: ActionsName.Inc, payload: id });
+    updateProducts({ type: ActionsName.Inc, payload: itemId });
   };
 
   return (

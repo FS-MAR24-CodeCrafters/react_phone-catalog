@@ -1,0 +1,172 @@
+@import 'src/styles/utils/mixins.scss';
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+  border-radius: 10px;
+
+  &__photo {
+    height: 100%;
+    width: 40px;
+  }
+
+  &__quantity {
+    height: 60%;
+    width: 10px;
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--elements);
+  }
+
+  100% {
+    background-color: var(--white);
+  }
+}
+
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cartItem {
+  width: 288px;
+  height: 160px;
+
+  padding: 16px;
+  gap: 16px;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--product-card-bg);
+
+  border: 1px solid var(--elements);
+
+  @include on-tablet {
+    width: 592px;
+    height: 128px;
+
+    padding: 24px;
+    gap: 24px;
+
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @include on-desktop {
+    width: 752px;
+  }
+}
+
+.itemContentWrap {
+  width: 256px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+
+  @include on-tablet {
+    width: 480px;
+    gap: 24px;
+  }
+}
+
+.closeButton {
+  width: 16px;
+  height: 16px;
+}
+
+.button {
+  width: 16px;
+  height: 16px;
+}
+
+.itemPhotoWrap {
+  display: flex;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+
+.itemPhoto {
+  width: 66px;
+  height: 66px;
+}
+
+.itemTitle {
+  height: 15px;
+
+  @include on-tablet {
+    width: 176px;
+  }
+
+  @include on-desktop {
+    width: 336px;
+  }
+}
+
+.itemCounterWrap {
+  width: 256px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 100px;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+
+  @include on-desktop {
+    width: 200px;
+    gap: 24px;
+  }
+}
+
+.itemCounter {
+  display: flex;
+  align-items: center;
+}
+
+.minusButton {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.minusButtonActive {
+  border: 1px solid var(--icons);
+}
+
+.minusButtonDisabled {
+  border: 1px solid var(--elements);
+}
+
+.plusButton {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quantityWrap {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemPriceWrap {
+  width: 80px;
+  height: 31px;
+  display: flex;
+  justify-content: right;
+}

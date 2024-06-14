@@ -5,7 +5,7 @@ import classes from './CatalogList.module.scss';
 import { ProductCard } from '../ProductCard';
 import { Product } from '../../types/product';
 import { Pagination } from '../Pagination';
-import { SkeletonProductCard } from '../SkeletonProductCard';
+import { SkeletonProductCard } from '../Skeletons/SkeletonProductCard';
 
 type CatalogListProps = {
   filteredProducts: Product[];

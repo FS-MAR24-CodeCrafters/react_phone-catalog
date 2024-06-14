@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useLocation } from 'react-router-dom';
 import { getGoods } from '../../api/goods';
 import { Gadget } from '../../types/gadget';
@@ -10,14 +11,21 @@ import { About } from '../../components/ItemCardPage/About';
 import { TechSpecs } from '../../components/ItemCardPage/TechSpecs/TechSpecs';
 import { ProductNotFound } from '../../components/ItemCardPage/ProductNotFound';
 import BreadCrumbs from '../../components/BreadCrumbs/BreadCrumbs';
-import { Product } from '../../types/product';
 import { SecondarySlider } from '../../components/Sliders/SecondarySlider';
-import { Skeleton } from '../../components/SkeletonItemCardPage/SkeletonItemCardPage';
+import { Skeleton } from '../../components/Skeletons/SkeletonItemCardPage/SkeletonItemCardPage';
+import { useProductReqHandler } from '../../hooks/useProductReqHandler';
+import { ErrorMessage } from '../../components/ErrorMessage';
+import { ErrorScreen } from '../../components/ErrorScreen';
 
 export const ItemCardPage = () => {
   const [gadgets, setGadgets] = useState<Gadget[]>([]);
-  const [products, setProducts] = useState<Product[]>([]);
   const [activeProduct, setActiveProduct] = useState<Gadget | null>(null);
+  const [gadgetError, setGadgetError] = useState(false);
+  const [gadgetModal, setGadgetModal] = useState(false);
+
+  const {
+    products, openModal, error, setError, setOpenModal,
+  } = useProductReqHandler();
 
   const { pathname } = useLocation();
 
@@ -26,27 +34,47 @@ export const ItemCardPage = () => {
   const productName = locationArr[2];
 
   useEffect(() => {
-    const productReq = getGoods<Product[]>('products.json');
-    const gadget = getGoods<Gadget[]>(`${category}.json`);
+    getGoods<Gadget[]>(`${category}.json`)
+      .then((res) => {
+        setGadgets(res);
 
-    Promise.all([productReq, gadget])
-      .then(([productRes, gadgetRes]) => {
-        setGadgets(gadgetRes);
-        setProducts(productRes);
-
-        const initialProduct = gadgetRes.find((elem) => elem.id === productName);
+        const initialProduct = res.find((elem) => elem.id === productName);
 
         if (initialProduct) {
           setActiveProduct(initialProduct);
         } else {
           setActiveProduct(null);
         }
+      })
+      .catch(() => {
+        setGadgetModal(true);
+        setGadgetError(true);
       });
-  }, [category, productName, pathname]);
+  }, [category, productName, pathname, setError, setOpenModal]);
+
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+
+    if (gadgetModal) {
+      timer = setTimeout(() => {
+        setGadgetModal(false);
+      }, 3000);
+    }
+
+    return () => clearTimeout(timer);
+  }, [gadgetModal]);
 
   const handleSetActiveProduct = (newProduct: Gadget) => {
     setActiveProduct(newProduct);
   };
+
+  if (gadgetError) {
+    return (
+      <div style={{ gridColumn: '1 / -1' }}>
+        <ErrorScreen setError={setGadgetError} />
+      </div>
+    );
+  }
 
   if (!gadgets.length) {
     return <Skeleton />;
@@ -85,8 +113,19 @@ export const ItemCardPage = () => {
         </div>
       </div>
       <div className={`${classes.slider__container} ${classes.mb}`}>
-        <SecondarySlider title="You may also like" products={products} />
+        <SecondarySlider
+          title="You may also like"
+          products={products}
+          error={error}
+          setError={setError}
+        />
       </div>
+
+      {openModal
+        && createPortal(
+          <ErrorMessage setOpenModal={setOpenModal} />,
+          document.body,
+        )}
     </>
   );
 };

@@ -13,7 +13,8 @@ body {
   --main-background: #ffffff;
   --product-card-bg: #ffffff;
   --heart-boarder: #b4bdc3;
-  --active-btn-bg: #e2e6e9;
+  --active-btn-bg: #ffffff;
+  --active-btn-border: #e2e6e9;
   --active-btn-text: #27ae60;
   --button-bg: #313237;
   --heart-hover: #313237;
@@ -42,6 +43,7 @@ body.dark {
   --main-background: #0f1121;
   --active-btn-bg: #323542;
   --active-btn-text: #f1f2f9;
+  --active-btn-border: #0f1121;
   --icons: #4a4d58;
   --box-shadow: #89939a;
   --elements: #3b3e4a;

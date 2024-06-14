@@ -13,7 +13,7 @@ import classes from './BurgerMenu.module.scss';
 import ThemeSwitcher from '../../ui/ThemeSwitcher/ThemeSwitcher';
 
 export const BurgerMenu = () => {
-  const { products } = useCartLocalStorage();
+  const { goodsInCart } = useCartLocalStorage();
   const { favourites: fav } = useFavouriteLocalStorage();
   const { themeIsDark } = useThemeLocalStorage();
   const { pathname } = useLocation();
@@ -67,7 +67,7 @@ export const BurgerMenu = () => {
         </div>
         <div className={classes.marked_good}>
           <img className={classes.img} src={cart} alt="cart" />
-          {cart.length ? <HeaderCounter quantity={products.length} /> : <> </>}
+          {cart.length ? <HeaderCounter quantity={goodsInCart.length} /> : <> </>}
         </div>
       </div>
     </aside>

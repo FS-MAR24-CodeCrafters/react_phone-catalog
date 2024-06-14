@@ -26,6 +26,8 @@ export function Footer() {
         <a
           href="https://github.com/FS-MAR24-CodeCrafters/react_phone-catalog"
           className={classes.link}
+          target="_blank"
+          rel="noreferrer"
         >
           Github
         </a>

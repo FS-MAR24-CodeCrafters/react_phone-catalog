@@ -1,19 +1,19 @@
 /* eslint-disable no-param-reassign */
 import { FC } from 'react';
 import classes from './CartCheckout.module.scss';
-import { ActionsName, CartState } from '../../../types/cart/cartState';
+import { ActionsName, FilledCartState } from '../../../types/cart/cartState';
 import { UpdateProducts } from '../../../hooks/useCartLocalStorage';
 import { Button } from '../../../ui/Buttons';
 
 type Props = {
-  products: CartState[];
+  products: FilledCartState[];
   updateProducts: UpdateProducts;
 };
 
 export const CartCheckout: FC<Props> = ({ products, updateProducts }) => {
   const { totalQty, totalSum } = products.reduce(
     (count, el) => {
-      count.totalSum += el.name.price * el.quantity;
+      count.totalSum += el.item.price * el.quantity;
       count.totalQty += el.quantity;
 
       return count;

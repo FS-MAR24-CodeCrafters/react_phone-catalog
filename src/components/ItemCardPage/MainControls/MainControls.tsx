@@ -30,14 +30,14 @@ export const MainControls: React.FC<Props> = ({
     activeProduct.capacity,
   );
   const { favourites, updateFavourites } = useFavouriteLocalStorage();
-  const { products: cart, updateProducts } = useCartLocalStorage();
+  const { goodsInCart, updateProducts } = useCartLocalStorage();
 
   const navigate = useNavigate();
 
   const hasInFavourites = favourites.some(
     (item) => item.itemId === activeProduct.id,
   );
-  const hasInCart = cart.some((item) => item.name.itemId === activeProduct.id);
+  const hasInCart = goodsInCart.some((item) => item.id === activeProduct.id);
 
   const capasityAvaible = activeProduct.capacityAvailable || [];
   const price = activeProduct.priceDiscount;
@@ -88,12 +88,12 @@ export const MainControls: React.FC<Props> = ({
       if (hasInCart) {
         updateProducts({
           type: ActionsName.Remove,
-          payload: goodForCart.id,
+          payload: goodForCart.itemId,
         });
       } else {
         updateProducts({
           type: ActionsName.Add,
-          payload: { name: goodForCart, quantity: 1 },
+          payload: { id: goodForCart.itemId, quantity: 1 },
         });
       }
     }
@@ -126,6 +126,7 @@ export const MainControls: React.FC<Props> = ({
         <div className={classes.colorsContainer}>
           {colors.map((color) => (
             <button
+              key={color}
               onClick={() => handleSetColor(color)}
               onKeyDown={(event) => handleKeyDown(event, color)}
               aria-label={`Select color ${color}`}

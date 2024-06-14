@@ -26,7 +26,7 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => {
 };
 
 export const Header = () => {
-  const { products } = useCartLocalStorage();
+  const { goodsInCart } = useCartLocalStorage();
   const { favourites } = useFavouriteLocalStorage();
   const { themeIsDark } = useThemeLocalStorage();
 
@@ -94,8 +94,8 @@ export const Header = () => {
           </NavLink>
           <NavLink to="/cart" className={`${classes.icon}`}>
             <img src={cart} alt="Company logo" />
-            {products.length ? (
-              <HeaderCounter quantity={products.length} />
+            {goodsInCart.length ? (
+              <HeaderCounter quantity={goodsInCart.length} />
             ) : (
               <> </>
             )}
