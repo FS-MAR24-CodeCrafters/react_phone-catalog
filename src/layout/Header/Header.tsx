@@ -1,17 +1,25 @@
-import {
-  Link, NavLink, useLocation, useNavigate,
-} from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 
-import logo from '../../img/Logo.png';
-import heartLike from '../../img/icons/Favourites(HeartLike).png';
-import shoppingBag from '../../img/icons/Shopping-bag(Cart).png';
-import classes from './Header.module.scss';
 import { useResize } from '../../hooks/useResize';
 import { HeaderCounter } from './HeaderCounter';
 import { useCartLocalStorage } from '../../hooks/useCartLocalStorage';
 import { useFavouriteLocalStorage } from '../../hooks/useFavouriteLocalStorage';
-import ThemeSwitcher from '../../components/ThemeSwitcher/ThemeSwitcher';
+import ThemeSwitcher from '../../ui/ThemeSwitcher/ThemeSwitcher';
+
+import menuLight from '../../img/icons/Menu.svg';
+import menuDark from '../../img/icons/dark/Menu.svg';
+import logoWhite from '../../img/logo.svg';
+import logoDark from '../../img/logo_dark.svg';
+import heartLike from '../../img/icons/Heart.svg';
+import shoppingBag from '../../img/icons/Cart.svg';
+import heartLikeDark from '../../img/icons/dark/heart.svg';
+import shoppingBagDark from '../../img/icons/dark/Cart.svg';
+import closeLight from '../../img/icons/close.svg';
+import closeDark from '../../img/icons/dark/Close.svg';
+import classes from './Header.module.scss';
+import { useThemeLocalStorage } from '../../hooks/useThemeLocalStorage';
+import { links } from '../../constants/navLinks';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {
   return classNames(classes.linkContent, { [classes.linkActive]: isActive });
@@ -20,43 +28,16 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => {
 export const Header = () => {
   const { products } = useCartLocalStorage();
   const { favourites } = useFavouriteLocalStorage();
+  const { themeIsDark } = useThemeLocalStorage();
 
   const { pathname } = useLocation();
   const [windowWidth] = useResize();
-  const navigate = useNavigate();
 
-  interface HeaderLink {
-    label: string;
-    name: string;
-    link: string;
-  }
-
-  const links: HeaderLink[] = [
-    {
-      label: 'home',
-      name: 'home',
-      link: '/',
-    },
-    {
-      label: 'phones',
-      name: 'phones',
-      link: '/phones',
-    },
-    {
-      label: 'tablets',
-      name: 'tablets',
-      link: '/tablets',
-    },
-    {
-      label: 'accessories',
-      name: 'accessories',
-      link: '/accessories',
-    },
-  ];
-
-  const handleBack = () => {
-    navigate(-1);
-  };
+  const heart = themeIsDark ? heartLikeDark : heartLike;
+  const cart = themeIsDark ? shoppingBagDark : shoppingBag;
+  const logo = themeIsDark ? logoDark : logoWhite;
+  const menu = themeIsDark ? menuDark : menuLight;
+  const close = themeIsDark ? closeDark : closeLight;
 
   if (windowWidth < 640) {
     return (
@@ -66,20 +47,15 @@ export const Header = () => {
         </Link>
 
         {pathname === '/menu' && (
-          <div className={classes.button_wrapper}>
-            {/* <NavLink to="/" className={classes.menu_close} /> */}
-            <button
-              onClick={handleBack}
-              className={classes.menu_close}
-              aria-label="Back to previous position"
-            />
-          </div>
+          <Link to=".." className={classes.button_wrapper}>
+            <img src={close} className={`${classes.menu_open}`} alt="back" />
+          </Link>
         )}
 
         {pathname !== '/menu' && (
-          <div className={classes.button_wrapper}>
-            <NavLink to="menu" className={classes.menu_open} />
-          </div>
+          <Link to="menu" className={`${classes.button_wrapper}`}>
+            <img src={menu} className={`${classes.menu_open}`} alt="menu" />
+          </Link>
         )}
       </header>
     );
@@ -87,7 +63,9 @@ export const Header = () => {
 
   return (
     <header className={`${classes.header}`}>
-      <ThemeSwitcher />
+      <div className={classes.theme_switcher}>
+        <ThemeSwitcher />
+      </div>
       <Link to="/" className={classes.link}>
         <img src={logo} alt="Company logo" className={classes.logo} />
       </Link>
@@ -106,9 +84,8 @@ export const Header = () => {
         </nav>
 
         <div className={`${classes.iconContainer}`}>
-
           <NavLink to="/favourites" className={`${classes.icon}`}>
-            <img src={heartLike} alt="Heart like" />
+            <img src={heart} alt="Heart like" />
             {favourites.length ? (
               <HeaderCounter quantity={favourites.length} />
             ) : (
@@ -116,7 +93,7 @@ export const Header = () => {
             )}
           </NavLink>
           <NavLink to="/cart" className={`${classes.icon}`}>
-            <img src={shoppingBag} alt="Company logo" />
+            <img src={cart} alt="Company logo" />
             {products.length ? (
               <HeaderCounter quantity={products.length} />
             ) : (

@@ -43,8 +43,8 @@ export const HomePage = () => {
 
   const brandNewModels = products.sort((a, b) => b.year - a.year);
 
-  const hotPricesFirst20 = hotPrices.filter((item, i) => i <= 20);
-  const brandNewModels20 = brandNewModels.filter((item, i) => i <= 20);
+  const hotPricesFirst20 = hotPrices.slice(0, 20);
+  const brandNewModels20 = brandNewModels.slice(0, 20);
 
   return (
     <>

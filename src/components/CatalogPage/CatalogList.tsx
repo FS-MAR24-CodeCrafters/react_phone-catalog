@@ -19,8 +19,9 @@ export const CatalogList: FC<CatalogListProps> = ({ filteredProducts }) => {
 
     return (
       <div className={classes.catalog__main}>
-        {arrayOfSkeletons.map((product) => (
-          <div className={classes.catalog__item} key={product.id}>
+        {arrayOfSkeletons.map((product, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <div className={classes.catalog__item} key={`Skeleton ${index}`}>
             {product}
           </div>
         ))}

@@ -2,16 +2,18 @@ import { useEffect, useState } from 'react';
 import { KEY } from '../constants/key';
 import { localStorageService } from '../service/localStorageService';
 
-type ThemeState = boolean | null;
+export type ThemeState = { dark: boolean } | null;
+type ThemeActions = { type: 'themeDark' };
+export type UpdateTheme = (action: ThemeActions) => void;
 
-export const useFavouriteLocalStorage = () => {
-  const { getItem, setItem } = localStorageService<ThemeState>(
-    KEY.theme,
-  );
+export const useThemeLocalStorage = () => {
+  const { getItem, setItem } = localStorageService<ThemeState>(KEY.theme);
   const [dark, setDark] = useState<ThemeState>(null);
 
   const loadProducts = () => {
-    setFavourites(getItem());
+    const theme = getItem();
+
+    setDark(theme);
   };
 
   useEffect(() => {
@@ -24,29 +26,19 @@ export const useFavouriteLocalStorage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const updateFavourites: UpdateFauvorites = (action) => {
+  const updateTheme: UpdateTheme = (action) => {
     const goods = getItem();
-    let newState: FavoutiteState[] = [];
+    let newState: ThemeState;
 
     switch (action.type) {
-      case FavouritesActionsName.Add: {
-        if (goods.some((product) => product.id === action.payload.id)) {
-          newState = goods.filter((product) => {
-            return product.id !== action.payload.id;
-          });
+      case 'themeDark': {
+        if (goods && 'dark' in goods) {
+          newState = null;
 
           break;
         }
 
-        newState = [...goods, action.payload];
-
-        break;
-      }
-
-      case FavouritesActionsName.Remove: {
-        newState = goods.filter((product) => {
-          return product.id !== action.payload.id;
-        });
+        newState = { dark: true };
 
         break;
       }
@@ -56,8 +48,10 @@ export const useFavouriteLocalStorage = () => {
     }
 
     setItem(newState);
-    setFavourites(newState);
+    setDark(newState);
   };
 
-  return { favourites, updateFavourites };
+  const themeIsDark = !!(dark && 'dark' in dark);
+
+  return { themeIsDark, updateTheme };
 };

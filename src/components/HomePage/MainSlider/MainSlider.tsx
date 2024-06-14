@@ -79,7 +79,7 @@ export const MainSlider = () => {
           aria-label="Prev slide"
           onClick={handlePrevSlide}
         >
-          <ArrowLeft width={9} height={5} fill="#313237" />
+          <ArrowLeft width={9} height={5} fill="#F1F2F9" />
         </button>
         <div className={classes.slider__main}>
           <ul className={classes.slider__list}>
@@ -110,7 +110,7 @@ export const MainSlider = () => {
           aria-label="Next slide"
           onClick={handleNextSlide}
         >
-          <ArrowRight width={9} height={5} fill="#313237" />
+          <ArrowRight width={9} height={5} fill="#F1F2F9" />
         </button>
       </div>
       <div className={classes.dots}>
