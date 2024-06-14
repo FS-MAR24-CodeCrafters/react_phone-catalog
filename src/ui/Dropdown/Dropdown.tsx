@@ -79,7 +79,7 @@ export const Dropdown: React.FC<Props> = ({ type }) => {
         className={`${classes.dropdown_menu} ${widthClass} ${isOpen && classes.visible}`}
       >
         {elements.map((item) => (
-          <li key={item}>
+          <li key={item} className={classes.dropdown_item}>
             <button
               onClick={() => handleItemClick(item)}
               className={classes.filterParam}

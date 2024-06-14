@@ -6,4 +6,5 @@ export enum KeyType {
 export const KEY = {
   products: 'products',
   cart: 'cart',
+  theme: 'theme',
 };

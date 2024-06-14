@@ -1,18 +1,17 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
-import cn from 'classnames';
+// import cn from 'classnames';
 
 import classes from './Pagination.module.scss';
 import { Arrow } from '../../ui/Arrow/Arrow';
 import { arrowDir } from '../../types/arrowEnum';
+import { PageNumber } from '../../ui/PageNumber';
 
 type PaginationProps = {
   totalPages: number;
 };
 
-export const Pagination: React.FC<PaginationProps> = ({
-  totalPages,
-}) => {
+export const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const currentPage = +(searchParams.get('page') || '1');
@@ -40,15 +39,12 @@ export const Pagination: React.FC<PaginationProps> = ({
         {/* arrow */}
       </button>
       {pages.map((page) => (
-        <button
+        <PageNumber
+          pageNum={page}
           key={page}
-          className={cn(classes.pagination__button, {
-            [classes.pagination__button_active]: page === currentPage,
-          })}
-          onClick={() => handlePageChange(page)}
-        >
-          {page}
-        </button>
+          selected={page === currentPage}
+          handleClick={handlePageChange}
+        />
       ))}
       <button
         onClick={() => handlePageChange(currentPage + 1)}

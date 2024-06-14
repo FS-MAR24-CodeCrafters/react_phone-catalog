@@ -135,7 +135,7 @@ export const MainControls: React.FC<Props> = ({
   return (
     <div>
       <div className={classes.colorsSection}>
-        <h2>Available colors</h2>
+        <h2 className={classes.controls__title}>Available colors</h2>
         <div className={classes.colorsContainer}>
           {colors.map((color) => (
             <button
@@ -153,7 +153,7 @@ export const MainControls: React.FC<Props> = ({
         </div>
       </div>
 
-      <h2>Select capacity</h2>
+      <h2 className={classes.controls__title}>Select capacity</h2>
       <div className={classes.capasitySection}>
         {capasityAvaible.map((cap) => (
           <button

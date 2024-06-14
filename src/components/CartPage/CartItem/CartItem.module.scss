@@ -1,5 +1,5 @@
-@import "../../../styles/utils/mixins.scss";
-@import "../../../styles/utils/vars.scss";
+@import '../../../styles/utils/mixins.scss';
+@import '../../../styles/utils/vars.scss';
 
 .cartItem {
   width: 288px;
@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: column;
 
-  background-color: var(--white);
+  background-color: var(--product-card-bg);
 
   border: 1px solid var(--elements);
 

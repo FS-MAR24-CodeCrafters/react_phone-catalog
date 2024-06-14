@@ -1,17 +1,19 @@
 .wrapper {
   width: 40px;
   height: 40px;
-  border: 1px solid var(--icons);
+  border: 1px solid var(--heart-boarder);
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  background-color: var(--sm-button-bg);
 
   &:hover {
-    border: 1px solid var(--primary);
+    border: 1px solid var(--heart-hover);
   }
 }
 
 .selected {
   border: 1px solid var(--elements);
+  background-color: transparent;
 }
