@@ -1,16 +1,16 @@
 /* eslint-disable no-param-reassign */
 import { FC } from 'react';
 import classes from './CartCheckout.module.scss';
-import { ActionsName, FilledCartState } from '../../../types/cart/cartState';
-import { UpdateProducts } from '../../../hooks/useCartLocalStorage';
+import { FilledCartState } from '../../../types/cart/cartState';
 import { Button } from '../../../ui/Buttons';
 
 type Props = {
   products: FilledCartState[];
-  updateProducts: UpdateProducts;
+  setFormOpen: React.Dispatch<React.SetStateAction<boolean>>,
 };
 
-export const CartCheckout: FC<Props> = ({ products, updateProducts }) => {
+export const CartCheckout: FC<Props> = ({ products, setFormOpen }) => {
+  const handleOpenForm = () => setFormOpen(true);
   const { totalQty, totalSum } = products.reduce(
     (count, el) => {
       count.totalSum += el.item.price * el.quantity;
@@ -20,11 +20,6 @@ export const CartCheckout: FC<Props> = ({ products, updateProducts }) => {
     },
     { totalSum: 0, totalQty: 0 },
   );
-
-  const handleClearAll = () => {
-    updateProducts({ type: ActionsName.ClearAll });
-    window.dispatchEvent(new Event('storage'));
-  };
 
   return (
     <div className={classes.cartCheckout}>
@@ -36,7 +31,7 @@ export const CartCheckout: FC<Props> = ({ products, updateProducts }) => {
       </div>
       <div className={classes.breakLine} />
 
-      <Button label="Checkout" onClick={handleClearAll} />
+      <Button label="Checkout" onClick={handleOpenForm} />
     </div>
   );
 };

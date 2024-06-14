@@ -31,9 +31,9 @@ export function Footer() {
         >
           Github
         </a>
-        <a href="#" className={classes.link}>
+        <Link to='/contacts' className={classes.link}>
           Contacts
-        </a>
+        </Link>
         <a href="#" className={classes.link}>
           Rights
         </a>

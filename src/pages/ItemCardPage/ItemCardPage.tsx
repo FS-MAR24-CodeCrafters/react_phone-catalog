@@ -16,6 +16,7 @@ import { Skeleton } from '../../components/Skeletons/SkeletonItemCardPage/Skelet
 import { useProductReqHandler } from '../../hooks/useProductReqHandler';
 import { ErrorMessage } from '../../components/ErrorMessage';
 import { ErrorScreen } from '../../components/ErrorScreen';
+import { Product } from '../../types/product';
 
 export const ItemCardPage = () => {
   const [gadgets, setGadgets] = useState<Gadget[]>([]);
@@ -80,6 +81,13 @@ export const ItemCardPage = () => {
     return <Skeleton />;
   }
 
+  const shuffleArray = (array: Product[]) => {
+    return array
+      .map((value) => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value);
+  };
+
   if (!activeProduct) {
     return (
       <>
@@ -90,6 +98,7 @@ export const ItemCardPage = () => {
   }
 
   const goodForCart = products.find((item) => item.itemId === productName) || null;
+  const randomProducts = shuffleArray(products).slice(0, 10);
 
   return (
     <>
@@ -115,7 +124,7 @@ export const ItemCardPage = () => {
       <div className={`${classes.slider__container} ${classes.mb}`}>
         <SecondarySlider
           title="You may also like"
-          products={products}
+          products={randomProducts}
           error={error}
           setError={setError}
         />
