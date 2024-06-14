@@ -19,7 +19,7 @@ type Props = {
 
 export const CartItem: React.FC<Props> = ({ phone, updateProducts }) => {
   const {
-    image, id, name, price, fullPrice,
+    image, id, name, price, fullPrice, category, itemId,
   } = phone.name;
 
   const url = `public/${image}`;

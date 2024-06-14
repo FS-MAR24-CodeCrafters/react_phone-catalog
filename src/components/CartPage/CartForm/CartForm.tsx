@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import classes from './CartForm.module.scss';
-import close from '../../../img/icons/Close.png';
+import close from '../../../img/icons/close.svg';
 import { ActionsName } from '../../../types/cart/cartState';
 import { useCartLocalStorage } from '../../../hooks/useCartLocalStorage';
 

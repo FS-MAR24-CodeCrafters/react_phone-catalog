@@ -36,12 +36,12 @@ export const ContactsPage = () => {
                       <img src={telegram} alt="telegram logo" />
                     </a>
                     <a
-                      href={developer.lindedin}
+                      href={developer.github}
                       className={classes.linkWrap}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img src={github} alt="linkedIn logo" />
+                      <img src={github} alt="gitHub logo" />
                     </a>
                     <a
                       href={developer.lindedin}
@@ -52,12 +52,12 @@ export const ContactsPage = () => {
                       <img src={linkedin} alt="linkedIn logo" />
                     </a>
                     <a
-                      href={developer.lindedin}
+                      href={developer.email}
                       className={classes.linkWrap}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img src={gmail} alt="linkedIn logo" />
+                      <img src={gmail} alt="gMail logo" />
                     </a>
                   </div>
                 </div>
