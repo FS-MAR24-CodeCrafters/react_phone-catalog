@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom';
-import classes from './Footer.module.scss';
-import logo from '../../img/LogoFooter.png';
+import { useThemeLocalStorage } from '../../hooks/useThemeLocalStorage';
 import { Arrow } from '../../ui/Arrow/Arrow';
+import logoWhite from '../../img/logo.svg';
+import logoDark from '../../img/logo_dark.svg';
 import { arrowDir } from '../../types/arrowEnum';
+import classes from './Footer.module.scss';
 
 export function Footer() {
+  const { themeIsDark } = useThemeLocalStorage();
+  const logo = themeIsDark ? logoDark : logoWhite;
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
