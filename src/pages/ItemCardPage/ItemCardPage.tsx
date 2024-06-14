@@ -29,19 +29,18 @@ export const ItemCardPage = () => {
     const productReq = getGoods<Product[]>('products.json');
     const gadget = getGoods<Gadget[]>(`${category}.json`);
 
-    Promise.all([productReq, gadget])
-      .then(([productRes, gadgetRes]) => {
-        setGadgets(gadgetRes);
-        setProducts(productRes);
+    Promise.all([productReq, gadget]).then(([productRes, gadgetRes]) => {
+      setGadgets(gadgetRes);
+      setProducts(productRes);
 
-        const initialProduct = gadgetRes.find((elem) => elem.id === productName);
+      const initialProduct = gadgetRes.find((elem) => elem.id === productName);
 
-        if (initialProduct) {
-          setActiveProduct(initialProduct);
-        } else {
-          setActiveProduct(null);
-        }
-      });
+      if (initialProduct) {
+        setActiveProduct(initialProduct);
+      } else {
+        setActiveProduct(null);
+      }
+    });
   }, [category, productName, pathname]);
 
   const handleSetActiveProduct = (newProduct: Gadget) => {

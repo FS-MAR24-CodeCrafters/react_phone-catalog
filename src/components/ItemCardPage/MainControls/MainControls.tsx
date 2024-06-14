@@ -61,8 +61,6 @@ export const MainControls: React.FC<Props> = ({
         && prod.id.includes(selectedCap.toLocaleLowerCase()),
     );
 
-    window.console.log(selectedCap);
-
     if (neededProduct) {
       navigate(`../${neededProduct.id}`);
       onSetActiveProduct(neededProduct);
@@ -130,8 +128,6 @@ export const MainControls: React.FC<Props> = ({
     window.dispatchEvent(new Event('storage'));
   };
 
-  window.console.log(activeProduct.priceRegular);
-
   return (
     <div>
       <div className={classes.colorsSection}>
@@ -139,6 +135,7 @@ export const MainControls: React.FC<Props> = ({
         <div className={classes.colorsContainer}>
           {colors.map((color) => (
             <button
+              key={color}
               onClick={() => handleSetColor(color)}
               onKeyDown={(event) => handleKeyDown(event, color)}
               aria-label={`Select color ${color}`}

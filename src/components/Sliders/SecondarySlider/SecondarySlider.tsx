@@ -12,8 +12,8 @@ import { ErrorScreen } from '../../ErrorScreen';
 type SecondarySliderProps = {
   title: string;
   products: Product[];
-  error: boolean;
-  setError: React.Dispatch<React.SetStateAction<boolean>>;
+  error?: boolean;
+  setError?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const SLIDES_ON_PAGE = 4;
@@ -67,7 +67,7 @@ export const SecondarySlider: React.FC<SecondarySliderProps> = ({
     }
   }, [products, windowWidth]);
 
-  if (error) {
+  if (error && setError) {
     return (
       <div style={{ gridColumn: '1 / -1' }}>
         <ErrorScreen setError={setError} />
