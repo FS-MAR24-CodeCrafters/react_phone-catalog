@@ -33,7 +33,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const hasInFavourites = favourites.some((item) => item.itemId === itemId);
   const hasInCart = goodsInCart.some((item) => item.id === itemId);
 
-  const imgUrl = `../../../public/${image}`;
+  const imgUrl = `./${image}`;
 
   const formatCapacity = (memory: string): string => {
     return memory.replace(/(\d+)GB/, '$1 GB');

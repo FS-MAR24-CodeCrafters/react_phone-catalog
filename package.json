@@ -1,12 +1,15 @@
 {
   "name": "react_phone_catalog",
+  "homepage": "https://fs-mar24-codecrafters.github.io/react_phone-catalog/",
   "private": true,
   "version": "0.0.0",
   "scripts": {
     "start": "vite --open",
     "lint": "npx eslint ./",
     "build": "tsc && vite build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
+    "clean": "rm -rf dist",
     "preview": "vite preview"
   },
   "dependencies": {

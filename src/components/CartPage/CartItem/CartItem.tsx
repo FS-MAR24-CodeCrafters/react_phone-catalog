@@ -19,7 +19,7 @@ export const CartItem: React.FC<Props> = ({ phone, updateProducts }) => {
     image, name, price, fullPrice, category, itemId,
   } = phone.item;
 
-  const url = `public/${image}`;
+  const url = `./${image}`;
 
   const handleItemDelete = () => {
     updateProducts({ type: ActionsName.Remove, payload: itemId });

@@ -1,4 +1,4 @@
-export const BASE_URL = 'public/api/';
+export const BASE_URL = './api/';
 
 const request = <T>(url: string, method = 'GET'): Promise<T> => {
   const options: RequestInit = {

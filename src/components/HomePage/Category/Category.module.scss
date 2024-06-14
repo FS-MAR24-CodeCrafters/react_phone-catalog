@@ -67,16 +67,16 @@
     }
 
     &_phone {
-      background: center / contain no-repeat url('src/img/category_phones.svg');
+      background: center / contain no-repeat url('/img/category_phones.svg');
     }
 
     &_tablet {
-      background: center / contain no-repeat url('src/img/category_tablets.svg');
+      background: center / contain no-repeat url('/img/category_tablets.svg');
     }
 
     &_accessory {
       background: center / contain no-repeat
-        url('src/img/category_accessories.svg');
+        url('/img/category_accessories.svg');
     }
   }
 

@@ -3,18 +3,18 @@ type Slide = {
   src: {
     tablet: string;
     mobile: string;
-  },
+  };
   link: string;
   alt: string;
   background: string;
-}
+};
 
 export const sliders: Slide[] = [
   {
     id: 1,
     src: {
-      tablet: 'src/img/main-slider/banner-main.png',
-      mobile: 'src/img/main-slider/banner-main-sm.png',
+      tablet: './img/main-slider/banner-main.png',
+      mobile: './img/main-slider/banner-main-sm.png',
     },
     link: 'phones',
     alt: 'Link to Phones page',
@@ -23,8 +23,8 @@ export const sliders: Slide[] = [
   {
     id: 2,
     src: {
-      tablet: 'src/img/main-slider/banner-phones.png',
-      mobile: 'src/img/main-slider/banner-phones.png',
+      tablet: './img/main-slider/banner-phones.png',
+      mobile: './img/main-slider/banner-phones.png',
     },
     link: 'phones',
     alt: 'Link to Phones page',
@@ -33,8 +33,8 @@ export const sliders: Slide[] = [
   {
     id: 3,
     src: {
-      tablet: 'src/img/main-slider/banner-tablets.png',
-      mobile: 'src/img/main-slider/banner-tablets.png',
+      tablet: './img/main-slider/banner-tablets.png',
+      mobile: './img/main-slider/banner-tablets.png',
     },
     link: 'tablets',
     alt: 'Link to Tablets page',
@@ -43,8 +43,8 @@ export const sliders: Slide[] = [
   {
     id: 4,
     src: {
-      tablet: 'src/img/main-slider/banner-accessories.png',
-      mobile: 'src/img/main-slider/banner-accessories.png',
+      tablet: './img/main-slider/banner-accessories.png',
+      mobile: './img/main-slider/banner-accessories.png',
     },
     link: 'accessories',
     alt: 'Link to Accessories page',
