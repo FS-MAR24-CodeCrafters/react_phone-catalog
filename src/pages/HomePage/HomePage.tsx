@@ -1,41 +1,16 @@
-import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { SecondarySlider } from '../../components/Sliders/SecondarySlider';
-import { getGoods } from '../../api/goods';
-import { Product } from '../../types/product';
 
 import classes from './HomePage.module.scss';
 import { Category } from '../../components/HomePage/Category';
 import { MainSlider } from '../../components/HomePage/MainSlider';
 import { ErrorMessage } from '../../components/ErrorMessage';
+import { useProductReqHandler } from '../../hooks/useProductReqHandler';
 
 export const HomePage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [error, setError] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
-
-  useEffect(() => {
-    getGoods<Product[]>('products.json')
-      .then((res) => {
-        setProducts(res);
-      })
-      .catch(() => {
-        setError(true);
-        setOpenModal(true);
-      });
-  }, [error]);
-
-  useEffect(() => {
-    let timer: ReturnType<typeof setTimeout>;
-
-    if (openModal) {
-      timer = setTimeout(() => {
-        setOpenModal(false);
-      }, 3000);
-    }
-
-    return () => clearTimeout(timer);
-  }, [openModal]);
+  const {
+    products, openModal, error, setError, setOpenModal,
+  } = useProductReqHandler();
 
   const hotPrices = products.sort((a, b) => {
     return b.price - a.price;

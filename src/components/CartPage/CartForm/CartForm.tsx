@@ -1,16 +1,20 @@
 import { useEffect, useState } from 'react';
 import classes from './CartForm.module.scss';
-import close from '../../../img/icons/close.svg';
-import { ActionsName } from '../../../types/cart/cartState';
-import { useCartLocalStorage } from '../../../hooks/useCartLocalStorage';
+import { ActionsName, FilledCartState } from '../../../types/cart/cartState';
+import { UpdateProducts } from '../../../hooks/useCartLocalStorage';
+import { CloseIcon } from '../../../ui/icons/CloseIcon';
 
 type Props = {
+  products: FilledCartState[];
   setFormOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
+  updateProducts: UpdateProducts;
+};
 
-export const CartForm: React.FC<Props> = ({ setFormOpen }) => {
-  const { updateProducts } = useCartLocalStorage();
-  const { products } = useCartLocalStorage();
+export const CartForm: React.FC<Props> = ({
+  setFormOpen,
+  products,
+  updateProducts,
+}) => {
   const handleClearAll = () => {
     updateProducts({ type: ActionsName.ClearAll });
     window.dispatchEvent(new Event('storage'));
@@ -46,14 +50,19 @@ export const CartForm: React.FC<Props> = ({ setFormOpen }) => {
     e.preventDefault();
     window.console.log(JSON.stringify({ ...products, formData }, null, 2));
     handleClearAll();
+    setFormOpen(false);
   };
 
   return (
     <div className={classes.container}>
       <div className={classes.formWrap}>
         <div className={classes.closeWrap}>
-          <button className={classes.closeButton} onClick={handleCancelForm}>
-            <img src={close} alt="close button" className={classes.button} />
+          <button
+            className={classes.closeButton}
+            onClick={handleCancelForm}
+            aria-label="Close form"
+          >
+            <CloseIcon className={classes.button} />
           </button>
         </div>
         <form onSubmit={handleSubmit}>
@@ -65,7 +74,7 @@ export const CartForm: React.FC<Props> = ({ setFormOpen }) => {
               className={classes.formInput}
               type="text"
               id="first-name"
-              name='name'
+              name="name"
               placeholder="Enter your name"
               value={formData.name}
               onChange={handleChange}
@@ -80,7 +89,7 @@ export const CartForm: React.FC<Props> = ({ setFormOpen }) => {
               className={classes.formInput}
               type="text"
               id="last-name"
-              name='lastName'
+              name="lastName"
               placeholder="Enter your last name"
               value={formData.lastName}
               onChange={handleChange}
@@ -95,7 +104,7 @@ export const CartForm: React.FC<Props> = ({ setFormOpen }) => {
               className={classes.formInput}
               type="datetime-local"
               id="time"
-              name='deliveryDate'
+              name="deliveryDate"
               value={formData.deliveryDate}
               onChange={handleChange}
               required
@@ -109,17 +118,14 @@ export const CartForm: React.FC<Props> = ({ setFormOpen }) => {
               className={classes.formInput}
               type="text"
               id="address"
-              name='address'
+              name="address"
               placeholder="Enter your address"
               value={formData.address}
               onChange={handleChange}
               required
             />
           </div>
-          <button
-            type="submit"
-            className={classes.submitButton}
-          >
+          <button type="submit" className={classes.submitButton}>
             <p className={classes.submit}>Submit</p>
           </button>
         </form>

@@ -7,7 +7,7 @@ export type UpdateProducts = (action: CartActions) => void;
 
 export const useCartLocalStorage = () => {
   const { getItem, setItem } = localStorageService<CartState[]>(KEY.cart);
-  const [products, setProducts] = useState<CartState[]>([]);
+  const [goodsInCart, setProducts] = useState<CartState[]>([]);
 
   const loadProducts = () => {
     setProducts(getItem());
@@ -30,10 +30,10 @@ export const useCartLocalStorage = () => {
     switch (action.type) {
       case ActionsName.Add: {
         if (
-          goods.some((product) => product.name.id === action.payload.name.id)
+          goods.some((product) => product.id === action.payload.id)
         ) {
           newState = goods.filter((product) => {
-            return product.name.id !== action.payload.name.id;
+            return product.id !== action.payload.id;
           });
 
           break;
@@ -46,7 +46,7 @@ export const useCartLocalStorage = () => {
 
       case ActionsName.Remove: {
         newState = goods.filter((product) => {
-          return product.name.id !== action.payload;
+          return product.id !== action.payload;
         });
 
         break;
@@ -54,7 +54,7 @@ export const useCartLocalStorage = () => {
 
       case ActionsName.Inc: {
         newState = goods.map((product) => {
-          return product.name.id === action.payload
+          return product.id === action.payload
             ? { ...product, quantity: product.quantity + 1 }
             : product;
         });
@@ -64,7 +64,7 @@ export const useCartLocalStorage = () => {
 
       case ActionsName.Dec: {
         newState = goods.map((product) => {
-          return product.name.id === action.payload && product.quantity > 1
+          return product.id === action.payload && product.quantity > 1
             ? { ...product, quantity: product.quantity - 1 }
             : product;
         });
@@ -86,5 +86,5 @@ export const useCartLocalStorage = () => {
     setProducts(newState);
   };
 
-  return { products, updateProducts };
+  return { goodsInCart, updateProducts };
 };

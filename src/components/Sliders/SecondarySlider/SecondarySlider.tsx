@@ -5,7 +5,7 @@ import { arrowDir } from '../../../types/arrowEnum';
 import { Product } from '../../../types/product';
 
 import classes from './SecondarySlider.module.scss';
-import { SkeletonProductCard } from '../../SkeletonProductCard';
+import { SkeletonProductCard } from '../../Skeletons/SkeletonProductCard';
 import { useResize } from '../../../hooks/useResize';
 import { ErrorScreen } from '../../ErrorScreen';
 

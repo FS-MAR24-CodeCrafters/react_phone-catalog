@@ -3,10 +3,10 @@ import classes from './ThemeSwitcher.module.scss';
 import { useThemeLocalStorage } from '../../hooks/useThemeLocalStorage';
 
 const ThemeSwitcher = () => {
-  const { themeIsDark, updateTheme } = useThemeLocalStorage();
+  const { isThemeDark, updateTheme } = useThemeLocalStorage();
 
   useEffect(() => {
-    if (themeIsDark) {
+    if (isThemeDark) {
       document.body.classList.add('dark');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -20,7 +20,7 @@ const ThemeSwitcher = () => {
 
   return (
     <button
-      className={`${classes.theme_switcher} ${themeIsDark && classes.active}`}
+      className={`${classes.theme_switcher} ${isThemeDark && classes.active}`}
       aria-label="Theme switcher"
       onClick={handleThemeSwitcher}
     />

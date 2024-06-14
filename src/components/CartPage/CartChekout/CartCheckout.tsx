@@ -1,11 +1,11 @@
 /* eslint-disable no-param-reassign */
 import { FC } from 'react';
 import classes from './CartCheckout.module.scss';
-import { CartState } from '../../../types/cart/cartState';
+import { FilledCartState } from '../../../types/cart/cartState';
 import { Button } from '../../../ui/Buttons';
 
 type Props = {
-  products: CartState[];
+  products: FilledCartState[];
   setFormOpen: React.Dispatch<React.SetStateAction<boolean>>,
 };
 
@@ -13,7 +13,7 @@ export const CartCheckout: FC<Props> = ({ products, setFormOpen }) => {
   const handleOpenForm = () => setFormOpen(true);
   const { totalQty, totalSum } = products.reduce(
     (count, el) => {
-      count.totalSum += el.name.price * el.quantity;
+      count.totalSum += el.item.price * el.quantity;
       count.totalQty += el.quantity;
 
       return count;

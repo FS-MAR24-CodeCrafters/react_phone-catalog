@@ -1,15 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useThemeLocalStorage } from '../../hooks/useThemeLocalStorage';
 import { Arrow } from '../../ui/Arrow/Arrow';
-import logoWhite from '../../img/logo.svg';
-import logoDark from '../../img/logo_dark.svg';
 import { arrowDir } from '../../types/arrowEnum';
+import { LogoIcon } from '../../ui/icons/LogoIcon';
 import classes from './Footer.module.scss';
 
 export function Footer() {
-  const { themeIsDark } = useThemeLocalStorage();
-  const logo = themeIsDark ? logoDark : logoWhite;
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -18,7 +13,7 @@ export function Footer() {
     <footer className={`${classes.footer}`}>
       <div>
         <Link to="/" className={classes.link}>
-          <img src={logo} alt="logo" className={classes.footer__logo} />
+          <LogoIcon className={classes.footer__logo} />
         </Link>
       </div>
 
@@ -26,10 +21,12 @@ export function Footer() {
         <a
           href="https://github.com/FS-MAR24-CodeCrafters/react_phone-catalog"
           className={classes.link}
+          target="_blank"
+          rel="noreferrer"
         >
           Github
         </a>
-        <Link to='/contacts' className={classes.link}>
+        <Link to="/contacts" className={classes.link}>
           Contacts
         </Link>
         <a href="#" className={classes.link}>

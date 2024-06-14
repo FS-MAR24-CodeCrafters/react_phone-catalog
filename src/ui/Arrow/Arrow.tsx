@@ -14,12 +14,12 @@ type ArrowProps = {
 };
 
 export const Arrow: FC<ArrowProps> = ({ dir, disabled = false }) => {
-  const { themeIsDark } = useThemeLocalStorage();
+  const { isThemeDark } = useThemeLocalStorage();
   let arrowComponent;
 
   let color = disabled ? '#e2e6e9' : '#313237';
 
-  if (themeIsDark) {
+  if (isThemeDark) {
     color = disabled ? '#4A4D58' : '#F1F2F9';
   }
 

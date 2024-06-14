@@ -28,10 +28,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   } = product;
 
   const { favourites, updateFavourites } = useFavouriteLocalStorage();
-  const { products, updateProducts } = useCartLocalStorage();
+  const { goodsInCart, updateProducts } = useCartLocalStorage();
 
   const hasInFavourites = favourites.some((item) => item.itemId === itemId);
-  const hasInCart = products.some((item) => item.name.itemId === itemId);
+  const hasInCart = goodsInCart.some((item) => item.id === itemId);
 
   const imgUrl = `../../../public/${image}`;
 
@@ -47,12 +47,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     if (hasInCart) {
       updateProducts({
         type: ActionsName.Remove,
-        payload: product.id,
+        payload: product.itemId,
       });
     } else {
       updateProducts({
         type: ActionsName.Add,
-        payload: { name: product, quantity: 1 },
+        payload: { id: product.itemId, quantity: 1 },
       });
     }
 

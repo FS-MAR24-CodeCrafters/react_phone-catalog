@@ -51,7 +51,7 @@ export const useThemeLocalStorage = () => {
     setDark(newState);
   };
 
-  const themeIsDark = !!(dark && 'dark' in dark);
+  const isThemeDark = !!(dark && 'dark' in dark);
 
-  return { themeIsDark, updateTheme };
+  return { isThemeDark, updateTheme };
 };

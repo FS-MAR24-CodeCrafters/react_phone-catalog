@@ -10,8 +10,8 @@ type HeartProps = {
 };
 
 export const Heart: React.FC<HeartProps> = ({ checked }) => {
-  const { themeIsDark } = useThemeLocalStorage();
-  const basicHeart = themeIsDark ? heartLikeDark : heartLike;
+  const { isThemeDark } = useThemeLocalStorage();
+  const basicHeart = isThemeDark ? heartLikeDark : heartLike;
 
   return (
     <div className={`${classes.wrapper} ${checked && classes.selected}`}>

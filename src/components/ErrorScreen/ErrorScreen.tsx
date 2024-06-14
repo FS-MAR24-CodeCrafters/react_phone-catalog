@@ -14,7 +14,7 @@ export const ErrorScreen: FC<ErrorScreenProps> = ({ setError }) => {
           <img src={error} alt="Page not found" className={classes.img} />
         </div>
         <p className={classes.title}>Something went wrong message </p>
-        <button onClick={() => setError(false)}> Reload</button>
+        <button className={classes.button} onClick={() => setError(false)}> Reload</button>
       </div>
     </section>
   );

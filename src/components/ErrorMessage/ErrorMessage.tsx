@@ -1,18 +1,12 @@
 import { FC } from 'react';
 import classes from './ErrorMessage.module.scss';
-import closeLight from '../../img/icons/close.svg';
-import closeDark from '../../img/icons/dark/Close.svg';
-import { useThemeLocalStorage } from '../../hooks/useThemeLocalStorage';
+import { CloseIcon } from '../../ui/icons/CloseIcon';
 
 type ErrorMessageProps = {
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const ErrorMessage: FC<ErrorMessageProps> = ({ setOpenModal }) => {
-  const { themeIsDark } = useThemeLocalStorage();
-
-  const close = themeIsDark ? closeDark : closeLight;
-
   return (
     <article className={classes.error}>
       <p className={classes.title}>Message:</p>
@@ -23,7 +17,7 @@ export const ErrorMessage: FC<ErrorMessageProps> = ({ setOpenModal }) => {
         aria-label="Close Button"
         onClick={() => setOpenModal(false)}
       >
-        <img className={classes.img} src={close} alt="Close button" />
+        <CloseIcon className={classes.img} />
       </button>
     </article>
   );

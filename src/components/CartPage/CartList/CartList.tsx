@@ -2,10 +2,10 @@ import { FC } from 'react';
 import classes from './CartList.module.scss';
 import { CartItem } from '../CartItem';
 import { UpdateProducts } from '../../../hooks/useCartLocalStorage';
-import { CartState } from '../../../types/cart/cartState';
+import { FilledCartState } from '../../../types/cart/cartState';
 
 type Props = {
-  products: CartState[];
+  products: FilledCartState[];
   updateProducts: UpdateProducts;
 };
 
@@ -14,7 +14,7 @@ export const CartList: FC<Props> = ({ products, updateProducts }) => {
     <div className={classes.cartList}>
       {products.map((product) => (
         <CartItem
-          key={product.name.id}
+          key={product.item.id}
           phone={product}
           updateProducts={updateProducts}
         />

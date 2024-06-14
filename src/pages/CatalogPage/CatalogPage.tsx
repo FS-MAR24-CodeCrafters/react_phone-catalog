@@ -1,23 +1,20 @@
 import { useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { CatalogList } from '../../components/CatalogPage';
 import { PageHeader } from '../../components/PageHeader';
 import { Dropdown } from '../../ui/Dropdown';
-import { Product } from '../../types/product';
-import { getGoods } from '../../api/goods';
 import classes from './CatalogPage.module.scss';
+import { useProductReqHandler } from '../../hooks/useProductReqHandler';
+import { ErrorMessage } from '../../components/ErrorMessage';
+import { ErrorScreen } from '../../components/ErrorScreen';
+import { NoGoodsScreen } from '../../components/NoGoodsSrcreen';
 
 export const CatalogPage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-
+  const {
+    loading, products, openModal, error, setError, setOpenModal,
+  } = useProductReqHandler();
   const { pathname } = useLocation();
   const path = pathname.slice(1);
-
-  useEffect(() => {
-    getGoods<Product[]>('products.json').then((res) => {
-      setProducts(res);
-    });
-  }, []);
 
   const filteredProducts = products.filter((product) => {
     return product.category === path;
@@ -29,11 +26,33 @@ export const CatalogPage = () => {
     pageTitle = 'Mobile phones';
   }
 
+  if (error) {
+    return (
+      <div style={{ gridColumn: '1 / -1' }}>
+        <ErrorScreen setError={setError} />
+      </div>
+    );
+  }
+
+  if (!loading && !filteredProducts.length) {
+    return (
+      <div className={classes.catalog__container}>
+        <div className={classes.catalog__header}>
+          <PageHeader title={pageTitle} totalModels={filteredProducts.length} />
+        </div>
+        <div style={{ gridColumn: '1 / -1' }}>
+          <NoGoodsScreen title="There are no goods in this category" />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={classes.catalog__container}>
       <div className={classes.catalog__header}>
         <PageHeader title={pageTitle} totalModels={filteredProducts.length} />
       </div>
+
       <div className={classes.catalog__dropdown}>
         <div className={classes.catalog__dropdown_sort}>
           <Dropdown type="sort" />
@@ -42,7 +61,13 @@ export const CatalogPage = () => {
           <Dropdown type="perPage" />
         </div>
       </div>
-      <CatalogList filteredProducts={filteredProducts} />
+      <CatalogList filteredProducts={filteredProducts} loading={loading} />
+
+      {openModal
+        && createPortal(
+          <ErrorMessage setOpenModal={setOpenModal} />,
+          document.body,
+        )}
     </div>
   );
 };

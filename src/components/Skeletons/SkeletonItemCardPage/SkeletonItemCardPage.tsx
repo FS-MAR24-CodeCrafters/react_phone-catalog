@@ -1,11 +1,11 @@
 import classes from './SkeletonItemCard.module.scss';
 
 import { SkeletonPhotosBlock } from './SkeletonPhotoBlock/SkeletonPhotosBlock';
-import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
+import BreadCrumbs from '../../BreadCrumbs/BreadCrumbs';
 import { SkeletonMainControls } from './SkeletonMainContros/SkeletonMainControls';
 import { SkeletonAbout } from './SkeletonAbout/SkeletonAbout';
 import { SkeletonTechSpecs } from './SkeletonTechSpecs/SkeletonTechSpecs';
-import { SecondarySlider } from '../Sliders/SecondarySlider';
+import { SecondarySlider } from '../../Sliders/SecondarySlider';
 
 export const Skeleton = () => {
   return (

@@ -1,52 +1,44 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import cn from 'classnames';
-import classes from './CartItem.module.scss';
-import minusIcon from '../../../img/icons/Minus.svg';
-import plusIcon from '../../../img/icons/Plus.svg';
-import closeIcon from '../../../img/icons/close.svg';
-import minusIconDark from '../../../img/icons/dark/Minus.svg';
-import plusIconDark from '../../../img/icons/dark/Plus.svg';
-import closeIconDark from '../../../img/icons/dark/Close.svg';
-import { ActionsName, CartState } from '../../../types/cart/cartState';
+import { ActionsName, FilledCartState } from '../../../types/cart/cartState';
 import { UpdateProducts } from '../../../hooks/useCartLocalStorage';
-import { useThemeLocalStorage } from '../../../hooks/useThemeLocalStorage';
+import { PlusIcon } from '../../../ui/icons/PlusIcon';
+import { MinusIcon } from '../../../ui/icons/MinusIcon';
+
+import classes from './CartItem.module.scss';
+import { CloseIcon } from '../../../ui/icons/CloseIcon';
 
 type Props = {
-  phone: CartState;
+  phone: FilledCartState;
   updateProducts: UpdateProducts;
 };
 
 export const CartItem: React.FC<Props> = ({ phone, updateProducts }) => {
   const {
-    image, id, name, price, fullPrice, category, itemId,
-  } = phone.name;
+    image, name, price, fullPrice, category, itemId,
+  } = phone.item;
 
   const url = `public/${image}`;
-  const { themeIsDark } = useThemeLocalStorage();
-
-  const plus = themeIsDark ? plusIconDark : plusIcon;
-  const minus = themeIsDark ? minusIconDark : minusIcon;
-  const close = themeIsDark ? closeIconDark : closeIcon;
 
   const handleItemDelete = () => {
-    updateProducts({ type: ActionsName.Remove, payload: id });
+    updateProducts({ type: ActionsName.Remove, payload: itemId });
     window.dispatchEvent(new Event('storage'));
   };
 
   const handleItemDec = () => {
-    updateProducts({ type: ActionsName.Dec, payload: id });
+    updateProducts({ type: ActionsName.Dec, payload: itemId });
   };
 
   const handleItemInc = () => {
-    updateProducts({ type: ActionsName.Inc, payload: id });
+    updateProducts({ type: ActionsName.Inc, payload: itemId });
   };
 
   return (
     <article className={classes.cartItem}>
       <div className={classes.itemContentWrap}>
-        <button className={classes.closeButton} onClick={handleItemDelete}>
-          <img src={close} alt="close button" className={classes.button} />
+        <button className={classes.closeButton} onClick={handleItemDelete} aria-label='Delete good from cart'>
+          <CloseIcon className={classes.button} />
         </button>
         <Link to={`/${category}/${itemId}`}>
           <div className={classes.itemPhotoWrap}>
@@ -68,16 +60,21 @@ export const CartItem: React.FC<Props> = ({ phone, updateProducts }) => {
                 : classes.minusButtonDisabled,
             )}
             onClick={handleItemDec}
+            aria-label="Decrease quantity"
           >
-            <img src={minus} alt="minus button" className={classes.button} />
+            <MinusIcon className={classes.button} />
           </button>
 
           <div className={classes.quantityWrap}>
             <p className={classes.quantity}>{phone.quantity}</p>
           </div>
 
-          <button className={classes.plusButton} onClick={handleItemInc}>
-            <img src={plus} alt="plus button" className={classes.button} />
+          <button
+            className={classes.plusButton}
+            onClick={handleItemInc}
+            aria-label="Increase quantity"
+          >
+            <PlusIcon className={classes.button} />
           </button>
         </div>
 
