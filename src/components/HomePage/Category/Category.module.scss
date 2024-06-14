@@ -1,0 +1,90 @@
+@import 'src/styles/utils/mixins.scss';
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+  border-radius: 10px;
+}
+
+.skeleton__description {
+  margin-top: 4px;
+  width: 90px;
+  height: 17px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--elements);
+  }
+
+  100% {
+    background-color: var(--white);
+  }
+}
+
+.category {
+  &__title_wrapper {
+    @include grid-container;
+    justify-content: center;
+  }
+
+  &__title {
+    @include h2-styles;
+    grid-column: 1 / -1;
+    margin-bottom: 24px;
+  }
+
+  &__wrapper {
+    @include grid-container;
+    justify-content: center;
+    row-gap: 32px;
+  }
+
+  &__card {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 288px;
+    margin-bottom: 24px;
+    @include hover(transform, scale(1.05));
+
+    @include on-tablet {
+      height: 187px;
+    }
+
+    @include on-desktop {
+      height: 368px;
+    }
+
+    &_phone {
+      background: center / contain no-repeat url('src/img/category_phones.svg');
+    }
+
+    &_tablet {
+      background: center / contain no-repeat url('src/img/category_tablets.svg');
+    }
+
+    &_accessory {
+      background: center / contain no-repeat
+        url('src/img/category_accessories.svg');
+    }
+  }
+
+  &__description_title {
+    @include h4-styles;
+  }
+
+  &__qty {
+    color: var(--secondary);
+  }
+}

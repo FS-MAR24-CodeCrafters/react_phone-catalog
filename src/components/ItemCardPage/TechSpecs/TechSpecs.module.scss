@@ -1,0 +1,38 @@
+@import '../../../styles/utils/mixins.scss'; 
+
+.characteristicsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.techSpecsAbout {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  
+  @include on-desktop {
+    width: 512px;
+  }
+}
+
+.techSpecs {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.line {
+  height: 42px;
+  border-bottom: 1px solid var(--elements);
+}
+
+.techSpecsName {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--secondary);
+}
+
+.techSpecsValue {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--primary);
+}

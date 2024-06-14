@@ -1,0 +1,52 @@
+@import '../../styles/utils/mixins.scss';
+
+.hidden {
+  opacity: 0;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+}
+
+.title__container {
+  @include grid-container;
+  justify-content: center;
+}
+
+.title {
+  @include h1-styles;
+  grid-column: 1 / -1;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    grid-column: 1 / span 9;
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / -1;
+    margin-bottom: 80px;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.slider__container {
+  @include on-desktop {
+    @include grid-container;
+    justify-content: center;
+  }
+}
+
+.mb {
+  margin-bottom: 56px;
+
+  @include on-desktop {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}

@@ -1,0 +1,138 @@
+@import '../../styles/utils/mixins.scss';
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--elements);
+  height: 48px;
+  width: 100%;
+  padding-left: 16px;
+
+  @include on-tablet {
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    gap: 24px;
+    height: 64px;
+    padding-left: 24px;
+  }
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 96px;
+  height: 48px;
+}
+
+.logo {
+  width: 64px;
+  height: 20px;
+
+  @include on-tablet {
+    width: 80px;
+    height: 26px;
+  }
+
+  @include on-desktop {
+    height: 28px;
+  }
+}
+
+.button_wrapper {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-left: 1px solid var(--elements);
+}
+
+.menu_open {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.linksContainer {
+  display: flex;
+  gap: 32px;
+  height: 100%;
+  align-items: center;
+
+  @media (min-width: 1200px) {
+    gap: 64px;
+  }
+}
+
+.headerContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  width: 48px;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid var(--elements);
+  border-bottom: none;
+
+  @media (min-width: 1200px) {
+    width: 64px;
+  }
+
+  &:hover {
+    box-shadow: 0px 3px 13px var(--box-shadow);
+  }
+}
+
+.iconContainer {
+  display: flex;
+}
+
+.linkContent {
+  color: var(--secondary);
+  font-size: 12px;
+
+  &:hover {
+    color: var(--primary);
+  }
+}
+
+.linkActive {
+  position: relative;
+  font-weight: 800;
+  color: var(--primary);
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -14px;
+    height: 3px;
+    background-color: var(--primary);
+
+    @media (min-width: 1200px) {
+      bottom: -22px;
+    }
+  }
+}
+
+.theme_switcher {
+  display: flex;
+  padding-right: 16px;
+}

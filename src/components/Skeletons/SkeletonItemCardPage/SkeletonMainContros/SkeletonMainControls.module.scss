@@ -1,0 +1,128 @@
+@import 'src/styles/utils/mixins.scss';
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+  border-radius: 10px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--elements);
+  }
+
+  100% {
+    background-color: var(--white);
+  }
+}
+
+.text {
+  width: 200px;
+  height: 21px;
+}
+
+.textPrice {
+  width: 130px;
+  height: 31px;
+}
+
+.textOptions {
+  width: 100px;
+  height: 19px;
+}
+
+.circleColor {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.capasityButton {
+  width: 56px;
+  height: 32px;
+}
+
+.addToCartButton {
+  width: 240px;
+  height: 40px;
+}
+
+.heartButton {
+  width: 40px;
+  height: 40px;
+}
+
+.colorsSection {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+  
+  flex-direction: column;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+}
+
+.colorsContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.colorCircle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.capasitySection {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+  
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+}
+
+.capasityContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 56px;
+  height: 32px;
+}
+
+.product__price {
+  display: flex;
+  gap: 8px;
+}
+
+.actionBlock {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.buttonContainer {
+  display: flex;
+  width: 288px;
+  height: 48px;
+  align-items: center;
+  gap: 8px;
+
+  @include on-tablet {
+    width: 237px;
+  }
+
+  @include on-desktop {
+    width: 320px;
+  }
+}
+
+.characteristicsContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+  
+}

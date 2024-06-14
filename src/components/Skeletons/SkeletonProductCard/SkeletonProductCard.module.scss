@@ -1,0 +1,127 @@
+@import 'src/styles/utils/mixins';
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+  border-radius: 10px;
+}
+
+.skeleton__text_title {
+  width: 100%;
+  height: 15px;
+  margin-bottom: 6px;
+
+  &:last-child {
+    margin-bottom: 0;
+    width: 80%;
+  }
+}
+
+.skeleton__num_price {
+  width: 61px;
+  height: 28px;
+  margin-top: 3px;
+
+  @include on-tablet {
+    margin-top: 6px;
+  }
+}
+
+.skeleton__description {
+  width: 70px;
+  height: 15px;
+}
+
+.skeleton__button {
+  flex: 1;
+  width: 100%;
+  height: 40px;
+}
+
+.skeleton__heart {
+  width: 40px;
+  height: 40px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--elements);
+  }
+
+  100% {
+    background-color: var(--white);
+  }
+}
+
+.product {
+  &__card {
+    border: 1px solid var(--elements);
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+
+    width: 100%;
+    padding: 31px;
+
+    &_link {
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  &__img_container {
+    height: 132px;
+    width: 100%;
+    border-radius: 10px;
+
+    @include on-tablet {
+      height: 203px;
+    }
+
+    @include on-desktop {
+      height: 196px;
+    }
+  }
+
+  &__title {
+    padding-top: 16px;
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.breackLine {
+  height: 1px;
+  width: 100%;
+  background-color: var(--elements);
+}
+
+.paddingTop {
+  padding-top: 7px;
+}
+
+.paddingBotton {
+  padding-bottom: 38px;
+
+  @include on-desktop {
+    padding-bottom: 13px;
+  }
+}
+
+.actionBlock {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}

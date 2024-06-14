@@ -4,10 +4,9 @@ module.exports = {
     es2021: true,
   },
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
+    ecmaFeatures: { jsx: true },
     ecmaVersion: 6,
+    project: './tsconfig.json',
     sourceType: 'module',
   },
   ignorePatterns: ['generated.ts', 'next.config.js'],
@@ -39,9 +38,7 @@ module.exports = {
       'error',
       {
         components: ['Label'],
-        required: {
-          some: ['id', 'nesting'],
-        },
+        required: { some: ['id', 'nesting'] },
         allowChildren: true,
       },
     ],
@@ -49,20 +46,35 @@ module.exports = {
     'prefer-const': 'error',
     curly: ['error', 'all'],
     'no-redeclare': ['error', { builtinGlobals: true }],
-    'operator-linebreak': ['error', 'before'],
     'brace-style': ['error', '1tbs'],
     'no-param-reassign': ['error', { props: true }],
     'padding-line-between-statements': [
       'error',
-      { blankLine: 'always', prev: '*', next: 'return' },
-      { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
+      {
+        blankLine: 'always',
+        prev: '*',
+        next: 'return',
+      },
+      {
+        blankLine: 'always',
+        prev: ['const', 'let', 'var'],
+        next: '*',
+      },
       {
         blankLine: 'any',
         prev: ['const', 'let', 'var'],
         next: ['const', 'let', 'var'],
       },
-      { blankLine: 'always', prev: 'directive', next: '*' },
-      { blankLine: 'always', prev: 'block-like', next: '*' },
+      {
+        blankLine: 'always',
+        prev: 'directive',
+        next: '*',
+      },
+      {
+        blankLine: 'always',
+        prev: 'block-like',
+        next: '*',
+      },
     ],
     'no-underscore-dangle': ['error', { allow: ['__resolveType'] }],
     'no-useless-constructor': 'off',
@@ -117,6 +129,13 @@ module.exports = {
     '@typescript-eslint/ban-types': 'off',
     'no-use-before-define': ['error', { functions: false }],
     'default-case': 'off',
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: ['arrow-function', 'function-declaration'],
+        unnamedComponents: 'arrow-function',
+      },
+    ],
   },
   settings: {
     'import/resolver': {

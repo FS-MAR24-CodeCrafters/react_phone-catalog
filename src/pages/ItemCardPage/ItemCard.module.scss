@@ -1,0 +1,92 @@
+@import '../../styles/utils/mixins.scss';
+
+.breadCrumbsContainer {
+  margin-bottom: -32px;
+}
+
+.header1 {
+  font-weight: 800;
+  font-size: 22px;
+  margin-bottom: -24px;
+
+  @include on-tablet {
+    max-width: 592px;
+    font-size: 32px;
+    margin-bottom: -16px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+  }
+}
+
+.characteristicsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-items: center;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @include on-desktop {
+    width: 1207px;
+    gap: 64px;
+    justify-items: start;
+    justify-content: start;
+    gap: 64px;
+  }
+}
+
+.aboutSection {
+  display: flex;
+  flex-direction: column;
+  max-width: 288px;
+  gap: 40px;
+
+  @include on-tablet {
+    max-width: 592px;
+    gap: 32px;
+  }
+
+  @include on-desktop {
+    flex-direction: row;
+    min-width: 1207px;
+    gap: 64px;
+  }
+}
+
+.techSpecsSection {
+  display: flex;
+  flex-direction: column;
+  max-width: 288px;
+  gap: 40px;
+}
+
+.textSection {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  margin: 0 auto 80px;
+  justify-items: center;
+  justify-content: center;
+
+  max-width: 288px;
+
+  @include on-tablet {
+    max-width: 592px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+  }
+}
+
+.slider__container {
+  @include on-desktop {
+    @include grid-container;
+    justify-content: center;
+  }
+}

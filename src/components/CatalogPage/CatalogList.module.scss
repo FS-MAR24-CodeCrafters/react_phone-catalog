@@ -1,0 +1,17 @@
+@import '../../styles/utils/mixins';
+
+.catalog {
+  &__main {
+    @include grid-container;
+    justify-content: center;
+  }
+
+  &__item {
+    width: 100%;
+    grid-column: 1/-1;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+  }
+}

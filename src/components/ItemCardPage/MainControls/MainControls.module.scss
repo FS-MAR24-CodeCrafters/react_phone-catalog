@@ -1,0 +1,110 @@
+@import '../../../styles/utils/mixins.scss';
+
+.colorsSection {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+
+  flex-direction: column;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--icons);
+}
+
+.colorsContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.colorCircle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #000;
+}
+
+.capasitySection {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--icons);
+}
+
+.capasityContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  size: 14px;
+  font-weight: 500;
+
+  width: 56px;
+  height: 32px;
+  border: 1px solid var(--icons);
+  color: var(--primary);
+}
+
+.controls__title {
+  @include small-text;
+  color: var(--controls-title);
+  margin-bottom: 8px;
+}
+
+.product__price {
+  display: flex;
+  gap: 8px;
+
+  &_curr {
+    font-size: 22px;
+    line-height: 30.8px;
+    font-weight: 800;
+  }
+
+  &_disc {
+    color: var(--secondary);
+    font-weight: 400;
+    text-decoration: line-through;
+  }
+}
+
+.actionBlock {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.buttonContainer {
+  display: flex;
+  width: 288px;
+  height: 48px;
+  align-items: center;
+  gap: 8px;
+
+  @include on-tablet {
+    width: 237px;
+  }
+
+  @include on-desktop {
+    width: 320px;
+  }
+}
+
+.characteristicsContainer {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--secondary);
+}
+
+.primaryText {
+  color: var(--primary);
+}
+
+.selectedCap {
+  background-color: var(--primary);
+  color: var(--main-background);
+}

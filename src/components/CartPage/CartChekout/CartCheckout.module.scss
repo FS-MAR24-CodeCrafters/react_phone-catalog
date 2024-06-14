@@ -1,0 +1,69 @@
+@import "../../../styles/utils/mixins.scss";
+@import "../../../styles/utils/vars.scss";
+
+.cartCheckout {
+  position: sticky;
+  top: 176px;
+  width: 288px;
+  height: 190px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid var(--elements);
+
+  @include on-tablet {
+    width: 592px;
+    gap: 12px;
+  }
+
+  @include on-desktop {
+    width: 368px;
+    height: 206px;
+    gap: 24px;
+  }
+
+  @include hover(box-shadow, 0 2px 4px 0 var(--elements));
+}
+
+.cartPrice {
+  width: 240px;
+  height: 62px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.price {
+  @include h2-styles;
+}
+
+.totalItems {
+  color: var(--secondary);
+}
+
+.breakLine {
+  height: 1px;
+  width: 100%;
+  background-color: var(--elements);
+}
+
+.checkoutButton {
+  width: 240px;
+  height: 48px;
+  background-color: var(--primary);
+
+  @include on-tablet {
+    width: 544px;
+  }
+
+  @include on-desktop {
+    width: 320px;
+  }
+}
+
+.checkout {
+  color: var(--white);
+}

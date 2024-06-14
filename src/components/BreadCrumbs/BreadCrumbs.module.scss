@@ -1,0 +1,46 @@
+@import '../../styles/utils/mixins.scss';
+
+.path {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 15px;
+  max-height: 16px;
+}
+
+.path_item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.home_img {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.path_value {
+  font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
+  color: var(--secondary);
+}
+
+.item_bold {
+  font-weight: 600;
+}
+
+.value_width {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  @include on-tablet {
+    overflow: visible;
+  }
+}
+
+.link {
+  display: flex;
+}

@@ -1,0 +1,23 @@
+.button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--icons);
+  background-color: var(--sm-button-bg);
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--primary);
+  }
+}
+
+.disabled {
+  border-color: var(--elements);
+  cursor: default;
+
+  &:hover {
+    border-color: var(--elements);
+  }
+}

@@ -1,0 +1,79 @@
+@import '../../styles/utils/mixins.scss';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  // height: 257px;
+  align-items: left;
+  gap: 32px;
+  padding: 32px 16px;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid var(--elements);
+  margin-top: 56px;
+  
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary);
+
+    font-weight: 700;
+    height: 32px;
+  }
+
+  @include on-tablet {
+    flex-direction: row;
+    height: 96px;
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 81px;
+  }
+}
+
+.link {
+  display: flex;
+}
+.footer__logo {
+  height: 32px;
+  width: 90px;
+}
+
+.footer__info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: left;
+  text-transform: uppercase;
+  color: var(--secondary);
+  size: 12px;
+  font-weight: 700;
+  
+  @include on-tablet {
+    flex-direction: row;
+    gap: 7vw;
+  }  
+}
+
+.link {
+  display: flex;
+  line-height: 37px;
+}
+
+
+
+.button_back {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--icons);
+  margin-left: 16px;
+  
+}
+
+.span {
+  margin-right: 16px;
+}

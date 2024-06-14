@@ -1,0 +1,21 @@
+.button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--icons);
+  background-color: var(--main-background);
+  color: var(--primary);
+  cursor: pointer;
+
+  &__selected {
+    border-color: transparent;
+    color: var(--white);
+    background-color: var(--button-bg);
+  }
+
+  &:hover {
+    border-color: var(--primary);
+  }
+}

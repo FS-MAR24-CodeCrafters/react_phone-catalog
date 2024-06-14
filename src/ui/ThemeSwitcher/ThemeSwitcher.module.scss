@@ -1,0 +1,31 @@
+@import '../../styles/utils/mixins.scss';
+
+.theme_switcher {
+  width: 30px;
+  background-color: var(--primary);
+  border-radius: 20px;
+  padding: 5px;
+  cursor: pointer;
+  align-self: center;
+
+  @include on-tablet {
+    width: 35px;
+  }
+
+  @include on-desktop {
+    width: 45px;
+  }
+}
+
+.theme_switcher::after {
+  content: '';
+  display: block;
+  width: 50%;
+  padding-bottom: 50%;
+  border-radius: 50%;
+  background-color: var(--main-background);
+}
+
+.active::after {
+  transform: translateX(100%);
+}

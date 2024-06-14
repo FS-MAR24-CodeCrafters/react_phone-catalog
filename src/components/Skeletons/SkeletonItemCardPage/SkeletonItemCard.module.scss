@@ -1,0 +1,113 @@
+@import 'src/styles/utils/mixins.scss';
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+  border-radius: 10px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--elements);
+  }
+
+  100% {
+    background-color: var(--white);
+  }
+}
+
+.skeleton__photo {
+  width: 350px;
+  height: 100%;
+}
+
+.breadCrumbsContainer {
+  margin-bottom: -32px;
+}
+
+.header1 {
+  width: 288px;
+  height: 42px;
+  margin-bottom: -24px;
+
+  @include on-tablet {
+    max-width: 592px;
+    height: 31px;
+    width: 500px;
+    margin-bottom: -20px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+  }
+}
+
+.characteristicsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-items: center;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @include on-desktop {
+    width: 1207px;
+    gap: 64px;
+    justify-items: start;
+    justify-content: start;
+    gap: 64px;
+  }
+}
+
+.aboutSection {
+  display: flex;
+  flex-direction: column;
+  max-width: 288px;
+  gap: 40px;
+
+  @include on-tablet {
+    max-width: 592px;
+    gap: 32px;
+  }
+
+  @include on-desktop {
+    flex-direction: row;
+    min-width: 1207px;
+    gap: 64px;
+  }
+}
+
+.techSpecsSection {
+  display: flex;
+  flex-direction: column;
+  max-width: 288px;
+  gap: 40px;
+}
+
+.textSection {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  margin: 0 auto 80px;
+  justify-items: center;
+  justify-content: center;
+
+  max-width: 288px;
+
+  @include on-tablet {
+    max-width: 592px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+  }
+}
+
+.slider__container {
+  @include on-desktop {
+    @include grid-container;
+    justify-content: center;
+  }
+}
