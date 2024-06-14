@@ -28,7 +28,6 @@ export function Footer() {
         <button onClick={scrollToTop} aria-label="Back to top">
           <Arrow dir={arrowDir.up} />
         </button>
-        {/* <button className={classes.button_back} aria-label="Back to top" /> */}
       </div>
     </footer>
   );

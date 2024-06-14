@@ -48,6 +48,13 @@ export const ItemCardPage = () => {
     setActiveProduct(newProduct);
   };
 
+  const shuffleArray = (array: Product[]) => {
+    return array
+      .map((value) => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value);
+  };
+
   if (!gadgets.length) {
     return <Skeleton />;
   }
@@ -62,6 +69,7 @@ export const ItemCardPage = () => {
   }
 
   const goodForCart = products.find((item) => item.itemId === productName) || null;
+  const randomProducts = shuffleArray(products).slice(0, 10);
 
   return (
     <>
@@ -85,7 +93,7 @@ export const ItemCardPage = () => {
         </div>
       </div>
       <div className={`${classes.slider__container} ${classes.mb}`}>
-        <SecondarySlider title="You may also like" products={products} />
+        <SecondarySlider title="You may also like" products={randomProducts} />
       </div>
     </>
   );

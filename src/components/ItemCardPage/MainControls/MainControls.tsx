@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import cn from 'classnames';
 import { Gadget } from '../../../types/gadget';
@@ -26,9 +26,16 @@ export const MainControls: React.FC<Props> = ({
   onSetActiveProduct,
   goodForCart,
 }) => {
-  const [selectedCap, setSelectedCap] = useState<string | null>(activeProduct.capacity);
+  const [selectedCap, setSelectedCap] = useState<string | null>(
+    activeProduct.capacity,
+  );
   const { favourites, updateFavourites } = useFavouriteLocalStorage();
   const { products: cart, updateProducts } = useCartLocalStorage();
+
+  useEffect(() => {
+    setSelectedCap(activeProduct.capacity);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeProduct]);
 
   const navigate = useNavigate();
 
@@ -48,7 +55,13 @@ export const MainControls: React.FC<Props> = ({
   const colors = activeProduct.colorsAvailable;
 
   const handleSetColor = (color: string) => {
-    const neededProduct = filteredProducts.find((prod) => prod.id.includes(color));
+    const neededProduct = filteredProducts.find(
+      (prod) => prod.id.includes(color)
+        && selectedCap
+        && prod.id.includes(selectedCap.toLocaleLowerCase()),
+    );
+
+    window.console.log(selectedCap);
 
     if (neededProduct) {
       navigate(`../${neededProduct.id}`);
@@ -117,6 +130,8 @@ export const MainControls: React.FC<Props> = ({
     window.dispatchEvent(new Event('storage'));
   };
 
+  window.console.log(activeProduct.priceRegular);
+
   return (
     <div>
       <div className={classes.colorsSection}>
@@ -183,7 +198,7 @@ export const MainControls: React.FC<Props> = ({
                 handleAddToFavorite();
               }
             }}
-            aria-label='Add to favourites'
+            aria-label="Add to favourites"
           >
             <Heart checked={hasInFavourites} />
             {/* Heart */}
