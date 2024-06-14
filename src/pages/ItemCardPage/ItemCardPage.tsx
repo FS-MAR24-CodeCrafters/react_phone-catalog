@@ -24,7 +24,7 @@ export const ItemCardPage = () => {
   const [gadgetModal, setGadgetModal] = useState(false);
 
   const {
-    products, openModal, error, setError, setOpenModal,
+    loading, products, openModal, error, setError, setOpenModal,
   } = useProductReqHandler();
 
   const { pathname } = useLocation();
@@ -76,7 +76,7 @@ export const ItemCardPage = () => {
     );
   }
 
-  if (!gadgets.length) {
+  if (loading) {
     return <Skeleton />;
   }
 

@@ -1,19 +1,6 @@
-@import "../../styles/utils/mixins.scss";
-
-.favorites__container {
-  @include container;
-}
-
-.favorites__header {
-  @include grid-container;
-  grid-column: 1/-1;
-  justify-content: center;
-}
+@import '../../styles/utils/mixins.scss';
 
 .favorites__grid {
-  @include grid-container;
-  justify-content: center;
-
   &_item {
     grid-column: 1/-1;
 

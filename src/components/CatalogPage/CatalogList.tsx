@@ -9,12 +9,13 @@ import { SkeletonProductCard } from '../Skeletons/SkeletonProductCard';
 
 type CatalogListProps = {
   filteredProducts: Product[];
+  loading: boolean
 };
 
-export const CatalogList: FC<CatalogListProps> = ({ filteredProducts }) => {
+export const CatalogList: FC<CatalogListProps> = ({ filteredProducts, loading }) => {
   const [searchParams] = useSearchParams();
 
-  if (!filteredProducts.length) {
+  if (loading) {
     const arrayOfSkeletons = new Array(16).fill(<SkeletonProductCard />);
 
     return (

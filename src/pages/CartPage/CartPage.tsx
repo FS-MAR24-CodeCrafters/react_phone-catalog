@@ -14,11 +14,11 @@ import { SkeletonCartCheckout } from '../../components/Skeletons/SkeletonCartPag
 
 export const CartPage = () => {
   const {
-    products, openModal, error, setError, setOpenModal,
+    loading, products, openModal, error, setError, setOpenModal,
   } = useProductReqHandler();
   const { goodsInCart, updateProducts } = useCartLocalStorage();
 
-  if (!goodsInCart.length) {
+  if (!loading && !products.length) {
     return (
       <CartEmpty />
     );
@@ -48,21 +48,18 @@ export const CartPage = () => {
   return (
     <div className={classes.wrap}>
       <CartTitle />
-      {products.length ? (
+      {loading ? (
         <div className={classes.contentWrap}>
-          <CartList
-            products={filteredGoods}
-            updateProducts={updateProducts}
-          />
+          <SkeletonCartList />
+          <SkeletonCartCheckout />
+        </div>
+      ) : (
+        <div className={classes.contentWrap}>
+          <CartList products={filteredGoods} updateProducts={updateProducts} />
           <CartCheckout
             products={filteredGoods}
             updateProducts={updateProducts}
           />
-        </div>
-      ) : (
-        <div className={classes.contentWrap}>
-          <SkeletonCartList />
-          <SkeletonCartCheckout />
         </div>
       )}
 

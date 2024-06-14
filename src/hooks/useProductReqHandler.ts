@@ -5,9 +5,11 @@ import { Product } from '../types/product';
 export const useProductReqHandler = () => {
   const [error, setError] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
+    setLoading(true);
     getGoods<Product[]>('products.json')
       .then((res) => {
         setProducts(res);
@@ -15,7 +17,8 @@ export const useProductReqHandler = () => {
       .catch(() => {
         setError(true);
         setOpenModal(true);
-      });
+      })
+      .finally(() => setLoading(false));
   }, [error]);
 
   useEffect(() => {
@@ -36,5 +39,6 @@ export const useProductReqHandler = () => {
     error,
     setError,
     setOpenModal,
+    loading,
   };
 };
