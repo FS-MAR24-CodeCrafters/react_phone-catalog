@@ -28,6 +28,7 @@
   &__arrow_wrap {
     display: none;
     grid-column: span 1;
+    background-color: var(--sm-button-bg);
 
     @include on-tablet {
       width: 32px;

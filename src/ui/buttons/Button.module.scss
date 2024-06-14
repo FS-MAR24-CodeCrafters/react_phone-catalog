@@ -11,7 +11,7 @@
   width: 100%;
 
   &_default {
-    background-color: var(--primary);
+    background-color: var(--button-bg);
     color: var(--white);
     transition: box-shadow var(--transition) ease;
 
@@ -25,7 +25,7 @@
 }
 
 .active {
-  background-color: var(--white);
-  color: var(--green);
-  border: 1px solid var(--elements);
+  background-color: var(--active-btn-bg);
+  color: var(--active-btn-text);
+  border: 1px solid var(--active-btn-bg);
 }

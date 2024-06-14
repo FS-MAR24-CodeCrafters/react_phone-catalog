@@ -1,5 +1,27 @@
 @import "../../styles/utils/mixins";
 
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+  border-radius: 10px;
+}
+
+.skeleton__description {
+  margin-top: 4px;
+  margin-bottom: 32px;
+  width: 90px;
+  height: 17px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--elements);
+  }
+
+  100% {
+    background-color: var(--white);
+  }
+}
+
 .page__header {
   @include grid-container;
   row-gap: 0;

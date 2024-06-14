@@ -1,8 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
 import { FC } from 'react';
 import classes from './BreadCrumbs.module.scss';
-import homeIcon from '../../img/icons/Home.png';
+import home from '../../img/icons/Home.svg';
+import homeDark from '../../img/icons/dark/Home.svg';
 import { ArrowRight } from '../../ui/Arrow/arrows/ArrowRight';
+import { useThemeLocalStorage } from '../../hooks/useThemeLocalStorage';
 
 type BreadCrumbsProps = {
   productName?: string; // this prop is needed for Item card Page only
@@ -10,6 +12,9 @@ type BreadCrumbsProps = {
 
 const BreadCrumbs: FC<BreadCrumbsProps> = ({ productName }) => {
   const { pathname } = useLocation();
+  const { themeIsDark } = useThemeLocalStorage();
+
+  const homeIcon = themeIsDark ? homeDark : home;
 
   const productCategory = pathname.split('/')[1];
 

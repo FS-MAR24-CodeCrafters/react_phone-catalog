@@ -6,7 +6,7 @@ import { CatalogPage } from './pages/CatalogPage';
 import { ItemCardPage } from './pages/ItemCardPage';
 import { FavouritesPage } from './pages/FavouritesPage';
 import { CartPage } from './pages/CartPage';
-import { NotFound } from './pages/NotFound/NotFound';
+import { NotFound } from './pages/NotFound';
 import { ContactsPage } from './pages/ContactsPage';
 
 export const Root = () => {

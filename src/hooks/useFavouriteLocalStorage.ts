@@ -10,7 +10,7 @@ import {
 type UpdateFauvorites = (action: FavoutiteActions) => void;
 
 export const useFavouriteLocalStorage = () => {
-  const { getItem, setItem } = localStorageService<FavoutiteState>(
+  const { getItem, setItem } = localStorageService<FavoutiteState[]>(
     KEY.products,
   );
   const [favourites, setFavourites] = useState<FavoutiteState[]>([]);

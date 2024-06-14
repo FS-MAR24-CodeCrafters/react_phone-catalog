@@ -1,12 +1,14 @@
+@import '../../../styles/utils/mixins.scss';
+
 .colorsSection {
   display: flex;
   gap: 8px;
   margin-top: 20px;
-  
+
   flex-direction: column;
   margin-bottom: 24px;
   padding-bottom: 24px;
-  border-bottom: 1px solid #E2E6E9;
+  border-bottom: 1px solid var(--icons);
 }
 
 .colorsContainer {
@@ -18,31 +20,37 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 1px solid #000; 
+  border: 1px solid #000;
 }
 
 .capasitySection {
   display: flex;
   gap: 8px;
   margin-top: 20px;
-  
-  // flex-direction: column;
+
   margin-bottom: 24px;
   padding-bottom: 24px;
-  border-bottom: 1px solid #E2E6E9;
+  border-bottom: 1px solid var(--icons);
 }
 
 .capasityContainer {
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   size: 14px;
   font-weight: 500;
 
   width: 56px;
   height: 32px;
-  border: 1px solid #B4BDC3;
+  border: 1px solid var(--icons);
+  color: var(--primary);
+}
+
+.controls__title {
+  @include small-text;
+  color: var(--controls-title);
+  margin-bottom: 8px;
 }
 
 .product__price {
@@ -66,15 +74,22 @@
   display: flex;
   gap: 8px;
   margin-bottom: 32px;
-  // justify-content: space-between;
 }
 
 .buttonContainer {
   display: flex;
-  width: 231px;
+  width: 288px;
   height: 48px;
   align-items: center;
   gap: 8px;
+
+  @include on-tablet {
+    width: 237px;
+  }
+
+  @include on-desktop {
+    width: 320px;
+  }
 }
 
 .characteristicsContainer {
@@ -87,4 +102,9 @@
 
 .primaryText {
   color: var(--primary);
+}
+
+.selectedCap {
+  background-color: var(--primary);
+  color: var(--main-background);
 }
