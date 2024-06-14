@@ -29,23 +29,29 @@ export const ItemCardPage = () => {
     const productReq = getGoods<Product[]>('products.json');
     const gadget = getGoods<Gadget[]>(`${category}.json`);
 
-    Promise.all([productReq, gadget])
-      .then(([productRes, gadgetRes]) => {
-        setGadgets(gadgetRes);
-        setProducts(productRes);
+    Promise.all([productReq, gadget]).then(([productRes, gadgetRes]) => {
+      setGadgets(gadgetRes);
+      setProducts(productRes);
 
-        const initialProduct = gadgetRes.find((elem) => elem.id === productName);
+      const initialProduct = gadgetRes.find((elem) => elem.id === productName);
 
-        if (initialProduct) {
-          setActiveProduct(initialProduct);
-        } else {
-          setActiveProduct(null);
-        }
-      });
+      if (initialProduct) {
+        setActiveProduct(initialProduct);
+      } else {
+        setActiveProduct(null);
+      }
+    });
   }, [category, productName, pathname]);
 
   const handleSetActiveProduct = (newProduct: Gadget) => {
     setActiveProduct(newProduct);
+  };
+
+  const shuffleArray = (array: Product[]) => {
+    return array
+      .map((value) => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value);
   };
 
   if (!gadgets.length) {
@@ -62,6 +68,7 @@ export const ItemCardPage = () => {
   }
 
   const goodForCart = products.find((item) => item.itemId === productName) || null;
+  const randomProducts = shuffleArray(products).slice(0, 10);
 
   return (
     <>
@@ -85,7 +92,7 @@ export const ItemCardPage = () => {
         </div>
       </div>
       <div className={`${classes.slider__container} ${classes.mb}`}>
-        <SecondarySlider title="You may also like" products={products} />
+        <SecondarySlider title="You may also like" products={randomProducts} />
       </div>
     </>
   );

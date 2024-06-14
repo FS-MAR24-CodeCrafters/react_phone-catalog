@@ -61,14 +61,14 @@ export const BurgerMenu = () => {
       </nav>
 
       <div className={classes.marked_goods_wrapper}>
-        <div className={classes.marked_good}>
+        <NavLink to="/favourites" className={classes.marked_good}>
           <img src={favourites} className={classes.img} alt="favourites" />
           {fav.length ? <HeaderCounter quantity={fav.length} /> : <> </>}
-        </div>
-        <div className={classes.marked_good}>
+        </NavLink>
+        <NavLink to="/cart" className={classes.marked_good}>
           <img className={classes.img} src={cart} alt="cart" />
           {cart.length ? <HeaderCounter quantity={products.length} /> : <> </>}
-        </div>
+        </NavLink>
       </div>
     </aside>
   );
