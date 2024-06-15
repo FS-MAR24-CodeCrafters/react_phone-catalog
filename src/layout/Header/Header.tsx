@@ -1,5 +1,6 @@
 import {
   Link, NavLink, useLocation, useNavigate,
+  useSearchParams,
 } from 'react-router-dom';
 import classNames from 'classnames';
 
@@ -17,6 +18,7 @@ import { MenuIcon } from '../../ui/icons/MenuIcon';
 import { CloseIcon } from '../../ui/icons/CloseIcon';
 
 import classes from './Header.module.scss';
+import { Input } from '../../ui/Input';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {
   return classNames(classes.linkContent, { [classes.linkActive]: isActive });
@@ -26,9 +28,21 @@ export const Header = () => {
   const { goodsInCart } = useCartLocalStorage();
   const { favourites } = useFavouriteLocalStorage();
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const { pathname } = useLocation();
   const [windowWidth] = useResize();
+
+  const query = searchParams.get('query') || '';
+
+  const isAtCatalogPage = pathname === '/phones' || pathname === '/tablets' || pathname === '/accessories';
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set('query', `${e.target.value.trimStart()}`);
+    setSearchParams(params);
+  };
 
   if (windowWidth < 640) {
     return (
@@ -56,9 +70,24 @@ export const Header = () => {
         )}
 
         {pathname !== '/menu' && (
-          <Link to="menu" className={`${classes.button_wrapper}`}>
-            <MenuIcon className={`${classes.menu_open}`} />
-          </Link>
+          <>
+            {isAtCatalogPage && (
+              <div className={classes.input}>
+                <Input
+                  label="Search bar for product"
+                  id="search"
+                  name="search"
+                  placeholder="Start typing for search"
+                  onChange={handleInputChange}
+                  isLabelHide
+                  value={query}
+                />
+              </div>
+            )}
+            <Link to="menu" className={`${classes.button_wrapper}`}>
+              <MenuIcon className={`${classes.menu_open}`} />
+            </Link>
+          </>
         )}
       </header>
     );
@@ -84,6 +113,20 @@ export const Header = () => {
         </nav>
 
         <div className={`${classes.iconContainer}`}>
+          {isAtCatalogPage && (
+            <div className={classes.input}>
+              <Input
+                label="Search bar for product"
+                id="search"
+                name="search"
+                placeholder='Start typing for search'
+                onChange={handleInputChange}
+                isLabelHide
+                value={query}
+              />
+            </div>
+          )}
+
           <div className={classes.theme_switcher}>
             <ThemeSwitcher />
           </div>
