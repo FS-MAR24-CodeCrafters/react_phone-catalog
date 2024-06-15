@@ -13,7 +13,7 @@ export const developers = [
     telegram: 'https://t.me/topacsam',
     lindedin: 'https://www.linkedin.com/in/taras-samchenko-71b416208/',
     github: 'https://github.com/tarassamchenko',
-    email: '',
+    email: 'tarasamchenko@gmail.com',
   },
   {
     id: 3,
