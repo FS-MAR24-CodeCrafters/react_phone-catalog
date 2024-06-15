@@ -5,7 +5,7 @@ export const developers = [
     telegram: 'https://t.me/Artem_Zakharchuk',
     lindedin: 'https://www.linkedin.com/in/artem-zakharchuk-818ba3131',
     github: 'https://github.com/ArtemZakhar',
-    email: '',
+    email: 'artemzakharchuk@gmail.com',
   },
   {
     id: 2,

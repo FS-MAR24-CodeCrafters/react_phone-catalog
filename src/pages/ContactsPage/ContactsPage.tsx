@@ -42,22 +42,30 @@ export const ContactsPage = () => {
                     >
                       <img src={github} alt="gitHub logo" />
                     </a>
-                    <a
-                      href={developer.lindedin}
-                      className={classes.linkWrap}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <img src={linkedin} alt="linkedIn logo" />
-                    </a>
-                    <a
-                      href={developer.email}
-                      className={classes.linkWrap}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <img src={gmail} alt="gMail logo" />
-                    </a>
+                    {!developer.lindedin.length ? (
+                      <div className={classes.linkWrap} />
+                    ) : (
+                      <a
+                        href={developer.lindedin}
+                        className={classes.linkWrap}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <img src={linkedin} alt="linkedIn logo" />
+                      </a>
+                    )}
+                    {!developer.email.length ? (
+                      <div className={classes.linkWrap} />
+                    ) : (
+                      <a
+                        href={developer.email}
+                        className={classes.linkWrap}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <img src={gmail} alt="gMail logo" />
+                      </a>
+                    )}
                   </div>
                 </div>
                 {developer.id !== developers.length && (
