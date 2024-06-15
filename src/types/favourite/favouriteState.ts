@@ -1,6 +1,4 @@
-import { Product } from '../product';
-
-export type FavoutiteState = Product;
+export type FavoutiteState = string;
 
 export enum FavouritesActionsName {
   'Add' = 'addToFavourite',
@@ -8,5 +6,5 @@ export enum FavouritesActionsName {
 }
 
 export type FavoutiteActions =
-  | { type: FavouritesActionsName.Add; payload: Product }
-  | { type: FavouritesActionsName.Remove; payload: Product };
+  | { type: FavouritesActionsName.Add; payload: string }
+  | { type: FavouritesActionsName.Remove; payload: string };

@@ -1,20 +1,42 @@
+import { createPortal } from 'react-dom';
 import { useFavouriteLocalStorage } from '../../hooks/useFavouriteLocalStorage';
 import { FavoritesList } from '../../components/FavoritesPage';
 import { NoGoodsScreen } from '../../components/NoGoodsSrcreen';
 import { PageHeader } from '../../components/PageHeader';
+import { ErrorScreen } from '../../components/ErrorScreen';
+import { ErrorMessage } from '../../components/ErrorMessage';
 
 import classes from './FavouritesPage.module.scss';
+import { useProductReqHandler } from '../../hooks/useProductReqHandler';
+import { Product } from '../../types/product';
 
 export const FavouritesPage = () => {
   const { favourites } = useFavouriteLocalStorage();
 
-  if (!favourites.length) {
+  const {
+    loading, products, openModal, error, setError, setOpenModal,
+  } = useProductReqHandler();
+
+  if (!loading && !favourites.length) {
     return (
       <div style={{ gridColumn: '1 / -1' }}>
         <NoGoodsScreen title="Please add goods to favourites" />
       </div>
     );
   }
+
+  if (error) {
+    return (
+      <div style={{ gridColumn: '1 / -1' }}>
+        <ErrorScreen setError={setError} />
+      </div>
+    );
+  }
+
+  const filteredGoods: Product[] = products
+    .filter((product) => {
+      return favourites.some((id) => id === product.itemId);
+    });
 
   return (
     <div className={classes.favorites__container}>
@@ -23,8 +45,14 @@ export const FavouritesPage = () => {
       </div>
 
       <div className={classes.favorites__grid}>
-        <FavoritesList favourites={favourites} />
+        <FavoritesList favourites={filteredGoods} />
       </div>
+
+      {openModal
+            && createPortal(
+              <ErrorMessage setOpenModal={setOpenModal} />,
+              document.body,
+            )}
     </div>
   );
 };

@@ -30,34 +30,34 @@ export const useFavouriteLocalStorage = () => {
   }, []);
 
   const updateFavourites: UpdateFauvorites = (action) => {
-    const goods = getItem();
+    const ids = getItem();
     let newState: FavoutiteState[] = [];
 
     switch (action.type) {
       case FavouritesActionsName.Add: {
-        if (goods.some((product) => product.id === action.payload.id)) {
-          newState = goods.filter((product) => {
-            return product.id !== action.payload.id;
+        if (ids.some((id) => id === action.payload)) {
+          newState = ids.filter((id) => {
+            return id !== action.payload;
           });
 
           break;
         }
 
-        newState = [...goods, action.payload];
+        newState = [...ids, action.payload];
 
         break;
       }
 
       case FavouritesActionsName.Remove: {
-        newState = goods.filter((product) => {
-          return product.id !== action.payload.id;
+        newState = ids.filter((id) => {
+          return id !== action.payload;
         });
 
         break;
       }
 
       default:
-        newState = goods;
+        newState = ids;
     }
 
     setItem(newState);

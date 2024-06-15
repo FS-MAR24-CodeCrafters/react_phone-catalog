@@ -30,7 +30,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const { favourites, updateFavourites } = useFavouriteLocalStorage();
   const { goodsInCart, updateProducts } = useCartLocalStorage();
 
-  const hasInFavourites = favourites.some((item) => item.itemId === itemId);
+  const hasInFavourites = favourites.some((id) => id === itemId);
   const hasInCart = goodsInCart.some((item) => item.id === itemId);
 
   const imgUrl = `./${image}`;
@@ -63,10 +63,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     if (hasInFavourites) {
       updateFavourites({
         type: FavouritesActionsName.Remove,
-        payload: product,
+        payload: product.itemId,
       });
     } else {
-      updateFavourites({ type: FavouritesActionsName.Add, payload: product });
+      updateFavourites({ type: FavouritesActionsName.Add, payload: product.itemId });
     }
 
     window.dispatchEvent(new Event('storage'));
