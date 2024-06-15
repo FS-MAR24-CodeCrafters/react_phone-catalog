@@ -1,16 +1,18 @@
 @import '../../../styles/utils/mixins.scss';
+
 .aboutContent {
   display: flex;
   flex-direction: column;
   gap: 32px;
   max-width: 592px;
-
-  
 }
 
 .about {
-  font-weight: 700;
-  font-size: 20px;
+  @include h3-styles;
+}
+
+.aboutTopic {
+  @include h4-styles;
 }
 
 .line {
@@ -22,24 +24,15 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  
 }
 
 .aboutSection {
   display: flex;
   flex-direction: column;
   gap: 16px;
-
-}
-
-.aboutTopic {
-  font-weight: 700;
-  font-size: 16px;
 }
 
 .aboutText {
-  font-weight: 600;
-  font-size: 14;
   color: var(--secondary);
+  font-weight: 600;
 }
-

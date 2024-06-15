@@ -17,6 +17,7 @@ import { ErrorScreen } from '../../components/ErrorScreen';
 import type { Product } from '../../types/product';
 import type { Gadget } from '../../types/gadget';
 import classes from './ItemCard.module.scss';
+import { Back } from '../../components/Back';
 
 export const ItemCardPage = () => {
   const [gadgets, setGadgets] = useState<Gadget[]>([]);
@@ -108,6 +109,8 @@ export const ItemCardPage = () => {
         <div className={classes.breadCrumbsContainer}>
           <BreadCrumbs productName={activeProduct.name} />
         </div>
+
+        <Back />
 
         <h1 className={classes.header1}>{activeProduct.name}</h1>
 

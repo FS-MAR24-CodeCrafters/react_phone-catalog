@@ -1,18 +1,19 @@
 @import '../../styles/utils/mixins.scss';
 
 .breadCrumbsContainer {
-  margin-bottom: -32px;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
 }
 
 .header1 {
-  font-weight: 800;
-  font-size: 22px;
-  margin-bottom: -24px;
-
+  @include h2-styles;
+  
   @include on-tablet {
     max-width: 592px;
-    font-size: 32px;
-    margin-bottom: -16px;
+    margin-bottom: 40px;
   }
 
   @include on-desktop {
@@ -68,7 +69,6 @@
 .textSection {
   display: flex;
   flex-direction: column;
-  gap: 80px;
   margin: 0 auto 80px;
   justify-items: center;
   justify-content: center;
