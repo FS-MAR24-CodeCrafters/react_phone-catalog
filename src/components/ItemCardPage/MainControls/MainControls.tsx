@@ -41,7 +41,7 @@ export const MainControls: React.FC<Props> = ({
   const navigate = useNavigate();
 
   const hasInFavourites = favourites.some(
-    (item) => item.itemId === activeProduct.id,
+    (id) => id === activeProduct.id,
   );
   const hasInCart = goodsInCart.some((item) => item.id === activeProduct.id);
 
@@ -116,12 +116,12 @@ export const MainControls: React.FC<Props> = ({
       if (hasInFavourites) {
         updateFavourites({
           type: FavouritesActionsName.Remove,
-          payload: goodForCart,
+          payload: goodForCart.itemId,
         });
       } else {
         updateFavourites({
           type: FavouritesActionsName.Add,
-          payload: goodForCart,
+          payload: goodForCart.itemId,
         });
       }
     }
