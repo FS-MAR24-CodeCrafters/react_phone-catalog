@@ -65,19 +65,6 @@
     @include on-desktop {
       height: 368px;
     }
-
-    &_phone {
-      background: center / contain no-repeat url('/img/category_phones.svg');
-    }
-
-    &_tablet {
-      background: center / contain no-repeat url('/img/category_tablets.svg');
-    }
-
-    &_accessory {
-      background: center / contain no-repeat
-        url('/img/category_accessories.svg');
-    }
   }
 
   &__description_title {

@@ -35,6 +35,8 @@ export const ItemCardPage = () => {
   const productName = locationArr[2];
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     getGoods<Gadget[]>(`${category}.json`)
       .then((res) => {
         setGadgets(res);

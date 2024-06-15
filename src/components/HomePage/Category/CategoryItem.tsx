@@ -17,7 +17,6 @@ export const CategoryItem: FC<CategoryItemProps> = ({
 }) => {
   const [goodsQty, setGoodsQty] = useState<number>();
 
-  window.console.log(link, description, background);
   useEffect(() => {
     getGoods<Gadget[]>(`${link}.json`).then((res) => {
       return setGoodsQty(res.length);

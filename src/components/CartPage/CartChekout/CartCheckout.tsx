@@ -6,11 +6,15 @@ import { Button } from '../../../ui/Buttons';
 
 type Props = {
   products: FilledCartState[];
-  setFormOpen: React.Dispatch<React.SetStateAction<boolean>>,
+  setFormOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const CartCheckout: FC<Props> = ({ products, setFormOpen }) => {
-  const handleOpenForm = () => setFormOpen(true);
+  const handleOpenForm = () => {
+    setFormOpen(true);
+    window.scrollTo(0, 0);
+  };
+
   const { totalQty, totalSum } = products.reduce(
     (count, el) => {
       count.totalSum += el.item.price * el.quantity;
