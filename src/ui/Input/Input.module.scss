@@ -1,0 +1,14 @@
+.input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid var(--elements);
+  background-color: var(--input-bg);
+  color: var(--primary);
+}
+
+.label {
+  display: block;
+  color: var(--heart-hover);
+  margin-bottom: 5px;
+}

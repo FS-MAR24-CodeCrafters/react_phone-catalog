@@ -4,6 +4,7 @@ import { ActionsName, FilledCartState } from '../../../types/cart/cartState';
 import { UpdateProducts } from '../../../hooks/useCartLocalStorage';
 import { CloseIcon } from '../../../ui/icons/CloseIcon';
 import { Button } from '../../../ui/Buttons';
+import { Input } from '../../../ui/Input';
 
 type Props = {
   products: FilledCartState[];
@@ -38,7 +39,7 @@ export const CartForm: React.FC<Props> = ({
     address: '',
   });
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
     setFormData({
@@ -47,7 +48,7 @@ export const CartForm: React.FC<Props> = ({
     });
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     window.console.log(JSON.stringify({ ...products, formData }, null, 2));
     handleClearAll();
@@ -68,62 +69,43 @@ export const CartForm: React.FC<Props> = ({
         </div>
         <form onSubmit={handleSubmit} className={classes.form}>
           <div className={classes.formGroup}>
-            <label htmlFor="first-name" className={classes.formLabel}>
-              First name:
-            </label>
-            <input
-              className={classes.formInput}
-              type="text"
+            <Input
               id="first-name"
+              label="First name:"
               name="name"
               placeholder="Enter your name"
-              value={formData.name}
               onChange={handleChange}
-              required
+              value={formData.name}
             />
           </div>
           <div className={classes.formGroup}>
-            <label htmlFor="last-name" className={classes.formLabel}>
-              Last Name:
-            </label>
-            <input
-              className={classes.formInput}
-              type="text"
+            <Input
               id="last-name"
+              label="Last Name:"
               name="lastName"
               placeholder="Enter your last name"
+              onChange={handleChange}
               value={formData.lastName}
-              onChange={handleChange}
-              required
             />
           </div>
           <div className={classes.formGroup}>
-            <label htmlFor="time" className={classes.formLabel}>
-              Delivery date:
-            </label>
-            <input
-              className={classes.formInput}
-              type="datetime-local"
+            <Input
               id="time"
+              label="Delivery date:"
               name="deliveryDate"
-              value={formData.deliveryDate}
               onChange={handleChange}
-              required
+              value={formData.deliveryDate}
+              type="datetime-local"
             />
           </div>
           <div className={classes.formGroup}>
-            <label htmlFor="address" className={classes.formLabel}>
-              Delivery adress:
-            </label>
-            <input
-              className={classes.formInput}
-              type="text"
+            <Input
               id="address"
-              name="address"
+              label="Delivery address:"
+              name="lastName"
               placeholder="Enter your address"
-              value={formData.address}
               onChange={handleChange}
-              required
+              value={formData.address}
             />
           </div>
           <Button label="Submit" type="submit" />

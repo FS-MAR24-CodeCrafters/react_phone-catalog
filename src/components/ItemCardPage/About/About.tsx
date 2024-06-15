@@ -9,13 +9,13 @@ export const About: React.FC<Props> = ({ product }) => {
   return (
     <div className={classes.aboutContent}>
       <div className={classes.line}>
-        <h2 className={classes.about}>About</h2>
+        <h3 className={classes.about}>About</h3>
       </div>
       <div className={classes.container}>
         {product.description.map((item) => {
           return (
             <div className={classes.aboutSection} key={item.title}>
-              <h3 className={classes.aboutTopic}>{item.title}</h3>
+              <h4 className={classes.aboutTopic}>{item.title}</h4>
               <p className={classes.aboutText}>{item.text[0]}</p>
 
               {item.text[1] && (

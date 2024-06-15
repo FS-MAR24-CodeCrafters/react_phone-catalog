@@ -1,10 +1,20 @@
+@import '../../styles/utils/mixins.scss';
+
 .back {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-bottom: 25px;
+
+  @include on-tablet {
+    margin-bottom: 16 px;
+  }
 
   &__link {
+    @include small-text;
+
     display: flex;
     color: var(--secondary);
+    line-height: 16px;
   }
 }

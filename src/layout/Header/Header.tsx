@@ -1,4 +1,6 @@
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import {
+  Link, NavLink, useLocation, useNavigate,
+} from 'react-router-dom';
 import classNames from 'classnames';
 
 import { useResize } from '../../hooks/useResize';
@@ -23,6 +25,7 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => {
 export const Header = () => {
   const { goodsInCart } = useCartLocalStorage();
   const { favourites } = useFavouriteLocalStorage();
+  const navigate = useNavigate();
 
   const { pathname } = useLocation();
   const [windowWidth] = useResize();
@@ -39,7 +42,14 @@ export const Header = () => {
             <div className={classes.theme_switcher}>
               <ThemeSwitcher />
             </div>
-            <Link to=".." className={classes.button_wrapper}>
+            <Link
+              to=".."
+              onClick={(e) => {
+                e.preventDefault();
+                navigate(-1);
+              }}
+              className={classes.button_wrapper}
+            >
               <CloseIcon className={`${classes.menu_open}`} />
             </Link>
           </div>
