@@ -22,6 +22,11 @@ export const CategoryItem: FC<CategoryItemProps> = ({
       return setGoodsQty(res.length);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    return () => {
+      window.scrollTo(0, 0);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
