@@ -92,6 +92,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
               classes.product__price_curr,
               classes.product__price_disc,
             )}
+            data-price={fullPrice}
           >
             {`$${fullPrice}`}
           </p>

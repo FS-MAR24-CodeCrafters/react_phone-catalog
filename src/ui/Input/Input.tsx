@@ -7,6 +7,7 @@ type TypeType = 'text' | 'datetime-local';
 
 type InputProps = {
   label: string;
+  isLabelHide?: boolean;
   id: string;
   placeholder?: string;
   name: string;
@@ -23,13 +24,19 @@ export const Input: FC<InputProps> = ({
   placeholder,
   name,
   value,
+  isLabelHide = false,
   type = 'text',
   required = true,
-  ...props
 }) => {
   return (
     <>
-      <label htmlFor={id} className={classes.label}>
+      <label
+        htmlFor={id}
+        className={classes.label}
+        {...(isLabelHide && {
+          style: { opacity: '0', position: 'absolute', pointerEvents: 'none' },
+        })}
+      >
         {label}
       </label>
       <input
@@ -41,7 +48,6 @@ export const Input: FC<InputProps> = ({
         value={value}
         onChange={onChange}
         required={required}
-        {...props}
       />
     </>
   );

@@ -15,3 +15,8 @@
     }
   }
 }
+
+.no_products {
+  text-align: center;
+  @include h4-styles;
+}

@@ -6,7 +6,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
 
   @include on-desktop {
     width: 464px;
@@ -17,12 +16,7 @@
 .photo {
   width: auto;
   height: 100%;
-  transition: transform var(--transition);;
-
-    &:hover {
-      transform: scale(1.2);
-    }
-  
+  transition: transform var(--transition);
 }
 
 .smallPhotosContainer {
@@ -56,7 +50,6 @@
     height: 80px;
     width: 80px;
   }
-
 }
 
 .smallPhoto {
