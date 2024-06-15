@@ -51,7 +51,7 @@ export const ContactsPage = () => {
                       <img src={linkedin} alt="linkedIn logo" />
                     </a>
                     <a
-                      href={developer.email}
+                      href={`mailto:${developer.email}`}
                       className={classes.linkWrap}
                       target="_blank"
                       rel="noreferrer"
