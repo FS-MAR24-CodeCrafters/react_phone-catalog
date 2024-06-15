@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import { ProductCard } from '../../ProductCard';
-import { Arrow } from '../../../ui/Arrow/Arrow';
-import { arrowDir } from '../../../types/arrowEnum';
-import { Product } from '../../../types/product';
-
-import classes from './SecondarySlider.module.scss';
-import { SkeletonProductCard } from '../../Skeletons/SkeletonProductCard';
 import { useResize } from '../../../hooks/useResize';
 import { ErrorScreen } from '../../ErrorScreen';
+import { ProductCard } from '../../ProductCard';
+import { SkeletonProductCard } from '../../Skeletons/SkeletonProductCard';
+import { Arrow } from '../../../ui/Arrow/Arrow';
+
+import type { Product } from '../../../types/product';
+import { arrowDir } from '../../../types/arrowEnum';
+import classes from './SecondarySlider.module.scss';
 
 type SecondarySliderProps = {
   title: string;
@@ -82,17 +82,18 @@ export const SecondarySlider: React.FC<SecondarySliderProps> = ({
       <section className={classes.slider}>
         <div className={classes.slider__header}>
           <h2 className={classes.slider__title}>{title}</h2>
+
           <div className={classes.slider__buttons}>
-            <button disabled>
-              {/* Prev Slide */}
+            <button disabled aria-label='Prev Slide'>
               <Arrow dir={arrowDir.left} disabled />
             </button>
-            <button disabled>
-              {/* Next Slide */}
+
+            <button disabled aria-label='Next Slide'>
               <Arrow dir={arrowDir.right} disabled />
             </button>
           </div>
         </div>
+
         <div className={classes.slider__wrapper}>
           <ul className={classes.slider__list}>
             {arrayOfSkeletons.map((product, index) => (
@@ -158,21 +159,24 @@ export const SecondarySlider: React.FC<SecondarySliderProps> = ({
     <section className={classes.slider} ref={containerRef}>
       <div className={classes.slider__header}>
         <h2 className={classes.slider__title}>{title}</h2>
+
         <div className={classes.slider__buttons}>
           <button
             {...(leftArrowDisable && { disabled: true })}
             onClick={handlePrevSlide}
+            aria-label='Prev Slide'
             onKeyDown={(e) => {
               if (e.key === 'enter') {
                 handlePrevSlide();
               }
             }}
           >
-            {/* Prev Slide */}
             <Arrow dir={arrowDir.left} disabled={leftArrowDisable} />
           </button>
+
           <button
             onClick={handleNextSlide}
+            aria-label='Next Slide'
             onKeyDown={(e) => {
               if (e.key === 'enter') {
                 handleNextSlide();
@@ -180,7 +184,6 @@ export const SecondarySlider: React.FC<SecondarySliderProps> = ({
             }}
             {...(slidesLeft === 0 && { disabled: true })}
           >
-            {/* Next Slide */}
             <Arrow dir={arrowDir.right} disabled={slidesLeft === 0} />
           </button>
         </div>

@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { FC } from 'react';
-import classes from './NoGoodsScreen.module.scss';
 import error from '../../img/product-not-found.png';
+
+import classes from './NoGoodsScreen.module.scss';
 
 type NoGoodsScreenProps = {
   title: string;

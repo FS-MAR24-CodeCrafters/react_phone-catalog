@@ -1,4 +1,4 @@
-import { Gadget } from '../../../types/gadget';
+import type { Gadget } from '../../../types/gadget';
 import classes from './TechSpecs.module.scss';
 
 type Props = {

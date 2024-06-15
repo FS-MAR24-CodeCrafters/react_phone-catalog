@@ -1,18 +1,20 @@
 import { useLocation } from 'react-router-dom';
 import { createPortal } from 'react-dom';
-import { CatalogList } from '../../components/CatalogPage';
-import { PageHeader } from '../../components/PageHeader';
-import { Dropdown } from '../../ui/Dropdown';
-import classes from './CatalogPage.module.scss';
 import { useProductReqHandler } from '../../hooks/useProductReqHandler';
+import { CatalogList } from '../../components/CatalogPage/CatalogList';
+import { PageHeader } from '../../components/PageHeader';
 import { ErrorMessage } from '../../components/ErrorMessage';
 import { ErrorScreen } from '../../components/ErrorScreen';
 import { NoGoodsScreen } from '../../components/NoGoodsSrcreen';
+import { Dropdown } from '../../ui/Dropdown';
+
+import classes from './CatalogPage.module.scss';
 
 export const CatalogPage = () => {
   const {
     loading, products, openModal, error, setError, setOpenModal,
   } = useProductReqHandler();
+
   const { pathname } = useLocation();
   const path = pathname.slice(1);
 
@@ -40,6 +42,7 @@ export const CatalogPage = () => {
         <div className={classes.catalog__header}>
           <PageHeader title={pageTitle} totalModels={filteredProducts.length} />
         </div>
+
         <div style={{ gridColumn: '1 / -1' }}>
           <NoGoodsScreen title="There are no goods in this category" />
         </div>
@@ -57,6 +60,7 @@ export const CatalogPage = () => {
         <div className={classes.catalog__dropdown_sort}>
           <Dropdown type="sort" />
         </div>
+
         <div className={classes.catalog__dropdown_item}>
           <Dropdown type="perPage" />
         </div>

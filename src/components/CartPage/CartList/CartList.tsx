@@ -1,8 +1,9 @@
 import { FC } from 'react';
-import classes from './CartList.module.scss';
 import { CartItem } from '../CartItem';
 import { UpdateProducts } from '../../../hooks/useCartLocalStorage';
 import { FilledCartState } from '../../../types/cart/cartState';
+
+import classes from './CartList.module.scss';
 
 type Props = {
   products: FilledCartState[];

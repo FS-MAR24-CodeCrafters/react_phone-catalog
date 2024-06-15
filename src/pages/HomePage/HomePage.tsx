@@ -1,11 +1,11 @@
 import { createPortal } from 'react-dom';
+import { useProductReqHandler } from '../../hooks/useProductReqHandler';
 import { SecondarySlider } from '../../components/Sliders/SecondarySlider';
-
-import classes from './HomePage.module.scss';
+import { ErrorMessage } from '../../components/ErrorMessage';
 import { Category } from '../../components/HomePage/Category';
 import { MainSlider } from '../../components/HomePage/MainSlider';
-import { ErrorMessage } from '../../components/ErrorMessage';
-import { useProductReqHandler } from '../../hooks/useProductReqHandler';
+
+import classes from './HomePage.module.scss';
 
 export const HomePage = () => {
   const {

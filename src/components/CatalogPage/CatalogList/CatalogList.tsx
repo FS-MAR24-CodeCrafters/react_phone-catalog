@@ -1,18 +1,21 @@
-import { useSearchParams } from 'react-router-dom';
-
 import { FC } from 'react';
-import classes from './CatalogList.module.scss';
-import { ProductCard } from '../ProductCard';
-import { Product } from '../../types/product';
+import { useSearchParams } from 'react-router-dom';
+import { ProductCard } from '../../ProductCard';
+import type { Product } from '../../../types/product';
 import { Pagination } from '../Pagination';
-import { SkeletonProductCard } from '../Skeletons/SkeletonProductCard';
+import { SkeletonProductCard } from '../../Skeletons/SkeletonProductCard';
+
+import classes from './CatalogList.module.scss';
 
 type CatalogListProps = {
   filteredProducts: Product[];
-  loading: boolean
+  loading: boolean;
 };
 
-export const CatalogList: FC<CatalogListProps> = ({ filteredProducts, loading }) => {
+export const CatalogList: FC<CatalogListProps> = ({
+  filteredProducts,
+  loading,
+}) => {
   const [searchParams] = useSearchParams();
 
   if (loading) {
@@ -31,7 +34,6 @@ export const CatalogList: FC<CatalogListProps> = ({ filteredProducts, loading })
   }
 
   const currentPage = +(searchParams.get('page') || '1');
-
   const itemsPerPage = +(searchParams.get('perPage') || 16);
   const sortMethod = searchParams.get('sort') || 'Newest';
 

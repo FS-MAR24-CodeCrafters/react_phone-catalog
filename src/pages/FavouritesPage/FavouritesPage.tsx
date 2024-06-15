@@ -1,7 +1,7 @@
+import { useFavouriteLocalStorage } from '../../hooks/useFavouriteLocalStorage';
 import { FavoritesList } from '../../components/FavoritesPage';
 import { NoGoodsScreen } from '../../components/NoGoodsSrcreen';
 import { PageHeader } from '../../components/PageHeader';
-import { useFavouriteLocalStorage } from '../../hooks/useFavouriteLocalStorage';
 
 import classes from './FavouritesPage.module.scss';
 
@@ -21,6 +21,7 @@ export const FavouritesPage = () => {
       <div className={classes.favorites__header}>
         <PageHeader title="Favourites" totalModels={favourites.length} />
       </div>
+
       <div className={classes.favorites__grid}>
         <FavoritesList favourites={favourites} />
       </div>

@@ -1,11 +1,10 @@
-import classes from './ContactsPage.module.scss';
-
 import { Back } from '../../components/Back';
-import linkedin from './linkedin-icon.png';
-import telegram from './telegram-icon.png';
-import github from './github-icon.png';
-import gmail from './gmail-icon.png';
 import { developers } from '../../constants/developers';
+import linkedin from '../../img/social/linkedin-icon.png';
+import telegram from '../../img/social/telegram-icon.png';
+import github from '../../img/social/github-icon.png';
+import gmail from '../../img/social/gmail-icon.png';
+import classes from './ContactsPage.module.scss';
 
 export const ContactsPage = () => {
   return (

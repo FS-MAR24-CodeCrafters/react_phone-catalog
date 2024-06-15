@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
-
-import { ActionsName } from '../../types/cart/cartState';
-import { Product } from '../../types/product';
-import classes from './ProductCard.module.scss';
+import { useCartLocalStorage } from '../../hooks/useCartLocalStorage';
+import { useFavouriteLocalStorage } from '../../hooks/useFavouriteLocalStorage';
 import { Button } from '../../ui/Buttons';
 import { Heart } from '../../ui/Heart';
-import { useFavouriteLocalStorage } from '../../hooks/useFavouriteLocalStorage';
+
+import type { Product } from '../../types/product';
+import { ActionsName } from '../../types/cart/cartState';
 import { FavouritesActionsName } from '../../types/favourite/favouriteState';
-import { useCartLocalStorage } from '../../hooks/useCartLocalStorage';
+import classes from './ProductCard.module.scss';
 
 type Props = {
   product: Product;
@@ -126,6 +126,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </div>
         <button
           onClick={handleAddToFavorite}
+          aria-label='Add to favourites'
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               handleAddToFavorite();
@@ -133,7 +134,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           }}
         >
           <Heart checked={hasInFavourites} />
-          {/* Heart */}
         </button>
       </div>
     </article>

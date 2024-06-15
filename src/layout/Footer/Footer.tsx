@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Arrow } from '../../ui/Arrow/Arrow';
-import { arrowDir } from '../../types/arrowEnum';
 import { LogoIcon } from '../../ui/icons/LogoIcon';
+
+import { arrowDir } from '../../types/arrowEnum';
 import classes from './Footer.module.scss';
 
 export function Footer() {

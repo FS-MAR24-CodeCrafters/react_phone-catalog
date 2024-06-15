@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react';
 import { sliders } from '../../../constants/sliders';
 import { ArrowLeft } from '../../../ui/Arrow/arrows/ArrowLeft';
 import { ArrowRight } from '../../../ui/Arrow/arrows/ArrowRight';
-import classes from './MainSlider.module.scss';
 import { useResize } from '../../../hooks/useResize';
 import { useThemeLocalStorage } from '../../../hooks/useThemeLocalStorage';
+
+import classes from './MainSlider.module.scss';
 
 export const MainSlider = () => {
   const [counter, setCounter] = useState(0);

@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import cn from 'classnames';
-import { Gadget } from '../../../types/gadget';
-import classes from './MainControls.module.scss';
-import { Button } from '../../../ui/Buttons';
-import { Heart } from '../../../ui/Heart';
-import { allColors } from '../../../constants/colors';
-import { ActionsName } from '../../../types/cart/cartState';
-import { Product } from '../../../types/product';
-import { FavouritesActionsName } from '../../../types/favourite/favouriteState';
 import { useCartLocalStorage } from '../../../hooks/useCartLocalStorage';
 import { useFavouriteLocalStorage } from '../../../hooks/useFavouriteLocalStorage';
+import { Button } from '../../../ui/Buttons';
+import { Heart } from '../../../ui/Heart';
 import { ItemColor } from '../../../ui/ItemColor';
+import { allColors } from '../../../constants/colors';
+
+import { ActionsName } from '../../../types/cart/cartState';
+import { FavouritesActionsName } from '../../../types/favourite/favouriteState';
+import type { Product } from '../../../types/product';
+import type { Gadget } from '../../../types/gadget';
+import classes from './MainControls.module.scss';
 
 type Props = {
   activeProduct: Gadget;

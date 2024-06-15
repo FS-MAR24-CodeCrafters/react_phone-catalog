@@ -2,21 +2,21 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useLocation } from 'react-router-dom';
 import { getGoods } from '../../api/goods';
-import { Gadget } from '../../types/gadget';
+import { useProductReqHandler } from '../../hooks/useProductReqHandler';
 import { PhotosBlock } from '../../components/ItemCardPage/PhotosBlock/PhotosBlock';
 import { MainControls } from '../../components/ItemCardPage/MainControls/MainControls';
-
-import classes from './ItemCard.module.scss';
 import { About } from '../../components/ItemCardPage/About';
 import { TechSpecs } from '../../components/ItemCardPage/TechSpecs/TechSpecs';
 import { ProductNotFound } from '../../components/ItemCardPage/ProductNotFound';
 import BreadCrumbs from '../../components/BreadCrumbs/BreadCrumbs';
 import { SecondarySlider } from '../../components/Sliders/SecondarySlider';
 import { Skeleton } from '../../components/Skeletons/SkeletonItemCardPage/SkeletonItemCardPage';
-import { useProductReqHandler } from '../../hooks/useProductReqHandler';
 import { ErrorMessage } from '../../components/ErrorMessage';
 import { ErrorScreen } from '../../components/ErrorScreen';
-import { Product } from '../../types/product';
+
+import type { Product } from '../../types/product';
+import type { Gadget } from '../../types/gadget';
+import classes from './ItemCard.module.scss';
 
 export const ItemCardPage = () => {
   const [gadgets, setGadgets] = useState<Gadget[]>([]);
@@ -108,9 +108,12 @@ export const ItemCardPage = () => {
         <div className={classes.breadCrumbsContainer}>
           <BreadCrumbs productName={activeProduct.name} />
         </div>
+
         <h1 className={classes.header1}>{activeProduct.name}</h1>
+
         <div className={classes.characteristicsSection}>
           <PhotosBlock product={activeProduct} ident={productName} />
+
           <MainControls
             activeProduct={activeProduct}
             gadgets={gadgets}
@@ -120,6 +123,7 @@ export const ItemCardPage = () => {
         </div>
         <div className={classes.aboutSection}>
           <About product={activeProduct} />
+
           <TechSpecs product={activeProduct} />
         </div>
       </div>

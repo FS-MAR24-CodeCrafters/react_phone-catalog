@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import classes from './FavoriteList.module.scss';
-
 import { ProductCard } from '../ProductCard';
-import { Product } from '../../types/product';
+import type { Product } from '../../types/product';
+
+import classes from './FavoriteList.module.scss';
 
 type FavoritesListProps = {
   favourites: Product[];

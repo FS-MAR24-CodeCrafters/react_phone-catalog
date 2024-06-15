@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Gadget } from '../../../types/gadget';
+import type { Gadget } from '../../../types/gadget';
 import classes from './PhotoBlock.module.scss';
 
 type Props = {
