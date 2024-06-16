@@ -24,11 +24,11 @@ export const CartPage = () => {
 
   const { goodsInCart, updateProducts } = useCartLocalStorage();
 
-  if (!goodsInCart.length) {
-    return (
-      <CartEmpty />
-    );
-  }
+  // if (!goodsInCart.length) {
+  //   return (
+  //     <CartEmpty />
+  //   );
+  // }
 
   const filteredGoods: FilledCartState[] = products
     .filter((product) => {
@@ -63,7 +63,7 @@ export const CartPage = () => {
               <SkeletonCartList />
               <SkeletonCartCheckout />
             </div>
-          ) : (
+          ) : !goodsInCart.length? (<CartEmpty />) : (
             <div className={classes.contentWrap}>
               <CartList
                 products={filteredGoods}
