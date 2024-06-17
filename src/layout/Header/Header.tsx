@@ -1,5 +1,8 @@
 import {
-  Link, NavLink, useLocation, useNavigate,
+  Link,
+  NavLink,
+  useLocation,
+  useNavigate,
   useSearchParams,
 } from 'react-router-dom';
 import classNames from 'classnames';
@@ -40,7 +43,15 @@ export const Header = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const params = new URLSearchParams(searchParams);
 
-    params.set('query', `${e.target.value.trimStart()}`);
+    const queryInput = e.target.value.trimStart();
+
+    if (queryInput.length) {
+      params.set('query', `${queryInput}`);
+    } else {
+      window.console.log('queryInput');
+      params.delete('query');
+    }
+
     setSearchParams(params);
   };
 
@@ -119,7 +130,7 @@ export const Header = () => {
                 label="Search bar for product"
                 id="search"
                 name="search"
-                placeholder='Start typing for search'
+                placeholder="Start typing for search"
                 onChange={handleInputChange}
                 isLabelHide
                 value={query}

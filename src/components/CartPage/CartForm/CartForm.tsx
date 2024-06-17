@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import classes from './CartForm.module.scss';
 import { ActionsName, FilledCartState } from '../../../types/cart/cartState';
 import { UpdateProducts } from '../../../hooks/useCartLocalStorage';
 import { CloseIcon } from '../../../ui/icons/CloseIcon';
 import { Button } from '../../../ui/Buttons';
 import { Input } from '../../../ui/Input';
+import { calcScroll } from '../../../helpers/calcScroll';
+
+import classes from './CartForm.module.scss';
 
 type Props = {
   products: FilledCartState[];
@@ -25,10 +27,14 @@ export const CartForm: React.FC<Props> = ({
   const handleCancelForm = () => setFormOpen(false);
 
   useEffect(() => {
+    const { scrollWidth } = calcScroll();
+
     document.body.style.overflow = 'hidden';
+    document.body.style.marginRight = `${scrollWidth}px`;
 
     return () => {
       document.body.style.overflow = 'scroll';
+      document.body.style.marginRight = `0px`;
     };
   }, []);
 
