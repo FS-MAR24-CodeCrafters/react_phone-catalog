@@ -10,18 +10,18 @@ export const useThemeLocalStorage = () => {
   const { getItem, setItem } = localStorageService<ThemeState>(KEY.theme);
   const [dark, setDark] = useState<ThemeState>(null);
 
-  const loadProducts = () => {
+  const loadTheme = () => {
     const theme = getItem();
 
     setDark(theme);
   };
 
   useEffect(() => {
-    loadProducts();
-    window.addEventListener('storage', loadProducts);
+    loadTheme();
+    window.addEventListener('storage', loadTheme);
 
     return () => {
-      window.removeEventListener('storage', loadProducts);
+      window.removeEventListener('storage', loadTheme);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

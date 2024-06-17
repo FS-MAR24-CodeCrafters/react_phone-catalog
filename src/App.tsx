@@ -1,22 +1,22 @@
 import { Outlet } from 'react-router-dom';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { Header } from './layout/Header';
 import { Footer } from './layout/Footer';
-import { useThemeLocalStorage } from './hooks/useThemeLocalStorage';
+// import { ThemeState, useThemeLocalStorage } from './hooks/useThemeLocalStorage';
 
 import './App.scss';
+import { KEY } from './constants/key';
+import { localStorageService } from './service/localStorageService';
+import { ThemeState } from './hooks/useThemeLocalStorage';
 
 const App = () => {
-  const { isThemeDark } = useThemeLocalStorage();
+  const { getItem } = localStorageService<ThemeState>(KEY.theme);
 
-  useEffect(() => {
-    if (isThemeDark) {
-      document.body.classList.add('dark');
-    } else {
-      document.body.classList.add('white');
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  });
+  const theme = getItem() || {};
+
+  if ('dark' in theme) {
+    document.body.classList.add('dark');
+  }
 
   return (
     <div className="App">
