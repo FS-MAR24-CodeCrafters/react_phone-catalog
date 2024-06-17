@@ -93,10 +93,11 @@ export const ItemCardPage = () => {
 
   if (!activeProduct) {
     return (
-      <>
+      <div className={classes.header__container}>
         <h1 className={classes.header1}>There is no such Product</h1>
+        <Back />
         <ProductNotFound />
-      </>
+      </div>
     );
   }
 

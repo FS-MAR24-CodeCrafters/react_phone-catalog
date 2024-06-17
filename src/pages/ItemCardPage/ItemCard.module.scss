@@ -10,7 +10,7 @@
 
 .header1 {
   @include h2-styles;
-  
+
   @include on-tablet {
     max-width: 592px;
     margin-bottom: 40px;
@@ -88,5 +88,28 @@
   @include on-desktop {
     @include grid-container;
     justify-content: center;
+  }
+}
+
+.header__container {
+  @include grid-container;
+  row-gap: 0;
+
+  justify-content: center;
+}
+
+.header__container :nth-child(1n) {
+  grid-column: 1 / -1;
+}
+
+@include on-tablet {
+  .header__container :last-child {
+    grid-column: 4 / 10;
+  }
+}
+
+@include on-desktop {
+  .header__container :last-child {
+    grid-column: 8 / 18;
   }
 }

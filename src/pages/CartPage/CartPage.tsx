@@ -26,7 +26,22 @@ export const CartPage = () => {
 
   if (!goodsInCart.length) {
     return (
-      <CartEmpty />
+      <div className={classes.cartPage}>
+        <div className={classes.backWrap}>
+          <Back />
+
+          <div className={classes.wrap}>
+            <CartTitle />
+            <CartEmpty />
+          </div>
+        </div>
+
+        {openModal
+            && createPortal(
+              <ErrorMessage setOpenModal={setOpenModal} />,
+              document.body,
+            )}
+      </div>
     );
   }
 

@@ -29,7 +29,7 @@ export const Root = () => {
           </Route>
           <Route path="favourites" element={<FavouritesPage />} />
           <Route path="cart" element={<CartPage />} />
-          <Route path='contacts' element={<ContactsPage />} />
+          <Route path="contacts" element={<ContactsPage />} />
 
           <Route path="menu" element={<BurgerMenu />} />
           <Route path="*" element={<NotFound />} />
