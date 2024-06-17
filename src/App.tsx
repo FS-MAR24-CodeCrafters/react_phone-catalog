@@ -12,6 +12,8 @@ const App = () => {
   useEffect(() => {
     if (isThemeDark) {
       document.body.classList.add('dark');
+    } else {
+      document.body.classList.add('white');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   });

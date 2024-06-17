@@ -1,6 +1,18 @@
 @import './mixins.scss';
 
 body {
+  --transition: 0.3s;
+  --cartHeight: 70px;
+  --headerHeight: 48px;
+  --footerHeight: 257px;
+
+  @include on-desktop {
+    --headerHeight: 48px;
+    --footerHeight: 96px;
+  }
+}
+
+body.white {
   --primary: #313237;
   --secondary: #89939a;
   --icons: #b4bdc3;
@@ -19,20 +31,11 @@ body {
   --button-bg: #313237;
   --heart-hover: #313237;
   --box-shadow: #e2e6e9;
-  --transition: 0.3s;
-  --cartHeight: 70px;
-  --headerHeight: 48px;
-  --footerHeight: 257px;
   --drop-down-text: #313237;
   --drop-down-list: #fafbfc;
   --item-color-border: #e2e6e9;
   --controls-title: #89939a;
   --input-bg: #ffffff;
-
-  @include on-desktop {
-    --headerHeight: 48px;
-    --footerHeight: 96px;
-  }
 }
 
 body.dark {

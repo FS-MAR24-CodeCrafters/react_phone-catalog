@@ -102,7 +102,7 @@ export const CartForm: React.FC<Props> = ({
             <Input
               id="address"
               label="Delivery address:"
-              name="lastName"
+              name="address"
               placeholder="Enter your address"
               onChange={handleChange}
               value={formData.address}
