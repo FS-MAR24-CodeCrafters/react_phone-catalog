@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   Link,
   NavLink,
@@ -22,6 +23,7 @@ import { CloseIcon } from '../../ui/icons/CloseIcon';
 
 import classes from './Header.module.scss';
 import { Input } from '../../ui/Input';
+import { useDebounce } from '../../hooks/useDebounce';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {
   return classNames(classes.linkContent, { [classes.linkActive]: isActive });
@@ -32,28 +34,30 @@ export const Header = () => {
   const { favourites } = useFavouriteLocalStorage();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
+  const [querySearch, setQuerySearch] = useState('');
 
   const { pathname } = useLocation();
   const [windowWidth] = useResize();
 
-  const query = searchParams.get('query') || '';
+  const value = useDebounce(querySearch, 1000);
 
-  const isAtCatalogPage = pathname === '/phones' || pathname === '/tablets' || pathname === '/accessories';
+  const isAtCatalogPage =
+    pathname === '/phones' ||
+    pathname === '/tablets' ||
+    pathname === '/accessories';
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const params = new URLSearchParams(searchParams);
 
-    const queryInput = e.target.value.trimStart();
-
-    if (queryInput.length) {
-      params.set('query', `${queryInput}`);
+    if (value.length) {
+      params.set('query', `${value}`);
     } else {
-      window.console.log('queryInput');
       params.delete('query');
     }
 
     setSearchParams(params);
-  };
+  }, [value, setSearchParams, searchParams]);
 
   if (windowWidth < 640) {
     return (
@@ -89,9 +93,9 @@ export const Header = () => {
                   id="search"
                   name="search"
                   placeholder="Start typing for search"
-                  onChange={handleInputChange}
+                  onChange={(e) => setQuerySearch(e.target.value)}
                   isLabelHide
-                  value={query}
+                  value={querySearch}
                 />
               </div>
             )}
@@ -131,9 +135,9 @@ export const Header = () => {
                 id="search"
                 name="search"
                 placeholder="Start typing for search"
-                onChange={handleInputChange}
+                onChange={(e) => setQuerySearch(e.target.value)}
                 isLabelHide
-                value={query}
+                value={querySearch}
               />
             </div>
           )}

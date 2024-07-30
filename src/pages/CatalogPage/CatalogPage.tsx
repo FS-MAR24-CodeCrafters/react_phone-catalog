@@ -17,11 +17,6 @@ export const CatalogPage = () => {
 
   const { pathname } = useLocation();
   const path = pathname.slice(1);
-
-  const filteredProducts = products.filter((product) => {
-    return product.category === path;
-  });
-
   let pageTitle = `${path.slice(0, 1).toUpperCase()}${path.slice(1)}`;
 
   if (path === 'phones') {
@@ -36,11 +31,11 @@ export const CatalogPage = () => {
     );
   }
 
-  if (!loading && !filteredProducts.length) {
+  if (!loading && products && !products?.products.length) {
     return (
       <div className={classes.catalog__container}>
         <div className={classes.catalog__header}>
-          <PageHeader title={pageTitle} totalModels={filteredProducts.length} />
+          <PageHeader title={pageTitle} totalModels={products.total} />
         </div>
 
         <div style={{ gridColumn: '1 / -1' }}>
@@ -53,7 +48,7 @@ export const CatalogPage = () => {
   return (
     <div className={classes.catalog__container}>
       <div className={classes.catalog__header}>
-        <PageHeader title={pageTitle} totalModels={filteredProducts.length} />
+        <PageHeader title={pageTitle} totalModels={products?.total} />
       </div>
 
       <div className={classes.catalog__dropdown}>
@@ -65,10 +60,14 @@ export const CatalogPage = () => {
           <Dropdown type="perPage" />
         </div>
       </div>
-      <CatalogList filteredProducts={filteredProducts} loading={loading} />
+      <CatalogList
+        filteredProducts={products?.products}
+        loading={loading}
+        totalModels={products?.total}
+      />
 
-      {openModal
-        && createPortal(
+      {openModal &&
+        createPortal(
           <ErrorMessage setOpenModal={setOpenModal} />,
           document.body,
         )}

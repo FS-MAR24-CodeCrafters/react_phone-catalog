@@ -1,25 +1,35 @@
 import { createPortal } from 'react-dom';
-import { useProductReqHandler } from '../../hooks/useProductReqHandler';
 import { SecondarySlider } from '../../components/Sliders/SecondarySlider';
 import { ErrorMessage } from '../../components/ErrorMessage';
 import { Category } from '../../components/HomePage/Category';
 import { MainSlider } from '../../components/HomePage/MainSlider';
 
 import classes from './HomePage.module.scss';
+import { useFetchProductsByParams } from '../../hooks/useFetchProductsByParams';
+import { paths } from '../../constants/paths';
 
 export const HomePage = () => {
   const {
-    products, openModal, error, setError, setOpenModal,
-  } = useProductReqHandler();
-
-  const hotPrices = products.sort((a, b) => {
-    return b.price - a.price;
+    products: hotPrices,
+    openModal,
+    error,
+    setError,
+    setOpenModal,
+  } = useFetchProductsByParams({
+    sortBy: paths.searchParams.sortBy.price,
+    order: paths.searchParams.order.asc,
   });
 
-  const brandNewModels = products.sort((a, b) => b.year - a.year);
-
-  const hotPricesFirst20 = hotPrices.slice(0, 20);
-  const brandNewModels20 = brandNewModels.slice(0, 20);
+  const {
+    products: brandNewModels,
+    openModal: openModalBrand,
+    error: errorBrand,
+    setError: setErrorBrand,
+    setOpenModal: setOpenModalBrand,
+  } = useFetchProductsByParams({
+    sortBy: paths.searchParams.sortBy.year,
+    order: paths.searchParams.order.desc,
+  });
 
   return (
     <>
@@ -34,9 +44,9 @@ export const HomePage = () => {
       <div className={`${classes.slider__container} ${classes.mb}`}>
         <SecondarySlider
           title="Brand new models"
-          products={brandNewModels20}
-          error={error}
-          setError={setError}
+          products={brandNewModels}
+          error={errorBrand}
+          setError={setErrorBrand}
         />
       </div>
 
@@ -47,15 +57,21 @@ export const HomePage = () => {
       <div className={`${classes.slider__container} ${classes.mb}`}>
         <SecondarySlider
           title="Hot prices"
-          products={hotPricesFirst20}
+          products={hotPrices}
           error={error}
           setError={setError}
         />
       </div>
 
-      {openModal
-        && createPortal(
+      {openModal &&
+        createPortal(
           <ErrorMessage setOpenModal={setOpenModal} />,
+          document.body,
+        )}
+
+      {openModalBrand &&
+        createPortal(
+          <ErrorMessage setOpenModal={setOpenModalBrand} />,
           document.body,
         )}
     </>

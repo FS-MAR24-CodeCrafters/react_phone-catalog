@@ -27,6 +27,7 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': 'off',
     'react/button-has-type': 'off',
     'react/prop-types': 'off',
+    'operator-linebreak': ['error', 'after'],
     'import/prefer-default-export': 'off',
     'standard/no-callback-literal': 'off',
     'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],

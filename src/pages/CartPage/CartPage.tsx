@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
-import { useProductReqHandler } from '../../hooks/useProductReqHandler';
 import { CartCheckout } from '../../components/CartPage/CartChekout';
 import { CartList } from '../../components/CartPage/CartList';
 import { CartEmpty } from '../../components/CartPage/CartEmpty';
 import { CartTitle } from '../../components/CartPage/CartTitle';
 import { useCartLocalStorage } from '../../hooks/useCartLocalStorage';
+import { useFetchProductsByIDs } from '../../hooks/useFetchProductsByIDs';
 import { ErrorMessage } from '../../components/ErrorMessage';
 import { ErrorScreen } from '../../components/ErrorScreen';
 import { SkeletonCartList } from '../../components/Skeletons/SkeletonCartPage/CartList';
@@ -17,12 +17,14 @@ import type { FilledCartState } from '../../types/cart/cartState';
 import classes from './CartPage.module.scss';
 
 export const CartPage = () => {
-  const {
-    loading, products, openModal, error, setError, setOpenModal,
-  } = useProductReqHandler();
   const [formOpen, setFormOpen] = useState(false);
 
   const { goodsInCart, updateProducts } = useCartLocalStorage();
+
+  const {
+    loading, products, openModal, error, setError, setOpenModal,
+  } =
+    useFetchProductsByIDs({ iDs: goodsInCart.map((good) => good.id).join(','), path: 'cart' });
 
   if (!goodsInCart.length) {
     return (
@@ -36,21 +38,19 @@ export const CartPage = () => {
           </div>
         </div>
 
-        {openModal
-            && createPortal(
-              <ErrorMessage setOpenModal={setOpenModal} />,
-              document.body,
-            )}
+        {openModal &&
+          createPortal(
+            <ErrorMessage setOpenModal={setOpenModal} />,
+            document.body,
+          )}
       </div>
     );
   }
 
   const filteredGoods: FilledCartState[] = products
-    .filter((product) => {
-      return goodsInCart.some((good) => good.id === product.itemId);
-    })
     .map((good) => {
-      const qty = goodsInCart.find((item) => item.id === good.itemId)?.quantity || 1;
+      const qty =
+        goodsInCart.find((item) => item.id === good.itemId)?.quantity || 1;
 
       return {
         item: good,
@@ -91,17 +91,17 @@ export const CartPage = () => {
               />
 
               {formOpen && (
-              <CartForm
-                setFormOpen={setFormOpen}
-                products={filteredGoods}
-                updateProducts={updateProducts}
-              />
+                <CartForm
+                  setFormOpen={setFormOpen}
+                  products={filteredGoods}
+                  updateProducts={updateProducts}
+                />
               )}
             </div>
           )}
 
-          {openModal
-            && createPortal(
+          {openModal &&
+            createPortal(
               <ErrorMessage setOpenModal={setOpenModal} />,
               document.body,
             )}

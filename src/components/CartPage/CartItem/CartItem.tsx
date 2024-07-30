@@ -37,7 +37,11 @@ export const CartItem: React.FC<Props> = ({ phone, updateProducts }) => {
   return (
     <article className={classes.cartItem}>
       <div className={classes.itemContentWrap}>
-        <button className={classes.closeButton} onClick={handleItemDelete} aria-label='Delete good from cart'>
+        <button
+          className={classes.closeButton}
+          onClick={handleItemDelete}
+          aria-label="Delete good from cart"
+        >
           <CloseIcon className={classes.button} />
         </button>
         <Link to={`/${category}/${itemId}`}>
@@ -55,9 +59,9 @@ export const CartItem: React.FC<Props> = ({ phone, updateProducts }) => {
           <button
             className={cn(
               classes.minusButton,
-              phone.quantity > 1
-                ? classes.minusButtonActive
-                : classes.minusButtonDisabled,
+              phone.quantity > 1 ?
+                classes.minusButtonActive :
+                classes.minusButtonDisabled,
             )}
             onClick={handleItemDec}
             aria-label="Decrease quantity"

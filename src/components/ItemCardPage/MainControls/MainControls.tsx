@@ -57,9 +57,9 @@ export const MainControls: React.FC<Props> = ({
 
   const handleSetColor = (color: string) => {
     const neededProduct = filteredProducts.find(
-      (prod) => prod.id.includes(color)
-        && selectedCap
-        && prod.id.includes(selectedCap.toLocaleLowerCase()),
+      (prod) => prod.id.includes(color) &&
+      selectedCap &&
+      prod.id.includes(selectedCap.toLocaleLowerCase()),
     );
 
     if (neededProduct) {

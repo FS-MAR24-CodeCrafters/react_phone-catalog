@@ -1,4 +1,4 @@
-export const BASE_URL = './api/';
+export const BASE_URL = 'https://server-phone-catalog.onrender.com/api/';
 
 const request = <T>(url: string, method = 'GET'): Promise<T> => {
   const options: RequestInit = {

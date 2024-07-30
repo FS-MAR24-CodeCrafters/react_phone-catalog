@@ -54,9 +54,9 @@ export const useCartLocalStorage = () => {
 
       case ActionsName.Inc: {
         newState = goods.map((product) => {
-          return product.id === action.payload
-            ? { ...product, quantity: product.quantity + 1 }
-            : product;
+          return product.id === action.payload ?
+            { ...product, quantity: product.quantity + 1 } :
+            product;
         });
 
         break;
@@ -64,9 +64,9 @@ export const useCartLocalStorage = () => {
 
       case ActionsName.Dec: {
         newState = goods.map((product) => {
-          return product.id === action.payload && product.quantity > 1
-            ? { ...product, quantity: product.quantity - 1 }
-            : product;
+          return product.id === action.payload && product.quantity > 1 ?
+            { ...product, quantity: product.quantity - 1 } :
+            product;
         });
 
         break;

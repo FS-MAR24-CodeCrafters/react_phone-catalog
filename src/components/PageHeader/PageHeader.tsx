@@ -5,7 +5,7 @@ import classes from './PageHeader.module.scss';
 
 type PageHeaderProps = {
   title: string;
-  totalModels: number;
+  totalModels: number | undefined;
 }
 
 export const PageHeader: React.FC<PageHeaderProps> = ({ title, totalModels }) => {

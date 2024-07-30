@@ -11,7 +11,7 @@ import classes from './SecondarySlider.module.scss';
 
 type SecondarySliderProps = {
   title: string;
-  products: Product[];
+  products: Product[] | undefined;
   error?: boolean;
   setError?: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -75,7 +75,7 @@ export const SecondarySlider: React.FC<SecondarySliderProps> = ({
     );
   }
 
-  if (!products.length) {
+  if (!products) {
     const arrayOfSkeletons = new Array(4).fill(<SkeletonProductCard />);
 
     return (

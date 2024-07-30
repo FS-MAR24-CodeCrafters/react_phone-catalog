@@ -19,9 +19,9 @@ export const developers = [
     id: 3,
     name: 'Grigorii Kachurovskii',
     telegram: 'https://t.me/grigoriikachurovskii',
-    lindedin: 'https://www.linkedin.com/in/grygoryy-kachurovskyy-b4994b283/',
+    lindedin: 'https://www.linkedin.com/in/hryhorii%2Dkachurovskyi/',
     github: 'https://github.com/GrigoryyKach',
-    email: '',
+    email: 'hryhorii.k.dev@gmail.com',
   },
   {
     id: 4,

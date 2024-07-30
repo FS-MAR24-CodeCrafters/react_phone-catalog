@@ -7,15 +7,15 @@ import { ErrorScreen } from '../../components/ErrorScreen';
 import { ErrorMessage } from '../../components/ErrorMessage';
 
 import classes from './FavouritesPage.module.scss';
-import { useProductReqHandler } from '../../hooks/useProductReqHandler';
 import { Product } from '../../types/product';
+import { useFetchProductsByIDs } from '../../hooks/useFetchProductsByIDs';
 
 export const FavouritesPage = () => {
   const { favourites } = useFavouriteLocalStorage();
 
   const {
     loading, products, openModal, error, setError, setOpenModal,
-  } = useProductReqHandler();
+  } = useFetchProductsByIDs({ iDs: favourites.join(','), path: 'favourites' });
 
   if (!loading && !favourites.length) {
     return (
@@ -48,11 +48,11 @@ export const FavouritesPage = () => {
         <FavoritesList favourites={filteredGoods} />
       </div>
 
-      {openModal
-            && createPortal(
-              <ErrorMessage setOpenModal={setOpenModal} />,
-              document.body,
-            )}
+      {openModal &&
+        createPortal(
+          <ErrorMessage setOpenModal={setOpenModal} />,
+          document.body,
+        )}
     </div>
   );
 };

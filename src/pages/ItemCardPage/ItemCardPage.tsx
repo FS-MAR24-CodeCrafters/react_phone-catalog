@@ -38,7 +38,7 @@ export const ItemCardPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    getGoods<Gadget[]>(`${category}.json`)
+    getGoods<Gadget[]>(`${category}`)
       .then((res) => {
         setGadgets(res);
 
@@ -140,8 +140,8 @@ export const ItemCardPage = () => {
         />
       </div>
 
-      {openModal
-        && createPortal(
+      {openModal &&
+        createPortal(
           <ErrorMessage setOpenModal={setOpenModal} />,
           document.body,
         )}

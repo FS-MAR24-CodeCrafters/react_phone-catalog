@@ -18,7 +18,7 @@ export const CategoryItem: FC<CategoryItemProps> = ({
   const [goodsQty, setGoodsQty] = useState<number>();
 
   useEffect(() => {
-    getGoods<Gadget[]>(`${link}.json`).then((res) => {
+    getGoods<Gadget[]>(`${link}`).then((res) => {
       return setGoodsQty(res.length);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
