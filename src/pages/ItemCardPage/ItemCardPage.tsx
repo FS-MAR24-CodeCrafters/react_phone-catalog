@@ -80,7 +80,7 @@ export const ItemCardPage = () => {
     );
   }
 
-  if (loading) {
+  if (loading || !products) {
     return <Skeleton />;
   }
 
@@ -101,8 +101,8 @@ export const ItemCardPage = () => {
     );
   }
 
-  const goodForCart = products.find((item) => item.itemId === productName) || null;
-  const randomProducts = shuffleArray(products).slice(0, 10);
+  const goodForCart = products.products.find((item) => item.itemId === productName) || null;
+  const randomProducts = shuffleArray(products.products).slice(0, 10);
 
   return (
     <>
